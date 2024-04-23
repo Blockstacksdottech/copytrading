@@ -82,7 +82,7 @@ export default function Sidebar() {
       </div>
       <div className="sidebar-custom">
         <a href="#" className="btn btn-link btn-sm">
-          <i className="fas fa-cogs"></i>
+          <i className="fas fa-cog"></i>
         </a>
         <a
           href="/login"

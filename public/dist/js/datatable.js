@@ -1,7 +1,7 @@
 $(function () {
   $("#datatable-dashboard").DataTable({
     retrieve: true,
-    paging: false,
+    paging: true,
     lengthChange: false,
     searching: false,
     ordering: false,
