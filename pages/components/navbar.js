@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { isLogged } from "@/helpers";
+
 export default function Navbar() {
   return (
     <nav className="main-header navbar navbar-expand navbar-white navbar-light">
@@ -8,7 +11,7 @@ export default function Navbar() {
           </a>
         </li>
         <li className="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" className="nav-link">
+          <a href="/investor/dashboard" className="nav-link">
             Home
           </a>
         </li>

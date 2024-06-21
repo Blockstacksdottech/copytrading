@@ -1,6 +1,62 @@
 import Head from "next/head";
+import Link from "next/Link";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { get_token, isLogged } from "@/helpers";
+import { toast } from "react-toastify";
 
 export default function Login() {
+  const [user, setUser] = useState({
+    logged: false,
+    username: "",
+    email: "",
+  });
+  const [loading, setLoading] = useState(true);
+  const nav = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    async function test() {
+      let resp = await isLogged();
+      console.log(resp);
+      let obj = { ...user };
+      if (resp) {
+        obj.logged = true;
+        obj.username = resp.username;
+        obj.email = resp.email;
+        setUser(obj);
+        //await updateSuppliers();
+        return obj;
+      } else {
+        return obj;
+      }
+    }
+
+    test().then((obj) => {
+      if (obj.logged) {
+        nav.push("/investor/dashboard");
+      } else {
+        setLoading(false);
+      }
+    });
+  }, []);
+
+  async function login(email, password) {
+    const res = await get_token(email, password);
+    if (res) {
+      toast.success("logged in");
+      nav.push("/investor/dashboard");
+    } else {
+      toast.error("Failed");
+    }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login(email, password);
+  };
+
   return (
     <>
       <Head>
@@ -25,12 +81,14 @@ export default function Login() {
             <div className="card-body login-card-body">
               <p className="login-box-msg">Login</p>
 
-              <form action="/investor/dashboard" method="post">
+              <form onSubmit={handleSubmit}>
                 <div className="input-group mb-3">
                   <input
                     type="email"
                     className="form-control"
                     placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                   <div className="input-group-append">
                     <div className="input-group-text">
@@ -43,6 +101,8 @@ export default function Login() {
                     type="password"
                     className="form-control"
                     placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <div className="input-group-append">
                     <div className="input-group-text">
@@ -52,9 +112,9 @@ export default function Login() {
                 </div>
                 <div className="row">
                   <div className="col-8">
-                    <a href="/forgot-password" className="small">
+                    {/* <a href="/forgot-password" className="small">
                       I forgot my password
-                    </a>
+                    </a> */}
                   </div>
                   <div className="col-4">
                     <button type="submit" className="btn btn-primary btn-block">
@@ -64,7 +124,7 @@ export default function Login() {
                 </div>
               </form>
 
-              <div className="social-auth-links text-center small mt-3">
+              {/* <div className="social-auth-links text-center small mt-3">
                 <p className="mb-0">
                   - Or login instantly using your social account -
                 </p>
@@ -74,7 +134,7 @@ export default function Login() {
                 <a href="#" className="btn btn-block btn-outline-google">
                   <i className="fab fa-google mr-2"></i> Login with Google
                 </a>
-              </div>
+              </div> */}
               <p className="mb-0">
                 Need an Account?{" "}
                 <a href="/register" className="text-center">

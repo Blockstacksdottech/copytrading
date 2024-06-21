@@ -1,4 +1,41 @@
+import Link from "next/Link";
+import { useRouter } from "next/navigation";
+import { isLogged, logout } from "@/helpers";
+import { useEffect, useState } from "react";
+
 export default function Sidebar() {
+  const nav = useRouter();
+
+  const [user, setUser] = useState({
+    logged: false,
+    username: "",
+    email: "",
+  });
+
+  useEffect(() => {
+    async function test() {
+      let resp = await isLogged();
+      console.log(resp);
+      let obj = { ...user };
+      if (resp) {
+        obj.logged = true;
+        obj.username = resp.username;
+        obj.email = resp.email;
+        setUser(obj);
+        return obj;
+      } else {
+        return obj;
+      }
+    }
+
+    test().then((obj) => {
+      if (obj.logged) {
+      } else {
+        nav.push("/login");
+      }
+    });
+  }, []);
+
   return (
     <aside className="main-sidebar main-sidebar-custom sidebar-light-primary elevation-1">
       <a className="brand-link">
@@ -21,7 +58,7 @@ export default function Sidebar() {
           </div>
           <div className="info">
             <a href="#" className="d-block">
-              User Name
+              {user.username}
             </a>
           </div>
         </div>
@@ -84,12 +121,12 @@ export default function Sidebar() {
         <a href="#" className="btn btn-link btn-sm">
           <i className="fas fa-cog"></i>
         </a>
-        <a
-          href="/login"
+        <div
+          onClick={() => logout(nav)}
           className="btn btn-outline-danger btn-sm hide-on-collapse pos-right"
         >
           <i className="fas fa-sign-out-alt"></i> Logout
-        </a>
+        </div>
       </div>
     </aside>
   );
