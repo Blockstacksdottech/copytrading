@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Link from "next/Link";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { get_token, isLogged } from "@/helpers";

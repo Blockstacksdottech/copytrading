@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Link from "next/Link";
+import Link from "next/link";
 import { adduser } from "@/helpers";
 import { useState } from "react";
 import { toast } from "react-toastify";

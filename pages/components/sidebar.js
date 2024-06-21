@@ -1,4 +1,4 @@
-import Link from "next/Link";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { isLogged, logout } from "@/helpers";
 import { useEffect, useState } from "react";
