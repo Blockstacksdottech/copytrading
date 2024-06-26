@@ -62,22 +62,6 @@ export default function Sidebar() {
             </a>
           </div>
         </div>
-
-        <div className="form-inline">
-          <p className="mx-auto m-0">Viewing Site as</p>
-          <div className="btn-group btn-block">
-            <a className="btn btn-primary btn-sm" href="/investor/dashboard">
-              INVESTOR
-            </a>
-            <a
-              className="btn btn-outline-primary btn-sm"
-              href="/manager/dashboard"
-            >
-              MANAGER
-            </a>
-          </div>
-        </div>
-
         <nav className="mt-2">
           <ul
             className="nav nav-pills nav-sidebar flex-column"
@@ -93,40 +77,24 @@ export default function Sidebar() {
             </li>
             <li className="nav-item">
               <a href="/investor/watchlist" className="nav-link">
-                <i class="nav-icon fas fa-binoculars"></i>
+                <i className="nav-icon fas fa-binoculars"></i>
                 <p>My Watch List</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon far fa-chart-bar"></i>
-                <p>
-                  Find Strategy
-                  <i class="fas fa-angle-left right"></i>
-                </p>
+            <li className="nav-item">
+              <a href="/investor/strategy" className="nav-link">
+                <i className="nav-icon far fa-chart-bar"></i>
+                <p>Find Strategy</p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="/investor/leaderboard" class="nav-link">
-                    {/* <i class="far fa-circle nav-icon"></i> */}
-                    <p>Leader Board</p>
-                  </a>
-                </li>
-              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="/investor/accountinfo" class="nav-link">
+                <i class="nav-icon fas fa-id-card"></i>
+                <p>Account Management</p>
+              </a>
             </li>
           </ul>
         </nav>
-      </div>
-      <div className="sidebar-custom">
-        <a href="#" className="btn btn-link btn-sm">
-          <i className="fas fa-cog"></i>
-        </a>
-        <div
-          onClick={() => logout(nav)}
-          className="btn btn-outline-danger btn-sm hide-on-collapse pos-right"
-        >
-          <i className="fas fa-sign-out-alt"></i> Logout
-        </div>
       </div>
     </aside>
   );

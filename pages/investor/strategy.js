@@ -5,7 +5,7 @@ import Feed from "../components/feed";
 import Footer from "../components/footer";
 import React, { Component } from "react";
 
-export default class Leaderboard extends Component {
+export default class Strategy extends Component {
   componentDidMount() {
     const script = document.createElement("script");
     script.src = "/dist/js/datatable.js";
@@ -16,8 +16,8 @@ export default class Leaderboard extends Component {
     return (
       <>
         <Head>
-          <title>Leaderboard</title>
-          <meta name="description" content="Leaderboard" />
+          <title>Strategy</title>
+          <meta name="description" content="Strategy" />
         </Head>
 
         <Navbar />
@@ -36,7 +36,7 @@ export default class Leaderboard extends Component {
               </div>
               <div className="row mb-2">
                 <div className="col-sm-12">
-                  <h1 className="m-0">Leader Board</h1>
+                  <h1 className="m-0">Strategy</h1>
                 </div>
               </div>
             </div>
@@ -50,7 +50,7 @@ export default class Leaderboard extends Component {
                     <div className="card-body">
                       <div className="table-responsive p-0">
                         <table
-                          id="datatable-leaderboard"
+                          id="datatable-Strategy"
                           className="table table-bordered table-hover table-sm"
                         >
                           <thead>
@@ -59,7 +59,7 @@ export default class Leaderboard extends Component {
                               <th>Trades</th>
                               <th>Sub Fee</th>
                               <th>
-                                <select class="form-control form-control-sm">
+                                <select className="form-control form-control-sm">
                                   <option>All Time</option>
                                   <option>1 Month</option>
                                   <option>3 Months</option>
@@ -67,7 +67,7 @@ export default class Leaderboard extends Component {
                                 </select>
                               </th>
                               <th>
-                                <select class="form-control form-control-sm">
+                                <select className="form-control form-control-sm">
                                   <option>Strategy Age</option>
                                   <option>Avg Leverage</option>
                                   <option>Heart Attack Index</option>

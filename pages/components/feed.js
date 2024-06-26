@@ -4,15 +4,15 @@ export default function Feed() {
       <div className="p-3">
         <h5>Activity Feeds</h5>
 
-        <ul class="products-list">
-          <li class="item">
-            <div class="product-info">
+        <ul className="products-list">
+          <li className="item">
+            <div className="product-info">
               <div className="clearfix">
-                <span class="badge badge-success">Trade Complete</span>
+                <span className="badge badge-success">Trade Complete</span>
                 <span className="small float-right">A minute ago</span>
               </div>
 
-              <span class="product-description">
+              <span className="product-description">
                 <a href="" className="underline">
                   TFN Mini Portfolio
                 </a>{" "}
@@ -21,14 +21,14 @@ export default function Feed() {
               </span>
             </div>
           </li>
-          <li class="item">
-            <div class="product-info">
+          <li className="item">
+            <div className="product-info">
               <div className="clearfix">
-                <span class="badge badge-info">New Follower</span>
+                <span className="badge badge-info">New Follower</span>
                 <span className="small float-right">3 hours ago</span>
               </div>
 
-              <span class="product-description">
+              <span className="product-description">
                 <a href="" className="underline">
                   User Name
                 </a>{" "}

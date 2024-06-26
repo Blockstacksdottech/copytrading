@@ -13500,7 +13500,11 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
   padding: 2px 4px;
   position: absolute;
   right: 5px;
-  top: 9px;
+  top: 2px;
+}
+
+.nav-link i {
+  font-size: 16px;
 }
 
 .btn-navbar {

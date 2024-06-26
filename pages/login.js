@@ -135,11 +135,8 @@ export default function Login() {
                   <i className="fab fa-google mr-2"></i> Login with Google
                 </a>
               </div> */}
-              <p className="mb-0">
-                Need an Account?{" "}
-                <a href="/register" className="text-center">
-                  Register yourself
-                </a>
+              <p className="mb-0 mt-3 text-center">
+                Need an Account? <a href="/register">Register yourself</a>
               </p>
             </div>
           </div>

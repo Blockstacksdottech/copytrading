@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { isLogged } from "@/helpers";
+import { isLogged, logout } from "@/helpers";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
+  const nav = useRouter();
   return (
     <nav className="main-header navbar navbar-expand navbar-white navbar-light">
       <ul className="navbar-nav">
@@ -60,7 +62,7 @@ export default function Navbar() {
 
         <li className="nav-item dropdown">
           <a className="nav-link" data-toggle="dropdown" href="#">
-            <i className="far fa-comments"></i>
+            <i className="far fa-comment-alt"></i>
             <span className="badge badge-danger navbar-badge">3</span>
           </a>
           <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -176,13 +178,21 @@ export default function Navbar() {
         </li>
         <li className="nav-item">
           <a
-            className="nav-link btn btn-sm btn-dark text-white"
+            className="nav-link"
             data-widget="control-sidebar"
             data-slide="true"
             href="#"
-            role="button"
           >
             <i className="fas fa-flag-checkered"></i>
+          </a>
+        </li>
+        <li className="nav-item">
+          <a
+            href="#"
+            className="nav-link btn btn-danger btn-sm text-light"
+            onClick={() => logout(nav)}
+          >
+            <i className="fas fa-sign-out-alt"></i> Logout
           </a>
         </li>
       </ul>

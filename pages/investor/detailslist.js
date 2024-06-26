@@ -3,13 +3,50 @@ import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
 import Feed from "../components/feed";
 import Footer from "../components/footer";
+import React from "react";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
+
+const hypotheticalData = [
+  {
+    name: "Jan '24",
+    Price: 80,
+  },
+  {
+    name: "Feb '24",
+    Price: 90,
+  },
+  {
+    name: "Mar '24",
+    Price: 50,
+  },
+  {
+    name: "Apr '24",
+    Price: 100,
+  },
+  {
+    name: "May '24",
+    Price: 10,
+  },
+  {
+    name: "Jun '24",
+    Price: 130,
+  },
+];
 
 export default function Detailslist() {
   return (
     <>
       <Head>
-        <title>Leaderboard</title>
-        <meta name="description" content="Leaderboard" />
+        <title>Easiest</title>
+        <meta name="description" content="Easiest" />
       </Head>
 
       <Navbar />
@@ -132,15 +169,11 @@ export default function Detailslist() {
               </div>
             </div>
             <div className="row mb-2">
-              <div className="col-sm-12">
-                <p className="mb-0">
+              <div className="col-sm-9">
+                <p className="text-center">
                   Hypothetical Monthly Returns (includes system fee and Gain
                   Capital commissions and fees)
                 </p>
-              </div>
-            </div>
-            <div className="row mb-2">
-              <div className="col-sm-9">
                 <div className="card card-primary card-outline mb-3">
                   <div className="card-body p-0">
                     <div className="table-responsive">
@@ -264,6 +297,24 @@ export default function Detailslist() {
                   </div>
                 </div>
 
+                <p className="text-center">Hypothetical Performance</p>
+                <div className="mb-3">
+                  <ResponsiveContainer width="100%" height={300}>
+                    <AreaChart data={hypotheticalData}>
+                      <CartesianGrid strokeDasharray="5 5" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Area
+                        type="monotone"
+                        dataKey="Price"
+                        stroke="#0909ff"
+                        fill="#0909ff"
+                      />
+                    </AreaChart>
+                  </ResponsiveContainer>
+                </div>
+
                 {/* All Records */}
 
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
@@ -297,7 +348,37 @@ export default function Detailslist() {
                 </ul>
                 <div className="tab-content" id="myTabContent">
                   <div className="tab-pane fade show active" id="trade">
-                    <div className="card card-primary card-outline">
+                    <div className="card">
+                      <div className="card-header border-0">
+                        <button className="btn btn-sm btn-primary">
+                          Download CSV
+                        </button>
+
+                        <div className="card-tools">
+                          <div className="btn-group mr-2">
+                            <button className="btn btn-outline-primary btn-sm">
+                              Long
+                            </button>
+                            <button className="btn btn-outline-primary btn-sm">
+                              Short
+                            </button>
+                            <button className="btn btn-outline-primary btn-sm">
+                              Both
+                            </button>
+                          </div>
+                          <div className="btn-group">
+                            <button className="btn btn-outline-primary btn-sm">
+                              Win
+                            </button>
+                            <button className="btn btn-outline-primary btn-sm">
+                              Loss
+                            </button>
+                            <button className="btn btn-outline-primary btn-sm">
+                              Both
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                       <div className="card-body">
                         <div className="table-responsive">
                           <table className="table table-bordered">
@@ -335,60 +416,60 @@ export default function Detailslist() {
                     </div>
                   </div>
                   <div className="tab-pane fade" id="statistics">
-                    <div className="card card-primary card-outline mb-2">
+                    <div className="card mb-2">
                       <div className="card-body">
-                        <ul class="products-list product-list-in-card">
-                          <li class="item">
+                        <ul className="products-list product-list-in-card">
+                          <li className="item">
                             Strategy began
                             <span className="ml-5">9/12/2020</span>
                           </li>
-                          <li class="item">
+                          <li className="item">
                             Suggested Minimum Cap
                             <span className="ml-5">$80,000</span>
                           </li>
-                          <li class="item">
+                          <li className="item">
                             Age
                             <span className="ml-5">44 months ago</span>
                           </li>
-                          <li class="item">
+                          <li className="item">
                             What it trades
                             <span className="ml-5">Futures</span>
                           </li>
-                          <li class="item">
+                          <li className="item">
                             # Trades
                             <span className="ml-5">500</span>
                           </li>
-                          <li class="item">
+                          <li className="item">
                             # Profitable
                             <span className="ml-5">180</span>
                           </li>
-                          <li class="item">
+                          <li className="item">
                             % Profitable
                             <span className="ml-5">36.00%</span>
                           </li>
-                          <li class="item">
+                          <li className="item">
                             Avg trade duration
                             <span className="ml-5">2.3 hours</span>
                           </li>
-                          <li class="item">
+                          <li className="item">
                             Max peak-to-valley drawdown
                             <span className="ml-5">14.1%</span>
                           </li>
-                          <li class="item">
+                          <li className="item">
                             Drawdown period
                             <span className="ml-5">
                               Oct 05, 2021 - Nov 26, 2021
                             </span>
                           </li>
-                          <li class="item">
+                          <li className="item">
                             Annual Return (Compounded)
                             <span className="ml-5">39.4%</span>
                           </li>
-                          <li class="item">
+                          <li className="item">
                             Avg win
                             <span className="ml-5">$992.57</span>
                           </li>
-                          <li class="item">
+                          <li className="item">
                             Avg loss
                             <span className="ml-5">$356.85</span>
                           </li>
@@ -397,7 +478,7 @@ export default function Detailslist() {
                     </div>
                   </div>
                   <div className="tab-pane fade" id="description">
-                    <div className="card card-primary card-outline">
+                    <div className="card">
                       <div className="card-body">
                         <p>
                           System ares trades MNQ Future long and short. Risk per

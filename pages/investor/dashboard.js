@@ -56,7 +56,7 @@ const Dashboard = () => {
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary card-outline h-100">
+                <div className="card card-primary card-outline">
                   <div className="card-body">
                     {/* Message to show if there no any simulation */}
                     {/* <div className="text-center py-5">
@@ -69,15 +69,11 @@ const Dashboard = () => {
                     </div> */}
 
                     <div className="table-responsive p-0">
-                      <table
-                        id="datatable-dashboard"
-                        className="table table-bordered table-hover table-sm"
-                      >
+                      <table className="table table-bordered table-hover table-sm">
                         <thead>
                           <tr className="bg-light">
                             <th>STRATEGY</th>
                             <th>STARTED</th>
-                            <th>Market Status</th>
                             <th colSpan="2">
                               ALLOCATION <br /> (Starting | Latest)
                             </th>
@@ -107,7 +103,6 @@ const Dashboard = () => {
                               Demo Strategy
                             </td>
                             <td>09-06-2024</td>
-                            <td>Closed</td>
                             <td>$67,000</td>
                             <td>$68,000</td>
                             <td>

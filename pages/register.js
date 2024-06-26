@@ -187,11 +187,8 @@ export default function Register() {
                   <i className="fab fa-google mr-2"></i> Register with Google
                 </a>
               </div> */}
-              <p className="mb-0">
-                Alraedy have an account?{" "}
-                <a href="/login" className="text-center">
-                  Login here
-                </a>
+              <p className="mb-0 mt-3 text-center">
+                Already have an account? <a href="/login">Login here</a>
               </p>
             </div>
           </div>
