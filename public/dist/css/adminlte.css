@@ -13819,7 +13819,12 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 
 .user-panel .info {
   display: inline-block;
-  padding: 5px 5px 5px 10px;
+  padding: 0px 5px 5px 10px;
+}
+
+.investor-badge {
+  font-size: 100% !important;
+  font-weight: 300 !important;
 }
 
 .user-panel .status,

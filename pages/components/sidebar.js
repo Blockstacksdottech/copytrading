@@ -48,7 +48,7 @@ export default function Sidebar() {
       </a>
 
       <div className="sidebar">
-        <div className="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div className="user-panel mt-3 pb-2 d-flex">
           <div className="image">
             <img
               src="/dist/img/avatar5.png"
@@ -59,6 +59,10 @@ export default function Sidebar() {
           <div className="info">
             <a href="#" className="d-block">
               {user.username}
+              <br />
+              <span className="badge bg-gradient-secondary investor-badge text-white">
+                Investor
+              </span>
             </a>
           </div>
         </div>
@@ -87,9 +91,9 @@ export default function Sidebar() {
                 <p>Find Strategy</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="/investor/accountinfo" class="nav-link">
-                <i class="nav-icon fas fa-id-card"></i>
+            <li className="nav-item">
+              <a href="/investor/accountmanagement" className="nav-link">
+                <i className="nav-icon fas fa-id-card"></i>
                 <p>Account Management</p>
               </a>
             </li>
