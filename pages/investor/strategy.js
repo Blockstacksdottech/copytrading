@@ -114,7 +114,7 @@ export default class Strategy extends Component {
                               <td>
                                 <a
                                   className="fas fa-external-link-alt"
-                                  href="/investor/detailslist"
+                                  href="/investor/strategydetails"
                                 ></a>
                               </td>
                             </tr>
@@ -146,7 +146,7 @@ export default class Strategy extends Component {
                               <td>
                                 <a
                                   className="fas fa-external-link-alt"
-                                  href="/investor/detailslist"
+                                  href="/investor/strategydetails"
                                 ></a>
                               </td>
                             </tr>
@@ -178,7 +178,7 @@ export default class Strategy extends Component {
                               <td>
                                 <a
                                   className="fas fa-external-link-alt"
-                                  href="/investor/detailslist"
+                                  href="/investor/strategydetails"
                                 ></a>
                               </td>
                             </tr>

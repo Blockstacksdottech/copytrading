@@ -101,11 +101,11 @@ export default class Accountmanagement extends Component {
                         <textarea
                           className="form-control"
                           placeholder="Write about yourself"
-                          cols={9}
-                          rows={9}
+                          cols={8}
+                          rows={8}
                         ></textarea>
                       </div>
-                      <div className="form-group float-right">
+                      <div className="form-group float-right mb-0">
                         <button type="submit" className="btn btn-primary">
                           Save
                         </button>
@@ -498,7 +498,7 @@ export default class Accountmanagement extends Component {
                           </div>
                         </div>
                       </div>
-                      <div className="form-group float-right">
+                      <div className="form-group float-right mb-0">
                         <button type="submit" className="btn btn-primary">
                           Save
                         </button>
@@ -542,7 +542,7 @@ export default class Accountmanagement extends Component {
                           </div>
                         </div>
                       </div>
-                      <div className="form-group float-right">
+                      <div className="form-group float-right mb-0">
                         <button type="submit" className="btn btn-primary">
                           Save
                         </button>

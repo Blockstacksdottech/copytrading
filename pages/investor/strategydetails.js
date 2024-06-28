@@ -41,7 +41,7 @@ const hypotheticalData = [
   },
 ];
 
-export default function Detailslist() {
+export default function StrategyDetails() {
   return (
     <>
       <Head>
@@ -56,7 +56,13 @@ export default function Detailslist() {
         <div className="content-header">
           <div className="container-fluid">
             <div className="row mb-2">
-              <div className="col-sm-12">
+              <div className="col-sm-8">
+                <div className="alert alert-light alert-dismissible fade show">
+                  These are hypothetical performance results that have certain
+                  inherent limitations.
+                </div>
+              </div>
+              <div className="col-sm-4">
                 <div className="clearfix">
                   <div className="float-right">
                     <a className="btn btn-app bg-secondary">
@@ -75,14 +81,6 @@ export default function Detailslist() {
         <div className="content">
           <div className="container-fluid">
             <div className="row mb-2">
-              <div className="col-sm-12">
-                <div className="alert alert-light alert-dismissible fade show">
-                  These are hypothetical performance results that have certain
-                  inherent limitations.
-                </div>
-              </div>
-            </div>
-            <div className="row mb-2">
               <div className="col-sm-5 mb-2">
                 <p className="small mb-0">(142728137)</p>
                 <h1 className="m-0">Easiest</h1>
@@ -99,10 +97,12 @@ export default function Detailslist() {
                   <span className="h6">Simulate This</span> <br /> Track at
                   simulated broker
                 </a>
-
-                <a className="btn btn-warning btn-block btn-sm">
+                <a
+                  className="btn btn-warning btn-block btn-sm"
+                  href="/investor/subscribe"
+                >
                   <span className="h6">Subscribe</span> <br /> Full access for
-                  $150.00/month
+                  $499/Month
                 </a>
               </div>
               <div className="col-sm-4 mb-2 m-auto">
@@ -170,10 +170,6 @@ export default function Detailslist() {
             </div>
             <div className="row mb-2">
               <div className="col-sm-9">
-                <p className="text-center">
-                  Hypothetical Monthly Returns (includes system fee and Gain
-                  Capital commissions and fees)
-                </p>
                 <div className="card card-primary card-outline mb-3">
                   <div className="card-body p-0">
                     <div className="table-responsive">
@@ -296,9 +292,12 @@ export default function Detailslist() {
                     </div>
                   </div>
                 </div>
+                <p className="text-center">
+                  Hypothetical Monthly Returns (includes system fee and Gain
+                  Capital commissions and fees)
+                </p>
 
-                <p className="text-center">Hypothetical Performance</p>
-                <div className="mb-3">
+                <div className="mb-2">
                   <ResponsiveContainer width="100%" height={300}>
                     <AreaChart data={hypotheticalData}>
                       <CartesianGrid strokeDasharray="5 5" />
@@ -313,6 +312,7 @@ export default function Detailslist() {
                       />
                     </AreaChart>
                   </ResponsiveContainer>
+                  <p className="text-center">Hypothetical Performance</p>
                 </div>
 
                 {/* All Records */}

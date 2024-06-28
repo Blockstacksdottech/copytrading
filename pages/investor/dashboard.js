@@ -59,14 +59,12 @@ const Dashboard = () => {
                 <div className="card card-primary card-outline">
                   <div className="card-body">
                     {/* Message to show if there no any simulation */}
-                    {/* <div className="text-center py-5">
+                    <div className="text-center py-5">
                       <p className="font-weight-light">
                         Your Simulation Account is empty.
                       </p>
-                      <p>
-                        Pick four strategies to add to your Simulation Account.
-                      </p>
-                    </div> */}
+                      <p>Pick Strategies to add to your Simulation Account.</p>
+                    </div>
 
                     <div className="table-responsive p-0">
                       <table className="table table-bordered table-hover table-sm">
@@ -98,9 +96,9 @@ const Dashboard = () => {
                             <td>
                               <a
                                 className="fas fa-external-link-alt mr-2"
-                                href="#"
+                                href="/investor/strategydetails"
                               ></a>
-                              Demo Strategy
+                              <span className="h6 mb-0">Easiest</span>
                             </td>
                             <td>09-06-2024</td>
                             <td>$67,000</td>
