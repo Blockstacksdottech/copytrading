@@ -5,19 +5,13 @@ import Feed from "../components/feed";
 import Footer from "../components/footer";
 import React, { Component } from "react";
 
-export default class Watchlist extends Component {
-  componentDidMount() {
-    const script = document.createElement("script");
-    script.src = "/dist/js/datatable.js";
-    script.async = true;
-    document.body.appendChild(script);
-  }
+export default class Subscribe extends Component {
   render() {
     return (
       <>
         <Head>
           <title>Subscribe - Easiest</title>
-          <meta name="description" content="Watchlist" />
+          <meta name="description" content="Subscribe" />
         </Head>
 
         <Navbar />
@@ -107,7 +101,11 @@ export default class Watchlist extends Component {
                           </div>
                         </div>
                         <div className="form-group text-center mb-0">
-                          <a type="submit" className="btn btn-primary">
+                          <a
+                            type="submit"
+                            className="btn btn-primary"
+                            href="/investor/trade"
+                          >
                             Subscribe
                           </a>
                         </div>

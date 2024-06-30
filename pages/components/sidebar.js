@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { isLogged, logout } from "@/helpers";
 import { useEffect, useState } from "react";
@@ -93,10 +92,23 @@ export default function Sidebar() {
                 <p>Find Strategy</p>
               </a>
             </li>
+
+            <li className="nav-item">
+              <a href="/investor/subscribedstrategy" className="nav-link">
+                <i class="nav-icon far fa-hand-point-up"></i>
+                <p>Subscribed Strategy</p>
+              </a>
+            </li>
             <li className="nav-item">
               <a href="/investor/accountmanagement" className="nav-link">
                 <i className="nav-icon fas fa-id-card"></i>
                 <p>Account Management</p>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="/investor/support" className="nav-link">
+                <i class="nav-icon far fa-comment-alt"></i>
+                <p>Support</p>
               </a>
             </li>
           </ul>

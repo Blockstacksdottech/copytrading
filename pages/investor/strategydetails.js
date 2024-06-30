@@ -65,11 +65,14 @@ export default function StrategyDetails() {
               <div className="col-sm-4">
                 <div className="clearfix">
                   <div className="float-right">
-                    <a className="btn btn-app bg-secondary">
+                    <a className="btn btn-app bg-light">
                       <i className="far fa-eye"></i> Add to Watchlist
                     </a>
-                    <a className="btn btn-app bg-secondary">
-                      <i className="far fa-id-badge"></i> Manager Profile
+                    <a
+                      className="btn btn-app bg-primary"
+                      href="/investor/support"
+                    >
+                      <i class="far fa-envelope"></i> Support
                     </a>
                   </div>
                 </div>
@@ -418,60 +421,60 @@ export default function StrategyDetails() {
                   <div className="tab-pane fade" id="statistics">
                     <div className="card mb-2">
                       <div className="card-body">
-                        <ul className="products-list product-list-in-card">
-                          <li className="item">
+                        <ul className="list-group list-group-unbordered">
+                          <li className="list-group-item">
                             Strategy began
-                            <span className="ml-5">9/12/2020</span>
+                            <span className="float-right">9/12/2020</span>
                           </li>
-                          <li className="item">
+                          <li className="list-group-item">
                             Suggested Minimum Cap
-                            <span className="ml-5">$80,000</span>
+                            <span className="float-right">$80,000</span>
                           </li>
-                          <li className="item">
+                          <li className="list-group-item">
                             Age
-                            <span className="ml-5">44 months ago</span>
+                            <span className="float-right">44 months ago</span>
                           </li>
-                          <li className="item">
+                          <li className="list-group-item">
                             What it trades
-                            <span className="ml-5">Futures</span>
+                            <span className="float-right">Futures</span>
                           </li>
-                          <li className="item">
+                          <li className="list-group-item">
                             # Trades
-                            <span className="ml-5">500</span>
+                            <span className="float-right">500</span>
                           </li>
-                          <li className="item">
+                          <li className="list-group-item">
                             # Profitable
-                            <span className="ml-5">180</span>
+                            <span className="float-right">180</span>
                           </li>
-                          <li className="item">
+                          <li className="list-group-item">
                             % Profitable
-                            <span className="ml-5">36.00%</span>
+                            <span className="float-right">36.00%</span>
                           </li>
-                          <li className="item">
+                          <li className="list-group-item">
                             Avg trade duration
-                            <span className="ml-5">2.3 hours</span>
+                            <span className="float-right">2.3 hours</span>
                           </li>
-                          <li className="item">
+                          <li className="list-group-item">
                             Max peak-to-valley drawdown
-                            <span className="ml-5">14.1%</span>
+                            <span className="float-right">14.1%</span>
                           </li>
-                          <li className="item">
+                          <li className="list-group-item">
                             Drawdown period
-                            <span className="ml-5">
+                            <span className="float-right">
                               Oct 05, 2021 - Nov 26, 2021
                             </span>
                           </li>
-                          <li className="item">
+                          <li className="list-group-item">
                             Annual Return (Compounded)
-                            <span className="ml-5">39.4%</span>
+                            <span className="float-right">39.4%</span>
                           </li>
-                          <li className="item">
+                          <li className="list-group-item">
                             Avg win
-                            <span className="ml-5">$992.57</span>
+                            <span className="float-right">$992.57</span>
                           </li>
-                          <li className="item">
+                          <li className="list-group-item">
                             Avg loss
-                            <span className="ml-5">$356.85</span>
+                            <span className="float-right">$356.85</span>
                           </li>
                         </ul>
                       </div>

@@ -4022,6 +4022,10 @@ input[type="button"].btn-block {
   margin-left: -1px;
 }
 
+.input-group-text-trade {
+  font-size: 10px !important;
+}
+
 .input-group-text {
   display: -ms-flexbox;
   display: flex;
@@ -4035,7 +4039,7 @@ input[type="button"].btn-block {
   color: #495057;
   text-align: center;
   white-space: nowrap;
-  background-color: #e9ecef;
+  background-color: transparent !important;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
 }
@@ -42407,7 +42411,8 @@ a.disabled.mailbox-attachment-close {
 .direct-chat-messages {
   -webkit-transform: translate(0, 0);
   transform: translate(0, 0);
-  height: 250px;
+  height: 100%;
+  min-height: calc(77vh - calc(3.5rem + 1px) - calc(3.5rem + 1px))!important;
   overflow: auto;
   padding: 10px;
 }
@@ -42436,8 +42441,8 @@ a.disabled.mailbox-attachment-close {
 
 .direct-chat-text {
   border-radius: 0.3rem;
-  background-color: #d2d6de;
-  border: 1px solid #d2d6de;
+  background-color: #e2e2f8;
+  border: 1px solid #e2e2f8;
   color: #444;
   margin: 5px 0 0 50px;
   padding: 5px 10px;
@@ -42447,7 +42452,7 @@ a.disabled.mailbox-attachment-close {
 .direct-chat-text::after,
 .direct-chat-text::before {
   border: solid transparent;
-  border-right-color: #d2d6de;
+  border-right-color: #e2e2f8;
   content: " ";
   height: 0;
   pointer-events: none;
@@ -42594,14 +42599,14 @@ a.disabled.mailbox-attachment-close {
 }
 
 .direct-chat-primary .right > .direct-chat-text {
-  background-color: #0909ff;
-  border-color: #0909ff;
-  color: #fff;
+  background-color: #c1c1f7;
+  border-color: #c1c1f7;
+  color: #1f2d3d;
 }
 
 .direct-chat-primary .right > .direct-chat-text::after,
 .direct-chat-primary .right > .direct-chat-text::before {
-  border-left-color: #0909ff;
+  border-left-color: #c1c1f7;
 }
 
 .direct-chat-secondary .right > .direct-chat-text {

@@ -551,6 +551,93 @@ export default class Accountmanagement extends Component {
                   </div>
                 </div>
               </div>
+              <div className="row">
+                <div className="col-lg-12">
+                  <div className="card card-primary card-outline">
+                    <div className="card-header">
+                      <h5 className="mb-0">Brokerage Account</h5>
+                    </div>
+                    <div className="card-body">
+                      <div className="row">
+                        <div className="col-md-4">
+                          <div className="form-group">
+                            <label>API KEY</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="API KEY"
+                            />
+                          </div>
+                          <div className="form-group">
+                            <label>Account Name</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Account Name"
+                            />
+                          </div>
+                          <div className="form-group">
+                            <label>Password</label>
+                            <input
+                              type="password"
+                              className="form-control"
+                              placeholder="Password"
+                            />
+                          </div>
+                          <div className="form-group float-right mb-0">
+                            <button type="submit" className="btn btn-primary">
+                              Save
+                            </button>
+                          </div>
+                        </div>
+                        <div className="col-md-8 pl-5">
+                          <h5>Important Security Reminders</h5>
+                          <ul className="list-unstyled">
+                            <li>
+                              Never share your full brokerage account password
+                              with a third-party platform.
+                            </li>
+                            <li>
+                              Look for platforms that utilize secure API key
+                              connections if available.
+                            </li>
+                            <li>
+                              Be cautious of platforms that request unnecessary
+                              access to your brokerage account data.
+                            </li>
+                            <li>
+                              Review the platform's security documentation and
+                              user agreements before linking your account.
+                            </li>
+                          </ul>
+
+                          <h5>Benefits of Linking Your Brokerage Account</h5>
+                          <ul className="list-unstyled">
+                            <li>
+                              <strong>Automated Trading:</strong> Once linked,
+                              the platform can automatically execute trades
+                              based on subscribed strategies, eliminating the
+                              need for manual intervention.
+                            </li>
+                            <li>
+                              <strong>Performance Monitoring:</strong> The
+                              platform can track your portfolio performance and
+                              provide insights based on your linked account
+                              data.
+                            </li>
+                            <li>
+                              <strong>Streamlined Experience:</strong> Linking
+                              your account simplifies the copy trading process
+                              and provides a more consolidated view of your
+                              activity.
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

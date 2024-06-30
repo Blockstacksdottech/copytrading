@@ -112,9 +112,9 @@ export default function Login() {
                 </div>
                 <div className="row">
                   <div className="col-8">
-                    {/* <a href="/forgot-password" className="small">
+                    <a href="/forgot-password" className="small">
                       I forgot my password
-                    </a> */}
+                    </a>
                   </div>
                   <div className="col-4">
                     <button type="submit" className="btn btn-primary btn-block">

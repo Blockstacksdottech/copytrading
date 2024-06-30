@@ -11,3 +11,17 @@ $(function () {
     responsive: true,
   });
 });
+
+$(function () {
+  $("#datatable-Subscribedstrategy").DataTable({
+    retrieve: true,
+    pageLength: false,
+    paging: true,
+    lengthChange: false,
+    searching: false,
+    ordering: false,
+    info: false,
+    autoWidth: false,
+    responsive: true,
+  });
+});
