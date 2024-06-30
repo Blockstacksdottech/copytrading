@@ -1,9 +1,8 @@
 export default function Feed() {
   return (
-    <aside className="control-sidebar control-sidebar-light display-block">
+    <aside className="control-sidebar control-sidebar-light">
       <div className="p-3">
         <h5>Activity Feeds</h5>
-
         <ul className="products-list">
           <li className="item">
             <div className="product-info">

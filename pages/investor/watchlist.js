@@ -65,9 +65,9 @@ export default class Watchlist extends Component {
                               <td>
                                 <a
                                   className="fas fa-external-link-alt mr-2"
-                                  href="#"
+                                  href="/investor/strategydetails"
                                 ></a>
-                                REVYKTRADER
+                                <span className="h6 mb-0">Easiest</span>
                               </td>
                               <td>
                                 <span className="badge bg-light">FUTURES</span>

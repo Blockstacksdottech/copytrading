@@ -38,13 +38,15 @@ export default function Sidebar() {
 
   return (
     <aside className="main-sidebar main-sidebar-custom sidebar-light-primary elevation-1">
-      <a className="brand-link">
+      <a className="brand-link bg-theme">
         <img
           src="/logo.png"
           alt="CopyTrading"
           className="brand-image img-circle elevation-1"
         />
-        <span className="brand-text font-weight-light">CopyTrading</span>
+        <span className="brand-text font-weight-light text-white">
+          CopyTrading
+        </span>
       </a>
 
       <div className="sidebar">
@@ -60,7 +62,7 @@ export default function Sidebar() {
             <a href="#" className="d-block">
               {user.username}
               <br />
-              <span className="badge bg-gradient-secondary investor-badge text-white">
+              <span className="badge bg-theme investor-badge text-white">
                 Investor
               </span>
             </a>

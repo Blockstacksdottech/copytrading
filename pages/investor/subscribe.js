@@ -107,9 +107,9 @@ export default class Watchlist extends Component {
                           </div>
                         </div>
                         <div className="form-group text-center mb-0">
-                          <button type="submit" className="btn btn-primary">
+                          <a type="submit" className="btn btn-primary">
                             Subscribe
-                          </button>
+                          </a>
                         </div>
                       </div>
                       <p className="mb-0 alert alert-light">

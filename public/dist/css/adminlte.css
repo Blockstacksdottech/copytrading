@@ -13438,7 +13438,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 }
 
 .main-header .nav-link {
-  height: 2.5rem;
+  height: 2.45rem;
   position: relative;
 }
 
@@ -68893,4 +68893,8 @@ a.text-muted:hover {
 
 .underline {
   border-bottom: 1px dashed #000;
+}
+
+.bg-theme {
+  background: #0909ff !important;
 }
