@@ -31,10 +31,10 @@ export default class Accountmanagement extends Component {
           <div className="content">
             <div className="container-fluid">
               <div className="row">
-                <div className="col-lg-6">
+                <div className="col-lg-12">
                   <div className="card card-primary card-outline">
                     <div className="card-header">
-                      <h5 className="mb-0">Public Profile</h5>
+                      <h5 className="mb-0">Profile</h5>
                     </div>
                     <div className="card-body">
                       <div className="form-group">
@@ -44,81 +44,14 @@ export default class Accountmanagement extends Component {
                             <img
                               src="/dist/img/avatar5.png"
                               className="img-circle elevation-1 img-fluid"
-                              alt="User Image"
+                              alt="Investor Image"
                             />
                           </div>
-                          <div className="col-lg-9 my-auto">
+                          <div className="col-lg-3 my-auto">
                             <input className="form-control" type="file" />
                           </div>
                         </div>
                       </div>
-                      <div className="row">
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <label>Your Screen Name</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Screen Name"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <label>Occupation</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Your Occupation"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <label>Location</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Location"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <label>Years in Trading</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Years in Trading"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="form-group">
-                        <label>About Yourself</label>
-                        <textarea
-                          className="form-control"
-                          placeholder="Write about yourself"
-                          cols={8}
-                          rows={8}
-                        ></textarea>
-                      </div>
-                      <div className="form-group float-right mb-0">
-                        <button type="submit" className="btn btn-primary">
-                          Save
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <div className="card card-primary card-outline mb-3">
-                    <div className="card-header">
-                      <h5 className="mb-0">Account Information</h5>
-                    </div>
-                    <div className="card-body">
                       <div className="row">
                         <div className="col-md-6">
                           <div className="form-group">
@@ -498,46 +431,31 @@ export default class Accountmanagement extends Component {
                           </div>
                         </div>
                       </div>
-                      <div className="form-group float-right mb-0">
-                        <button type="submit" className="btn btn-primary">
-                          Save
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card card-primary card-outline">
-                    <div className="card-header">
-                      <h5 className="mb-0">Security</h5>
-                    </div>
-                    <div className="card-body">
                       <div className="row">
-                        <div className="col-md-4">
+                        <div className="col-lg-6">
                           <div className="form-group">
-                            <label>Current Password</label>
-                            <input
-                              type="password"
-                              className="form-control"
-                              placeholder="Current Password"
-                            />
+                            <label>Government-issued ID</label>
+                            <div className="input-group">
+                              <select className="form-control">
+                                <option>Choose</option>
+                                <option>Passport</option>
+                                <option>Driving Licenese</option>
+                              </select>
+                              <input
+                                type="text"
+                                className="form-control"
+                                placeholder="ID Number"
+                              />
+                            </div>
                           </div>
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-lg-6">
                           <div className="form-group">
-                            <label>New Password</label>
+                            <label>Taxpayer Identification Number (TIN)</label>
                             <input
-                              type="password"
+                              type="text"
                               className="form-control"
-                              placeholder="New Password"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-md-4">
-                          <div className="form-group">
-                            <label>Confirm Password</label>
-                            <input
-                              type="password"
-                              className="form-control"
-                              placeholder="Confirm Password"
+                              placeholder="TIN"
                             />
                           </div>
                         </div>
@@ -551,6 +469,67 @@ export default class Accountmanagement extends Component {
                   </div>
                 </div>
               </div>
+              <div className="row">
+                <div className="col-lg-12">
+                  <div className="card card-primary card-outline">
+                    <div className="card-header">
+                      <h5 className="mb-0">Upload Documents</h5>
+                      <p className="mb-0">
+                        Please upload clear digital copies of their
+                        government-issued ID and any other required documents.
+                      </p>
+                    </div>
+                    <div className="card-body">
+                      <div className="row">
+                        <div className="col-md-6">
+                          <div className="form-group">
+                            <label>Upload ID Card (Front)</label>
+                            <img
+                              src="/dist/img/dl-front.jpg"
+                              className="elevation-1 img-fluid"
+                              alt="Goverment Issued ID Card"
+                            />
+                            <input className="form-control mt-3" type="file" />
+                          </div>
+                        </div>
+                        <div className="col-md-6">
+                          <div className="form-group">
+                            <label>Upload ID Card (Back)</label>
+                            <img
+                              src="/dist/img/dl-back.jpg"
+                              className="elevation-1 img-fluid"
+                              alt="Goverment Issued ID Card"
+                            />
+                            <input className="form-control mt-3" type="file" />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-md-6">
+                          <div className="form-group">
+                            <label>
+                              Upload Tax Identification Number (TIN) Card
+                            </label>
+                            <img
+                              src="/dist/img/itin.jpg"
+                              className="elevation-1 img-fluid"
+                              alt="Goverment Issued ID Card"
+                            />
+                            <input className="form-control mt-3" type="file" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="form-group float-right mb-0">
+                        <button type="submit" className="btn btn-primary">
+                          Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="row">
                 <div className="col-lg-12">
                   <div className="card card-primary card-outline">
@@ -633,6 +612,55 @@ export default class Accountmanagement extends Component {
                             </li>
                           </ul>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col-lg-12">
+                  <div className="card card-primary card-outline">
+                    <div className="card-header">
+                      <h5 className="mb-0">Security</h5>
+                    </div>
+                    <div className="card-body">
+                      <div className="row">
+                        <div className="col-md-4">
+                          <div className="form-group">
+                            <label>Current Password</label>
+                            <input
+                              type="password"
+                              className="form-control"
+                              placeholder="Current Password"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-md-4">
+                          <div className="form-group">
+                            <label>New Password</label>
+                            <input
+                              type="password"
+                              className="form-control"
+                              placeholder="New Password"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-md-4">
+                          <div className="form-group">
+                            <label>Confirm Password</label>
+                            <input
+                              type="password"
+                              className="form-control"
+                              placeholder="Confirm Password"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="form-group float-right mb-0">
+                        <button type="submit" className="btn btn-primary">
+                          Save
+                        </button>
                       </div>
                     </div>
                   </div>

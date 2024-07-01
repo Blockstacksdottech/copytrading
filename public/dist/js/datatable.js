@@ -25,3 +25,17 @@ $(function () {
     responsive: true,
   });
 });
+
+$(function () {
+  $("#datatable-Investors").DataTable({
+    retrieve: true,
+    pageLength: false,
+    paging: true,
+    lengthChange: false,
+    searching: false,
+    ordering: false,
+    info: false,
+    autoWidth: false,
+    responsive: true,
+  });
+});

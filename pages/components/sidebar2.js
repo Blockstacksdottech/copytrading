@@ -52,7 +52,7 @@ export default function Sidebar() {
         <div className="user-panel mt-3 pb-2 d-flex">
           <div className="image">
             <img
-              src="/dist/img/avatar5.png"
+              src="/dist/img/avatar4.png"
               className="img-circle elevation-1"
               alt="User Image"
             />
@@ -61,9 +61,7 @@ export default function Sidebar() {
             <a href="#" className="d-block">
               {user.username}
               <br />
-              <span className="badge bg-theme investor-badge text-white">
-                Investor
-              </span>
+              <span className="badge bg-light">Admin</span>
             </a>
           </div>
         </div>
@@ -75,46 +73,21 @@ export default function Sidebar() {
             data-accordion="false"
           >
             <li className="nav-item">
-              <a href="/investor/dashboard" className="nav-link">
+              <a href="/admin/investors" className="nav-link">
                 <i className="nav-icon fas fa-tachometer-alt"></i>
-                <p>Dashboard</p>
+                <p>Investors</p>
               </a>
             </li>
             <li className="nav-item">
-              <a href="/investor/watchlist" className="nav-link">
-                <i className="nav-icon fas fa-binoculars"></i>
-                <p>My Watch List</p>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="/investor/strategy" className="nav-link">
+              <a href="/admin/strategy" className="nav-link">
                 <i className="nav-icon far fa-chart-bar"></i>
-                <p>Find Strategy</p>
-              </a>
-            </li>
-
-            <li className="nav-item">
-              <a href="/investor/subscribedstrategy" className="nav-link">
-                <i class="nav-icon far fa-hand-point-up"></i>
-                <p>Subscribed Strategy</p>
+                <p>Strategy</p>
               </a>
             </li>
             <li className="nav-item">
-              <a href="/investor/accountmanagement" className="nav-link">
-                <i className="nav-icon fas fa-id-card"></i>
-                <p>Account Management</p>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="/investor/faq" className="nav-link">
-                <i class="nav-icon far fa-question-circle"></i>
-                <p>FAQ</p>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="/investor/support" className="nav-link">
+              <a href="/admin/support" className="nav-link">
                 <i class="nav-icon far fa-comment-alt"></i>
-                <p>Support</p>
+                <p>Message</p>
               </a>
             </li>
           </ul>

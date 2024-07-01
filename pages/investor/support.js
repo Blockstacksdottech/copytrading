@@ -5,7 +5,7 @@ import Feed from "../components/feed";
 import Footer from "../components/footer";
 import React, { Component } from "react";
 
-export default class Support extends Component {
+export default class Chat extends Component {
   render() {
     return (
       <>
@@ -20,80 +20,82 @@ export default class Support extends Component {
         <div className="content-wrapper">
           <div className="content-header">
             <div className="container-fluid">
-              <div className="row mb-2">
-                <div className="col-sm-12">
-                  <h1 className="m-0 text-center">Support</h1>
+              <div className="row">
+                <div className="col-sm-6">
+                  <h1 className="m-0">Support</h1>
+                </div>
+                <div className="col-sm-6">
+                  <div className="float-right">
+                    <a
+                      type="button"
+                      class="btn btn-primary btn-sm"
+                      href="/investor/submitrequest"
+                    >
+                      Submit a Request
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
           <div className="content">
             <div className="container-fluid">
-              <div className="row">
-                <div className="col-lg-6 mx-auto">
-                  <div class="card card-primary card-outline direct-chat direct-chat-primary">
-                    <div class="card-body">
-                      <div class="direct-chat-messages">
-                        <div class="direct-chat-msg">
-                          <div class="direct-chat-infos clearfix">
-                            <span class="direct-chat-name float-left">
-                              Investor
-                            </span>
-                            <span class="direct-chat-timestamp float-right">
-                              23 Jan 2:00 pm
-                            </span>
-                          </div>
-
-                          <img
-                            class="direct-chat-img"
-                            src="../dist/img/user1-128x128.jpg"
-                            alt="Message User Image"
-                          />
-
-                          <div class="direct-chat-text">
-                            Lore Ipsum is a dummy Text
-                          </div>
-                        </div>
-
-                        <div class="direct-chat-msg right">
-                          <div class="direct-chat-infos clearfix">
-                            <span class="direct-chat-name float-right">
-                              Admin
-                            </span>
-                            <span class="direct-chat-timestamp float-left">
-                              23 Jan 2:05 pm
-                            </span>
-                          </div>
-
-                          <img
-                            class="direct-chat-img"
-                            src="../dist/img/user3-128x128.jpg"
-                            alt="Message User Image"
-                          />
-
-                          <div class="direct-chat-text">
-                            Lore Ipsum is a dummy Text
-                          </div>
-                        </div>
+              <div className="row pt-3">
+                <div className="col-lg-12">
+                  <div class="card card-primary card-outline">
+                    <div class="card-body p-0">
+                      <div class="table-responsive mailbox-messages">
+                        <table class="table table-hover mb-0">
+                          <tbody>
+                            <tr>
+                              <td class="mailbox-name td-chat">
+                                <a href="/investor/chat">
+                                  <h6 className="text-dark">
+                                    Lorem ipsum dolor sit amet, consectetuer
+                                    adipiscing elit. Aenean commodo ligula eget
+                                    dolor.
+                                  </h6>
+                                  <p className="text-dark mb-0">5 mins ago</p>
+                                  <span class="badge bg-success text-white">
+                                    Open
+                                  </span>
+                                </a>
+                              </td>
+                              <td>
+                                <button
+                                  type="button"
+                                  class="btn btn-danger btn-sm"
+                                >
+                                  <i class="far fa-trash-alt"></i>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="mailbox-name td-chat">
+                                <a href="/investor/chat">
+                                  <h6 className="text-dark">
+                                    Lorem ipsum dolor sit amet, consectetuer
+                                    adipiscing elit. Aenean commodo ligula eget
+                                    dolor.
+                                  </h6>
+                                  <p className="text-dark mb-0">5 mins ago</p>
+                                  <span class="badge bg-info text-white">
+                                    Closed
+                                  </span>
+                                </a>
+                              </td>
+                              <td>
+                                <button
+                                  type="button"
+                                  class="btn btn-danger btn-sm"
+                                >
+                                  <i class="far fa-trash-alt"></i>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
-                    </div>
-                    <div class="card-footer">
-                      <form action="#" method="post">
-                        <div class="input-group">
-                          <input
-                            type="text"
-                            name="message"
-                            placeholder="Type Message ..."
-                            class="form-control"
-                          />
-                          <span class="input-group-append">
-                            <button type="submit" class="btn btn-primary">
-                              Send
-                            </button>
-                          </span>
-                        </div>
-                      </form>
                     </div>
                   </div>
                 </div>
