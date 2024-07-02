@@ -40,7 +40,7 @@ export default class Support extends Component {
           </div>
           <div className="content">
             <div className="container-fluid">
-              <div className="row pt-3">
+              <div className="row">
                 <div className="col-lg-12">
                   <div className="card card-primary card-outline">
                     <div className="card-body p-0">
