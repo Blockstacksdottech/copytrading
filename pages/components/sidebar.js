@@ -9,6 +9,7 @@ export default function Sidebar() {
     logged: false,
     username: "",
     email: "",
+    isAdmin: false,
   });
 
   useEffect(() => {
@@ -20,6 +21,7 @@ export default function Sidebar() {
         obj.logged = true;
         obj.username = resp.username;
         obj.email = resp.email;
+        obj.isAdmin = resp.is_superuser;
         setUser(obj);
         return obj;
       } else {
@@ -29,6 +31,9 @@ export default function Sidebar() {
 
     test().then((obj) => {
       if (obj.logged) {
+        if (obj.isAdmin) {
+          nav.push("/admin/investors");
+        }
       } else {
         nav.push("/login");
       }

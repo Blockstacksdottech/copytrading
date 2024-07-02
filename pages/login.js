@@ -10,6 +10,7 @@ export default function Login() {
     logged: false,
     username: "",
     email: "",
+    isAdmin: false,
   });
   const [loading, setLoading] = useState(true);
   const nav = useRouter();
@@ -25,6 +26,7 @@ export default function Login() {
         obj.logged = true;
         obj.username = resp.username;
         obj.email = resp.email;
+        obj.isAdmin = resp.is_superuser;
         setUser(obj);
         //await updateSuppliers();
         return obj;
@@ -35,7 +37,11 @@ export default function Login() {
 
     test().then((obj) => {
       if (obj.logged) {
-        nav.push("/investor/dashboard");
+        if (!obj.isAdmin) {
+          nav.push("/investor/dashboard");
+        } else {
+          nav.push("/admin/investors");
+        }
       } else {
         setLoading(false);
       }
