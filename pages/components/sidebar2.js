@@ -84,6 +84,12 @@ export default function Sidebar() {
               </a>
             </li>
             <li className="nav-item">
+              <a href="/admin/accountmanagement" className="nav-link">
+                <i className="nav-icon fas fa-id-card"></i>
+                <p>Account Management</p>
+              </a>
+            </li>
+            <li className="nav-item">
               <a href="/admin/faq" className="nav-link">
                 <i className="nav-icon far fa-question-circle"></i>
                 <p>FAQ</p>
