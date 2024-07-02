@@ -1,10 +1,11 @@
 $(function () {
   $("#datatable-Strategy").DataTable({
     retrieve: true,
-    pageLength: 5,
+    pageLength: 10,
     paging: true,
     lengthChange: false,
-    searching: false,
+    searching: true,
+    filter: true,
     ordering: true,
     info: false,
     autoWidth: false,

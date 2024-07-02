@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Navbar from "../components/navbar";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/sidebar2";
 import Feed from "../components/feed";
 import Footer from "../components/footer";
 import React, { Component } from "react";
@@ -10,7 +10,7 @@ export default class Chat extends Component {
     return (
       <>
         <Head>
-          <title>Chat | Investor</title>
+          <title>Chat | Admin</title>
           <meta name="description" content="Chat" />
         </Head>
 
@@ -39,10 +39,19 @@ export default class Chat extends Component {
                 <div className="col-lg-12">
                   <div className="card card-primary card-outline direct-chat direct-chat-primary">
                     <div className="card-header">
-                      <h3 className="card-title">
+                      <h5 className="card-title mb-0">
                         Lorem ipsum dolor sit amet, consectetuer adipiscing
                         elit. Aenean commodo ligula eget dolor.
-                      </h3>
+                      </h5>
+                      <div className="card-tools">
+                        <a
+                          type="button"
+                          className="btn btn-dark btn-sm"
+                          href="#"
+                        >
+                          Issue Resolved
+                        </a>
+                      </div>
                     </div>
                     <div className="card-body">
                       <div className="direct-chat-messages">

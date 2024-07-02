@@ -58,13 +58,12 @@ export default function Sidebar() {
             />
           </div>
           <div className="info">
-            <a href="#" className="d-block">
+            <p href="#" className="d-block mb-1">
               {user.username}
-              <br />
-              <span className="badge bg-theme investor-badge text-white">
-                Investor
-              </span>
-            </a>
+            </p>
+            <span className="badge bg-theme investor-badge text-white ">
+              Investor
+            </span>
           </div>
         </div>
         <nav className="mt-2">

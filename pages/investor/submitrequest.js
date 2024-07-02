@@ -34,11 +34,12 @@ export default class Submitrequest extends Component {
                   <div className="card card-primary card-outline">
                     <div className="card-body">
                       <div className="form-group">
-                        <label>You Name</label>
+                        <label>Your Name</label>
                         <input
                           type="text"
                           className="form-control"
                           placeholder="Name"
+                          disabled
                         />
                       </div>
                       <div className="form-group">
@@ -47,6 +48,7 @@ export default class Submitrequest extends Component {
                           type="email"
                           className="form-control"
                           placeholder="Email"
+                          disabled
                         />
                       </div>
                       <div className="form-group">

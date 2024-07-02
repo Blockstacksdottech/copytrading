@@ -32,7 +32,7 @@ export default class Subscribedstrategy extends Component {
             <div className="container-fluid">
               <div className="row">
                 <div className="col-lg-12 mx-auto">
-                  <div className="card card-primary">
+                  <div className="card card-primary card-outline">
                     <div className="card-body">
                       <div className="table-responsive p-0">
                         <table

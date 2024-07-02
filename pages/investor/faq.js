@@ -28,234 +28,234 @@ export default class FAQ extends Component {
             </div>
           </div>
           <div className="content">
-            <div class="row">
-              <div class="col-12" id="accordion">
-                <div class="card card-default">
+            <div className="row">
+              <div className="col-12" id="accordion">
+                <div className="card card-default">
                   <a
-                    class="d-block w-100"
+                    className="d-block w-100"
                     data-toggle="collapse"
                     href="#collapseOne"
                     aria-expanded="true"
                   >
-                    <div class="card-header">
-                      <h4 class="card-title w-100 text-dark">
+                    <div className="card-header">
+                      <h4 className="card-title w-100 text-dark">
                         1. Lorem ipsum dolor sit amet
                       </h4>
                     </div>
                   </a>
                   <div
                     id="collapseOne"
-                    class="collapse show"
+                    className="collapse show"
                     data-parent="#accordion"
                   >
-                    <div class="card-body">
+                    <div className="card-body">
                       Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
                       Aenean commodo ligula eget dolor.
                     </div>
                   </div>
                 </div>
-                <div class="card card-default">
+                <div className="card card-default">
                   <a
-                    class="d-block w-100"
+                    className="d-block w-100"
                     data-toggle="collapse"
                     href="#collapseTwo"
                   >
-                    <div class="card-header">
-                      <h4 class="card-title w-100 text-dark">
+                    <div className="card-header">
+                      <h4 className="card-title w-100 text-dark">
                         2. Aenean massa
                       </h4>
                     </div>
                   </a>
                   <div
                     id="collapseTwo"
-                    class="collapse"
+                    className="collapse"
                     data-parent="#accordion"
                   >
-                    <div class="card-body">
+                    <div className="card-body">
                       Aenean massa. Cum sociis natoque penatibus et magnis dis
                       parturient montes, nascetur ridiculus mus.
                     </div>
                   </div>
                 </div>
-                <div class="card card-default">
+                <div className="card card-default">
                   <a
-                    class="d-block w-100"
+                    className="d-block w-100"
                     data-toggle="collapse"
                     href="#collapseThree"
                   >
-                    <div class="card-header">
-                      <h4 class="card-title w-100 text-dark">
+                    <div className="card-header">
+                      <h4 className="card-title w-100 text-dark">
                         3. Donec quam felis
                       </h4>
                     </div>
                   </a>
                   <div
                     id="collapseThree"
-                    class="collapse"
+                    className="collapse"
                     data-parent="#accordion"
                   >
-                    <div class="card-body">
+                    <div className="card-body">
                       Donec quam felis, ultricies nec, pellentesque eu, pretium
                       quis, sem. Nulla consequat massa quis enim.
                     </div>
                   </div>
                 </div>
-                <div class="card card-default">
+                <div className="card card-default">
                   <a
-                    class="d-block w-100"
+                    className="d-block w-100"
                     data-toggle="collapse"
                     href="#collapseFour"
                   >
-                    <div class="card-header">
-                      <h4 class="card-title w-100 text-dark">
+                    <div className="card-header">
+                      <h4 className="card-title w-100 text-dark">
                         4. Donec pede justo
                       </h4>
                     </div>
                   </a>
                   <div
                     id="collapseFour"
-                    class="collapse"
+                    className="collapse"
                     data-parent="#accordion"
                   >
-                    <div class="card-body">
+                    <div className="card-body">
                       Donec pede justo, fringilla vel, aliquet nec, vulputate
                       eget, arcu.
                     </div>
                   </div>
                 </div>
-                <div class="card card-default">
+                <div className="card card-default">
                   <a
-                    class="d-block w-100"
+                    className="d-block w-100"
                     data-toggle="collapse"
                     href="#collapseFive"
                   >
-                    <div class="card-header">
-                      <h4 class="card-title w-100 text-dark">
+                    <div className="card-header">
+                      <h4 className="card-title w-100 text-dark">
                         5. In enim justo
                       </h4>
                     </div>
                   </a>
                   <div
                     id="collapseFive"
-                    class="collapse"
+                    className="collapse"
                     data-parent="#accordion"
                   >
-                    <div class="card-body">
+                    <div className="card-body">
                       In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
                       justo. Nullam dictum felis eu pede mollis pretium.
                     </div>
                   </div>
                 </div>
-                <div class="card card-default">
+                <div className="card card-default">
                   <a
-                    class="d-block w-100"
+                    className="d-block w-100"
                     data-toggle="collapse"
                     href="#collapseSix"
                   >
-                    <div class="card-header">
-                      <h4 class="card-title w-100 text-dark">
+                    <div className="card-header">
+                      <h4 className="card-title w-100 text-dark">
                         6. Integer tincidunt
                       </h4>
                     </div>
                   </a>
                   <div
                     id="collapseSix"
-                    class="collapse"
+                    className="collapse"
                     data-parent="#accordion"
                   >
-                    <div class="card-body">
+                    <div className="card-body">
                       Integer tincidunt. Cras dapibus. Vivamus elementum semper
                       nisi. Aenean vulputate eleifend tellus.
                     </div>
                   </div>
                 </div>
-                <div class="card card-default">
+                <div className="card card-default">
                   <a
-                    class="d-block w-100"
+                    className="d-block w-100"
                     data-toggle="collapse"
                     href="#collapseSeven"
                   >
-                    <div class="card-header">
-                      <h4 class="card-title w-100 text-dark">
+                    <div className="card-header">
+                      <h4 className="card-title w-100 text-dark">
                         7. Aenean leo ligula
                       </h4>
                     </div>
                   </a>
                   <div
                     id="collapseSeven"
-                    class="collapse"
+                    className="collapse"
                     data-parent="#accordion"
                   >
-                    <div class="card-body">
+                    <div className="card-body">
                       Aenean leo ligula, porttitor eu, consequat vitae, eleifend
                       ac, enim.
                     </div>
                   </div>
                 </div>
-                <div class="card card-default">
+                <div className="card card-default">
                   <a
-                    class="d-block w-100"
+                    className="d-block w-100"
                     data-toggle="collapse"
                     href="#collapseEight"
                   >
-                    <div class="card-header">
-                      <h4 class="card-title w-100 text-dark">
+                    <div className="card-header">
+                      <h4 className="card-title w-100 text-dark">
                         8. Aliquam lorem ante
                       </h4>
                     </div>
                   </a>
                   <div
                     id="collapseEight"
-                    class="collapse"
+                    className="collapse"
                     data-parent="#accordion"
                   >
-                    <div class="card-body">
+                    <div className="card-body">
                       Aliquam lorem ante, dapibus in, viverra quis, feugiat a,
                       tellus. Phasellus viverra nulla ut metus varius laoreet.
                     </div>
                   </div>
                 </div>
-                <div class="card card-default">
+                <div className="card card-default">
                   <a
-                    class="d-block w-100"
+                    className="d-block w-100"
                     data-toggle="collapse"
                     href="#collapseNine"
                   >
-                    <div class="card-header">
-                      <h4 class="card-title w-100 text-dark">
+                    <div className="card-header">
+                      <h4 className="card-title w-100 text-dark">
                         9. Quisque rutrum
                       </h4>
                     </div>
                   </a>
                   <div
                     id="collapseNine"
-                    class="collapse"
+                    className="collapse"
                     data-parent="#accordion"
                   >
-                    <div class="card-body">
+                    <div className="card-body">
                       Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel
                       augue. Curabitur ullamcorper ultricies nisi.
                     </div>
                   </div>
                 </div>
-                <div class="card card-default">
+                <div className="card card-default">
                   <a
-                    class="d-block w-100"
+                    className="d-block w-100"
                     data-toggle="collapse"
                     href="#collapseTen"
                   >
-                    <div class="card-header">
-                      <h4 class="card-title w-100 text-dark">
+                    <div className="card-header">
+                      <h4 className="card-title w-100 text-dark">
                         10. Quisque rutrum
                       </h4>
                     </div>
                   </a>
                   <div
                     id="collapseTen"
-                    class="collapse"
+                    className="collapse"
                     data-parent="#accordion"
                   >
-                    <div class="card-body">
+                    <div className="card-body">
                       Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel
                       augue. Curabitur ullamcorper ultricies nisi.
                     </div>

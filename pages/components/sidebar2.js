@@ -58,11 +58,10 @@ export default function Sidebar() {
             />
           </div>
           <div className="info">
-            <a href="#" className="d-block">
+            <p href="#" className="d-block mb-1">
               {user.username}
-              <br />
-              <span className="badge bg-light">Admin</span>
-            </a>
+            </p>
+            <span className="badge bg-light investor-badge">Admin</span>
           </div>
         </div>
         <nav className="mt-2">
@@ -85,7 +84,7 @@ export default function Sidebar() {
               </a>
             </li>
             <li className="nav-item">
-              <a href="/admin/support" className="nav-link">
+              <a href="/admin/message" className="nav-link">
                 <i className="nav-icon far fa-comment-alt"></i>
                 <p>Message</p>
               </a>

@@ -46,7 +46,8 @@ export default class Investors extends Component {
                               <th>Email</th>
                               <th>Mobile</th>
                               <th>Country</th>
-                              <th>Status</th>
+                              <th>Verification</th>
+                              <th>Account</th>
                               <th></th>
                             </tr>
                           </thead>
@@ -69,13 +70,84 @@ export default class Investors extends Component {
                                 </span>
                               </td>
                               <td>
+                                <span className="badge bg-success">Active</span>
+                              </td>
+                              <td>
                                 <a
                                   className="btn-default btn mr-2"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Investor Details"
                                   href="/admin/investordetails"
                                 >
                                   <i className="fas fa-eye"></i>
                                 </a>
-                                <a className="btn-danger btn" href="#">
+                                <a
+                                  className="btn-success btn mr-2"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Verification"
+                                  href="/admin/verification"
+                                >
+                                  <i className="fas fa-user-check"></i>
+                                </a>
+                                <a
+                                  className="btn-danger btn"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Ban"
+                                  href="#"
+                                >
+                                  <i className="fas fa-ban"></i>
+                                </a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <img
+                                  src="/dist/img/avatar5.png"
+                                  className="img-circle elevation-1 img-fluid"
+                                  alt="Investor Image"
+                                />
+                              </td>
+                              <td>Testing1111</td>
+                              <td>tt@t.com</td>
+                              <td>1234567890</td>
+                              <td>USA</td>
+                              <td>
+                                <span className="badge bg-success">
+                                  Verified
+                                </span>
+                              </td>
+                              <td>
+                                <span className="badge bg-danger">Banned</span>
+                              </td>
+                              <td>
+                                <a
+                                  className="btn-default btn mr-2"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Investor Details"
+                                  href="/admin/investordetails"
+                                >
+                                  <i className="fas fa-eye"></i>
+                                </a>
+                                <a
+                                  className="btn-success btn mr-2"
+                                  href="/admin/verification"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Verification"
+                                >
+                                  <i className="fas fa-user-check"></i>
+                                </a>
+                                <a
+                                  className="btn-danger btn"
+                                  href="#"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Ban"
+                                >
                                   <i className="fas fa-ban"></i>
                                 </a>
                               </td>
@@ -94,17 +166,38 @@ export default class Investors extends Component {
                               <td>USA</td>
                               <td>
                                 <span className="badge bg-warning">
-                                  Not Verified
+                                  Pending
                                 </span>
+                              </td>
+                              <td>
+                                <span className="badge bg-warning">Active</span>
                               </td>
                               <td>
                                 <a
                                   className="btn-default btn mr-2"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Investor Details"
                                   href="/admin/investordetails"
                                 >
                                   <i className="fas fa-eye"></i>
                                 </a>
-                                <a className="btn-danger btn" href="#">
+                                <a
+                                  className="btn-warning btn mr-2"
+                                  href="/admin/verification"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Verification"
+                                >
+                                  <i className="fas fa-user-check"></i>
+                                </a>
+                                <a
+                                  className="btn-danger btn"
+                                  href="#"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Ban"
+                                >
                                   <i className="fas fa-ban"></i>
                                 </a>
                               </td>
@@ -125,15 +218,39 @@ export default class Investors extends Component {
                                 <span className="badge bg-danger">
                                   Rejected
                                 </span>
+                                <p className="mb-0 mt-1">
+                                  Improper Documentation
+                                </p>
+                              </td>
+                              <td>
+                                <span className="badge bg-danger">Banned</span>
                               </td>
                               <td>
                                 <a
                                   className="btn-default btn mr-2"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Investor Details"
                                   href="/admin/investordetails"
                                 >
                                   <i className="fas fa-eye"></i>
                                 </a>
-                                <a className="btn-danger btn" href="#">
+                                <a
+                                  className="btn-danger btn mr-2"
+                                  href="/admin/verification"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Verification"
+                                >
+                                  <i className="fas fa-user-check"></i>
+                                </a>
+                                <a
+                                  className="btn-danger btn"
+                                  href="#"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Ban"
+                                >
                                   <i className="fas fa-ban"></i>
                                 </a>
                               </td>

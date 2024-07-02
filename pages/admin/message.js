@@ -1,17 +1,17 @@
 import Head from "next/head";
 import Navbar from "../components/navbar";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/sidebar2";
 import Feed from "../components/feed";
 import Footer from "../components/footer";
 import React, { Component } from "react";
 
-export default class Support extends Component {
+export default class Message extends Component {
   render() {
     return (
       <>
         <Head>
-          <title>Support</title>
-          <meta name="description" content="Support" />
+          <title>Message</title>
+          <meta name="description" content="Message" />
         </Head>
 
         <Navbar />
@@ -22,18 +22,7 @@ export default class Support extends Component {
             <div className="container-fluid">
               <div className="row">
                 <div className="col-sm-6">
-                  <h1 className="m-0">Support</h1>
-                </div>
-                <div className="col-sm-6">
-                  <div className="float-right">
-                    <a
-                      type="button"
-                      className="btn btn-primary btn-sm"
-                      href="/investor/submitrequest"
-                    >
-                      Submit a Request
-                    </a>
-                  </div>
+                  <h1 className="m-0">Messages from Investor</h1>
                 </div>
               </div>
             </div>
@@ -49,7 +38,7 @@ export default class Support extends Component {
                           <tbody>
                             <tr>
                               <td className="mailbox-name td-chat">
-                                <a href="/investor/chat">
+                                <a href="/admin/chat">
                                   <h6 className="text-dark">
                                     Lorem ipsum dolor sit amet, consectetuer
                                     adipiscing elit. Aenean commodo ligula eget
@@ -72,7 +61,7 @@ export default class Support extends Component {
                             </tr>
                             <tr>
                               <td className="mailbox-name td-chat">
-                                <a href="/investor/chat">
+                                <a href="/admin/chat">
                                   <h6 className="text-dark">
                                     Lorem ipsum dolor sit amet, consectetuer
                                     adipiscing elit. Aenean commodo ligula eget
