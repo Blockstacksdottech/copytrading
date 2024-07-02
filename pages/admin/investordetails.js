@@ -31,23 +31,23 @@ export default class Investordetails extends Component {
           <div className="content">
             <div className="container-fluid">
               <div className="row">
-                <div className="col-lg-6">
-                  <div class="card card-primary card-outline">
-                    <div class="card-header">
-                      <h5 class="mb-0">Profile</h5>
+                <div className="col-lg-12">
+                  <div className="card card-primary card-outline">
+                    <div className="card-header">
+                      <h5 className="mb-0">Profile</h5>
                     </div>
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-lg-3">
+                    <div className="card-body">
+                      <div className="row">
+                        <div className="col-lg-2 my-auto">
                           <img
                             src="/dist/img/avatar5.png"
                             alt="Testing111"
-                            class="img-circle img-fluid"
+                            className="img-circle img-fluid"
                           />
                         </div>
-                        <div class="col-lg-9">
+                        <div className="col-lg-10 my-auto">
                           <div className="row">
-                            <div className="col-lg-6">
+                            <div className="col-lg-4">
                               <div className="form-group">
                                 <label>Name:</label>
                                 <span className="ml-2">Testing111 asdf</span>
@@ -65,7 +65,7 @@ export default class Investordetails extends Component {
                                 <span className="ml-2">xyz</span>
                               </div>
                             </div>
-                            <div className="col-lg-6">
+                            <div className="col-lg-4">
                               <div className="form-group">
                                 <label>Email:</label>
                                 <span className="ml-2">test@email.com</span>
@@ -87,6 +87,98 @@ export default class Investordetails extends Component {
                             </div>
                           </div>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-lg-12">
+                  <div className="card card-primary card-outline">
+                    <div className="card-header">
+                      <h5 className="mb-0">Documentation</h5>
+                    </div>
+                    <div className="card-body">
+                      <div className="row">
+                        <div className="col-md-12">
+                          <div className="h4 mb-3">
+                            Government-issued ID : Driving Licenese
+                            (USA120232672)
+                          </div>
+                        </div>
+                        <div className="col-md-6">
+                          <div className="form-group">
+                            <label>Front</label>
+                            <br />
+                            <img
+                              src="/dist/img/dl-front.jpg"
+                              className="elevation-1 img-fluid"
+                              alt="Goverment Issued ID Card"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-md-6">
+                          <div className="form-group">
+                            <label>Back</label>
+                            <br />
+                            <img
+                              src="/dist/img/dl-back.jpg"
+                              className="elevation-1 img-fluid"
+                              alt="Goverment Issued ID Card"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row mt-3">
+                        <div className="col-md-12">
+                          <div className="h4 mb-3">
+                            Tax Identification Number (TIN) : 123-456-7890
+                          </div>
+                        </div>
+                        <div className="col-md-6">
+                          <div className="form-group">
+                            <img
+                              src="/dist/img/itin.jpg"
+                              className="elevation-1 img-fluid"
+                              alt="Goverment Issued ID Card"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="form-group float-right mb-0">
+                        <button type="submit" className="btn btn-primary">
+                          Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-lg-12">
+                  <div className="card card-primary card-outline">
+                    <div className="card-header">
+                      <h5 className="mb-0">Update Verification Status</h5>
+                    </div>
+                    <div className="card-body">
+                      <div className="form-group">
+                        <label>Status</label>
+                        <select className="form-control">
+                          <option>Verified</option>
+                          <option>Rejected</option>
+                        </select>
+                      </div>
+                      <div className="form-group">
+                        <label>Reason behind rejection</label>
+                        <input
+                          className="form-control"
+                          placeholder="Reason behind rejection"
+                        />
+                      </div>
+                      <div className="form-group float-right mb-0">
+                        <button type="submit" className="btn btn-primary">
+                          Update
+                        </button>
                       </div>
                     </div>
                   </div>

@@ -95,7 +95,7 @@ export default function Sidebar() {
 
             <li className="nav-item">
               <a href="/investor/subscribedstrategy" className="nav-link">
-                <i class="nav-icon far fa-hand-point-up"></i>
+                <i className="nav-icon far fa-hand-point-up"></i>
                 <p>Subscribed Strategy</p>
               </a>
             </li>
@@ -107,13 +107,13 @@ export default function Sidebar() {
             </li>
             <li className="nav-item">
               <a href="/investor/faq" className="nav-link">
-                <i class="nav-icon far fa-question-circle"></i>
+                <i className="nav-icon far fa-question-circle"></i>
                 <p>FAQ</p>
               </a>
             </li>
             <li className="nav-item">
               <a href="/investor/support" className="nav-link">
-                <i class="nav-icon far fa-comment-alt"></i>
+                <i className="nav-icon far fa-comment-alt"></i>
                 <p>Support</p>
               </a>
             </li>
