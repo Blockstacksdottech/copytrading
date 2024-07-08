@@ -3,6 +3,8 @@ import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
 import Feed from "../components/feed";
 import Footer from "../components/footer";
+import Admheadtag from "../components/admheadtag";
+import Admscripttag from "../components/admscripttag";
 import React, { Component, useEffect, useRef, memo } from "react";
 import {
   AreaChart,
@@ -50,6 +52,7 @@ export class Trade extends Component {
           <meta name="description" content="Trade" />
         </Head>
 
+        <Admheadtag />
         <Navbar />
         <Sidebar />
 
@@ -792,6 +795,7 @@ export class Trade extends Component {
 
         <Feed />
         <Footer />
+        <Admscripttag />
       </>
     );
   }

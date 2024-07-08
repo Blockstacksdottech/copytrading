@@ -4,6 +4,8 @@ import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar2";
 import Feed from "../components/feed";
 import Footer from "../components/footer";
+import Admheadtag from "../components/admheadtag";
+import Admscripttag from "../components/admscripttag";
 import {
   BarChart,
   Bar,
@@ -208,6 +210,7 @@ export default class Investordetails extends Component {
           <meta name="description" content="Investors Details" />
         </Head>
 
+        <Admheadtag />
         <Navbar />
         <Sidebar />
 
@@ -519,6 +522,7 @@ export default class Investordetails extends Component {
 
         <Feed />
         <Footer />
+        <Admscripttag />
       </>
     );
   }

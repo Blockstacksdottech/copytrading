@@ -1,4 +1,7 @@
 import Head from "next/head";
+import Footer from "./components/footer";
+import Admheadtag from "./components/admheadtag";
+import Admscripttag from "./components/admscripttag";
 
 export default function Forgotpassword() {
   return (
@@ -7,6 +10,8 @@ export default function Forgotpassword() {
         <title>Forgot Password | Copy Trading</title>
         <meta name="description" content="Copy Trading" />
       </Head>
+
+      <Admheadtag />
 
       <div className="login-page">
         <div className="login-box">
@@ -58,6 +63,7 @@ export default function Forgotpassword() {
           </div>
         </div>
       </div>
+      <Admscripttag />
     </>
   );
 }

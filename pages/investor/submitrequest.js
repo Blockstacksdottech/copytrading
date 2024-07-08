@@ -3,6 +3,8 @@ import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
 import Feed from "../components/feed";
 import Footer from "../components/footer";
+import Admheadtag from "../components/admheadtag";
+import Admscripttag from "../components/admscripttag";
 import React, { Component } from "react";
 
 export default class Submitrequest extends Component {
@@ -14,6 +16,7 @@ export default class Submitrequest extends Component {
           <meta name="description" content="Submit Request" />
         </Head>
 
+        <Admheadtag />
         <Navbar />
         <Sidebar />
 
@@ -83,6 +86,7 @@ export default class Submitrequest extends Component {
 
         <Feed />
         <Footer />
+        <Admscripttag />
       </>
     );
   }

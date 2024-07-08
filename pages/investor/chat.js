@@ -4,6 +4,8 @@ import Sidebar from "../components/sidebar";
 import Feed from "../components/feed";
 import Footer from "../components/footer";
 import React, { Component } from "react";
+import Admheadtag from "../components/admheadtag";
+import Admscripttag from "../components/admscripttag";
 
 export default class Chat extends Component {
   render() {
@@ -14,6 +16,7 @@ export default class Chat extends Component {
           <meta name="description" content="Chat" />
         </Head>
 
+        <Admheadtag />
         <Navbar />
         <Sidebar />
 
@@ -115,6 +118,7 @@ export default class Chat extends Component {
 
         <Feed />
         <Footer />
+        <Admscripttag />
       </>
     );
   }

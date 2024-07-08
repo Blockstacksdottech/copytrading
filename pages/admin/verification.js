@@ -4,6 +4,8 @@ import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar2";
 import Feed from "../components/feed";
 import Footer from "../components/footer";
+import Admheadtag from "../components/admheadtag";
+import Admscripttag from "../components/admscripttag";
 
 export default class Verification extends Component {
   render() {
@@ -14,6 +16,7 @@ export default class Verification extends Component {
           <meta name="description" content="Investors Verification" />
         </Head>
 
+        <Admheadtag />
         <Navbar />
         <Sidebar />
 
@@ -180,6 +183,7 @@ export default class Verification extends Component {
 
         <Feed />
         <Footer />
+        <Admscripttag />
       </>
     );
   }

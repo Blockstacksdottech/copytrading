@@ -3,6 +3,8 @@ import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar2";
 import Feed from "../components/feed";
 import Footer from "../components/footer";
+import Admheadtag from "../components/admheadtag";
+import Admscripttag from "../components/admscripttag";
 import React, { Component } from "react";
 
 export default class Chat extends Component {
@@ -14,6 +16,7 @@ export default class Chat extends Component {
           <meta name="description" content="Chat" />
         </Head>
 
+        <Admheadtag />
         <Navbar />
         <Sidebar />
 
@@ -124,6 +127,7 @@ export default class Chat extends Component {
 
         <Feed />
         <Footer />
+        <Admscripttag />
       </>
     );
   }

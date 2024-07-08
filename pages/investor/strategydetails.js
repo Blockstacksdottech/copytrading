@@ -3,6 +3,8 @@ import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
 import Feed from "../components/feed";
 import Footer from "../components/footer";
+import Admheadtag from "../components/admheadtag";
+import Admscripttag from "../components/admscripttag";
 import React from "react";
 import {
   AreaChart,
@@ -49,6 +51,7 @@ export default function StrategyDetails() {
         <meta name="description" content="Easiest" />
       </Head>
 
+      <Admheadtag />
       <Navbar />
       <Sidebar />
 
@@ -600,6 +603,7 @@ export default function StrategyDetails() {
       </div>
       <Feed />
       <Footer />
+      <Admscripttag />
     </>
   );
 }

@@ -3,6 +3,8 @@ import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
 import Feed from "../components/feed";
 import Footer from "../components/footer";
+import Admheadtag from "../components/admheadtag";
+import Admscripttag from "../components/admscripttag";
 import React, { Component, useEffect } from "react";
 
 const Dashboard = () => {
@@ -20,6 +22,7 @@ const Dashboard = () => {
         <meta name="description" content="Dashboard" />
       </Head>
 
+      <Admheadtag />
       <Navbar />
       <Sidebar />
 
@@ -168,6 +171,7 @@ const Dashboard = () => {
 
       <Feed />
       <Footer />
+      <Admscripttag />
     </>
   );
 };

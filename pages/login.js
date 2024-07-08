@@ -1,5 +1,6 @@
 import Head from "next/head";
-import Link from "next/link";
+import Admheadtag from "./components/admheadtag";
+import Admscripttag from "./components/admscripttag";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { get_token, isLogged } from "@/helpers";
@@ -69,6 +70,8 @@ export default function Login() {
         <title>Login</title>
         <meta name="description" content="Login" />
       </Head>
+
+      <Admheadtag />
 
       <div className="login-page">
         <div className="login-box">
@@ -148,6 +151,7 @@ export default function Login() {
           </div>
         </div>
       </div>
+      <Admscripttag />
     </>
   );
 }

@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
+import Admheadtag from "./components/admheadtag";
+import Admscripttag from "./components/admscripttag";
 import { adduser } from "@/helpers";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -73,6 +75,8 @@ export default function Register() {
         <title>Register</title>
         <meta name="description" content="Register" />
       </Head>
+
+      <Admheadtag />
 
       <div className="register-page">
         <div className="register-box">
@@ -194,6 +198,7 @@ export default function Register() {
           </div>
         </div>
       </div>
+      <Admscripttag />
     </>
   );
 }
