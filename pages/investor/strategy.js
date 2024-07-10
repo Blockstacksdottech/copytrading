@@ -53,7 +53,7 @@ export default class Strategy extends Component {
                     <div className="card-body">
                       <div className="table-responsive p-0">
                         <table
-                          id="datatable-Strategy"
+                          id="datatable"
                           className="table table-bordered table-hover table-sm"
                         >
                           <thead>

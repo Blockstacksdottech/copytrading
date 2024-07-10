@@ -48,7 +48,10 @@ export default class Watchlist extends Component {
                   <div className="card card-primary card-outline">
                     <div className="card-body">
                       <div className="table-responsive p-0">
-                        <table className="table table-bordered table-hover table-sm">
+                        <table
+                          id="datatable"
+                          className="table table-bordered table-hover table-sm"
+                        >
                           <thead>
                             <tr className="bg-light">
                               <td>STRATEGY</td>

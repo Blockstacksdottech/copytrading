@@ -1,41 +1,13 @@
 $(function () {
-  $("#datatable-Strategy").DataTable({
+  $("#datatable").DataTable({
     retrieve: true,
-    pageLength: 10,
+    pageLength: 5,
     paging: true,
     lengthChange: false,
     searching: true,
     filter: true,
     ordering: true,
-    info: false,
-    autoWidth: false,
-    responsive: true,
-  });
-});
-
-$(function () {
-  $("#datatable-Subscribedstrategy").DataTable({
-    retrieve: true,
-    pageLength: false,
-    paging: true,
-    lengthChange: false,
-    searching: false,
-    ordering: false,
-    info: false,
-    autoWidth: false,
-    responsive: true,
-  });
-});
-
-$(function () {
-  $("#datatable-Investors").DataTable({
-    retrieve: true,
-    pageLength: false,
-    paging: true,
-    lengthChange: false,
-    searching: false,
-    ordering: false,
-    info: false,
+    info: true,
     autoWidth: false,
     responsive: true,
   });

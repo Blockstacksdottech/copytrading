@@ -5,10 +5,10 @@ export default class Navbar extends Component {
     return (
       <>
         <section class="fixed-top navigation">
-          <div class="container">
+          <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light">
               <a class="navbar-brand" href="index.html">
-                <img src="../logo.png" alt="logo" className="img-fluid w-25" />{" "}
+                <img src="../logo.png" alt="logo" className="img-fluid w-20" />{" "}
                 COPYTRADING
               </a>
               <button
@@ -26,43 +26,38 @@ export default class Navbar extends Component {
               <div class="collapse navbar-collapse text-center" id="navbar">
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="./">
                       Home
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#feature">
-                      Feature
+                    <a class="nav-link" href="#">
+                      Supported Brokers
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="about.html">
-                      About
+                    <a class="nav-link" href="#">
+                      Supported Platforms
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="service.html">
-                      Service
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#team">
-                      Team
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#pricing">
+                    <a class="nav-link" href="#">
                       Pricing
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="contact.html">
+                    <a class="nav-link" href="#">
+                      Blog
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
                       Contact
                     </a>
                   </li>
                 </ul>
-                <a href="#" class="btn btn-primary ml-lg-3 primary-shadow">
-                  Try Free
+                <a href="#" class="btn btn-light ml-lg-3 primary-shadow">
+                  JOIN US
                 </a>
               </div>
             </nav>

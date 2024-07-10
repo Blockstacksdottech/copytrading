@@ -39,7 +39,7 @@ export default class Subscribedstrategy extends Component {
                     <div className="card-body">
                       <div className="table-responsive p-0">
                         <table
-                          id="Subscribedstrategy"
+                          id="datatable"
                           className="table table-bordered table-hover table-sm"
                         >
                           <thead>

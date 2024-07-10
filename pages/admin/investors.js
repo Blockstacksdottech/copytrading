@@ -39,7 +39,7 @@ export default class Investors extends Component {
                     <div className="card-body">
                       <div className="table-responsive p-0">
                         <table
-                          id="datatable-Investors"
+                          id="datatable"
                           className="table table-bordered table-sm"
                         >
                           <thead>
