@@ -59,7 +59,7 @@ const Dashboard = () => {
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary card-outline">
+                <div className="card card-primary">
                   <div className="card-body">
                     {/* Message to show if there no any simulation */}
                     <div className="text-center py-5">

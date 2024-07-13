@@ -1,7 +1,8 @@
 import Head from "next/head";
-import Footer from "./components/footer";
-import Admheadtag from "./components/admheadtag";
-import Admscripttag from "./components/admscripttag";
+import Navbar from "./components/frontend/navbar";
+import Headtag from "./components/frontend/headtag";
+import Footer from "./components/frontend/footer";
+import Scripttag from "./components/frontend/scripttag";
 
 export default function Forgotpassword() {
   return (
@@ -11,7 +12,72 @@ export default function Forgotpassword() {
         <meta name="description" content="Copy Trading" />
       </Head>
 
-      <Admheadtag />
+      <Headtag />
+      <Navbar />
+
+      <section className="section-lg login">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 text-center">
+              <h2 className="section-title">Recover Password</h2>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-7 mb-4 m-auto">
+              <div className="contact-bg p-5 rounded shadow-primary text-center">
+                <p>
+                  Forgot your password? Here you can easily retrieve password.
+                </p>
+                <form>
+                  <input
+                    type="email"
+                    className="form-control mb-3"
+                    placeholder="Email"
+                  />
+                  <button type="submit" className="btn btn-secondary btn-lg">
+                    Request New Password
+                  </button>
+                </form>
+                <p className="mb-0 mt-3">
+                  <a href="/login" className="text-center">
+                    Login
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <img
+          className="contact-bg-1 up-down-animation"
+          src="../frontend/images/background-shape/feature-bg-2.png"
+          alt="background-shape"
+        />
+        <img
+          className="contact-bg-2 left-right-animation"
+          src="../frontend/images/background-shape/green-half-cycle.png"
+          alt="background-shape"
+        />
+        <img
+          className="contact-bg-3 up-down-animation"
+          src="../frontend/images/background-shape/green-dot.png"
+          alt="background-shape"
+        />
+        <img
+          className="contact-bg-4 left-right-animation"
+          src="../frontend/images/background-shape/service-half-cycle.png"
+          alt="background-shape"
+        />
+        <img
+          className="contact-bg-5 up-down-animation"
+          src="../frontend/images/background-shape/feature-bg-2.png"
+          alt="background-shape"
+        />
+      </section>
+      <Footer />
+      <Scripttag />
+
+      {/* <Admheadtag />
 
       <div className="login-page">
         <div className="login-box">
@@ -63,7 +129,7 @@ export default function Forgotpassword() {
           </div>
         </div>
       </div>
-      <Admscripttag />
+      <Admscripttag /> */}
     </>
   );
 }

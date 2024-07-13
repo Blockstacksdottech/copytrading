@@ -1,7 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
-import Admheadtag from "./components/admheadtag";
-import Admscripttag from "./components/admscripttag";
+import Navbar from "./components/frontend/navbar";
+import Headtag from "./components/frontend/headtag";
+import Footer from "./components/frontend/footer";
+import Scripttag from "./components/frontend/scripttag";
 import { adduser } from "@/helpers";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -76,9 +78,120 @@ export default function Register() {
         <meta name="description" content="Register" />
       </Head>
 
-      <Admheadtag />
+      <Headtag />
+      <Navbar />
 
-      <div className="register-page">
+      <section className="section-lg login">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 text-center">
+              <h2 className="section-title">Register</h2>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-7 m-auto">
+              <div className="contact-bg p-5 rounded shadow-primary">
+                <form>
+                  <div className="input-group mb-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Full name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                  <div className="input-group mb-3">
+                    <input
+                      type="email"
+                      className="form-control"
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <div className="input-group mb-3">
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+                  <div className="input-group mb-3">
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="Retype password"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
+                  </div>
+                  <div className="row">
+                    <div className="col-8 my-auto">
+                      <div className="icheck-primary">
+                        <input
+                          type="checkbox"
+                          id="agreeTerms"
+                          name="terms"
+                          value="agree"
+                        />{" "}
+                        <label>
+                          I agree to the <a href="#">terms</a>
+                        </label>
+                      </div>
+                    </div>
+                    <div className="col-4">
+                      <Link href="/login">
+                        <button
+                          onClick={handleRegister}
+                          className="btn btn-secondary btn-block"
+                        >
+                          Register
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                </form>
+                <p className="mb-0 mt-5 text-center">
+                  Already have an account? <a href="/login">Login here</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <img
+          className="contact-bg-1 up-down-animation"
+          src="../frontend/images/background-shape/feature-bg-2.png"
+          alt="background-shape"
+        />
+        <img
+          className="contact-bg-2 left-right-animation"
+          src="../frontend/images/background-shape/green-half-cycle.png"
+          alt="background-shape"
+        />
+        <img
+          className="contact-bg-3 up-down-animation"
+          src="../frontend/images/background-shape/green-dot.png"
+          alt="background-shape"
+        />
+        <img
+          className="contact-bg-4 left-right-animation"
+          src="../frontend/images/background-shape/service-half-cycle.png"
+          alt="background-shape"
+        />
+        <img
+          className="contact-bg-5 up-down-animation"
+          src="../frontend/images/background-shape/feature-bg-2.png"
+          alt="background-shape"
+        />
+      </section>
+      <Footer />
+      <Scripttag />
+
+      {/* <div className="register-page">
         <div className="register-box">
           <div className="register-logo">
             <a href="/">
@@ -178,19 +291,6 @@ export default function Register() {
                   </div>
                 </div>
               </form>
-
-              {/* <div className="social-auth-links text-center small mt-3">
-                <p className="mb-0">
-                  - Or Register instantly using your social account -
-                </p>
-                <a href="#" className="btn btn-block btn-outline-facebook">
-                  <i className="fab fa-facebook mr-2"></i> Register with
-                  Facebook
-                </a>
-                <a href="#" className="btn btn-block btn-outline-google">
-                  <i className="fab fa-google mr-2"></i> Register with Google
-                </a>
-              </div> */}
               <p className="mb-0 mt-3 text-center">
                 Already have an account? <a href="/login">Login here</a>
               </p>
@@ -198,7 +298,7 @@ export default function Register() {
           </div>
         </div>
       </div>
-      <Admscripttag />
+      <Admscripttag /> */}
     </>
   );
 }

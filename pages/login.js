@@ -1,6 +1,8 @@
 import Head from "next/head";
-import Admheadtag from "./components/admheadtag";
-import Admscripttag from "./components/admscripttag";
+import Navbar from "./components/frontend/navbar";
+import Headtag from "./components/frontend/headtag";
+import Footer from "./components/frontend/footer";
+import Scripttag from "./components/frontend/scripttag";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { get_token, isLogged } from "@/helpers";
@@ -71,9 +73,83 @@ export default function Login() {
         <meta name="description" content="Login" />
       </Head>
 
-      <Admheadtag />
+      <Headtag />
+      <Navbar />
 
-      <div className="login-page">
+      <section className="section-lg login">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 text-center">
+              <h2 className="section-title">Login</h2>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-7 mb-4 m-auto">
+              <div className="contact-bg p-5 rounded shadow-primary">
+                <form onSubmit={handleSubmit}>
+                  <input
+                    type="email"
+                    className="form-control mb-3"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <input
+                    type="password"
+                    className="form-control mb-3"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <div className="row">
+                    <div className="col-8 my-auto">
+                      <a href="/forgot-password">I forgot my password</a>
+                    </div>
+                    <div className="col-4">
+                      <button
+                        type="submit"
+                        className="btn btn-secondary btn-block"
+                      >
+                        Login
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <img
+          className="contact-bg-1 up-down-animation"
+          src="../frontend/images/background-shape/feature-bg-2.png"
+          alt="background-shape"
+        />
+        <img
+          className="contact-bg-2 left-right-animation"
+          src="../frontend/images/background-shape/green-half-cycle.png"
+          alt="background-shape"
+        />
+        <img
+          className="contact-bg-3 up-down-animation"
+          src="../frontend/images/background-shape/green-dot.png"
+          alt="background-shape"
+        />
+        <img
+          className="contact-bg-4 left-right-animation"
+          src="../frontend/images/background-shape/service-half-cycle.png"
+          alt="background-shape"
+        />
+        <img
+          className="contact-bg-5 up-down-animation"
+          src="../frontend/images/background-shape/feature-bg-2.png"
+          alt="background-shape"
+        />
+      </section>
+      <Footer />
+      <Scripttag />
+
+      {/* <div className="login-page">
         <div className="login-box">
           <div className="login-logo">
             <a href="/">
@@ -121,9 +197,7 @@ export default function Login() {
                 </div>
                 <div className="row">
                   <div className="col-8">
-                    <a href="/forgot-password" className="small">
-                      I forgot my password
-                    </a>
+                    <a href="/forgot-password">I forgot my password</a>
                   </div>
                   <div className="col-4">
                     <button type="submit" className="btn btn-primary btn-block">
@@ -132,18 +206,6 @@ export default function Login() {
                   </div>
                 </div>
               </form>
-
-              {/* <div className="social-auth-links text-center small mt-3">
-                <p className="mb-0">
-                  - Or login instantly using your social account -
-                </p>
-                <a href="#" className="btn btn-block btn-outline-facebook">
-                  <i className="fab fa-facebook mr-2"></i> Login with Facebook
-                </a>
-                <a href="#" className="btn btn-block btn-outline-google">
-                  <i className="fab fa-google mr-2"></i> Login with Google
-                </a>
-              </div> */}
               <p className="mb-0 mt-3 text-center">
                 Need an Account? <a href="/register">Register yourself</a>
               </p>
@@ -151,7 +213,7 @@ export default function Login() {
           </div>
         </div>
       </div>
-      <Admscripttag />
+      <Admscripttag /> */}
     </>
   );
 }

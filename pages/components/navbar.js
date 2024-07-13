@@ -102,10 +102,10 @@ export default function Navbar() {
         <li className="nav-item">
           <a
             href="#"
-            className="nav-link btn btn-danger btn-sm text-light"
+            className="nav-link btn btn-danger btn-sm text-light rounded"
             onClick={() => logout(nav)}
           >
-            <i className="fas fa-sign-out-alt"></i> Logout
+            <i className="fas fa-power-off"></i>
           </a>
         </li>
       </ul>

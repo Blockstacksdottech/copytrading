@@ -59,19 +59,19 @@ export default class Index extends Component {
         <Headtag />
         <Navbar />
         {/* Hero Section */}
-        <section class="hero-section hero">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto text-center zindex-1">
-                <h1 class="mb-3 text-white">
+        <section className="hero-section hero">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-8 mx-auto text-center zindex-1">
+                <h1 className="mb-3 text-white">
                   The alternative alternative investment.
                 </h1>
-                <p class="mb-4 text-white">
+                <p className="mb-4 text-white">
                   For that tiny, risky, “I'll-try-anything-once” portion of your
                   portfolio. Turn on an automated trading strategy inside your
                   regular brokerage account.
                 </p>
-                <a href="#" class="btn btn-light">
+                <a href="#" className="btn btn-yellow">
                   HOW IT WORKS
                 </a>
               </div>
@@ -79,51 +79,51 @@ export default class Index extends Component {
           </div>
           <div id="scene">
             <img
-              class="img-fluid hero-bg-1 up-down-animation"
+              className="img-fluid hero-bg-1 up-down-animation"
               src="../frontend/images/background-shape/feature-bg-2.png"
             />
             <img
-              class="img-fluid hero-bg-2 left-right-animation"
+              className="img-fluid hero-bg-2 left-right-animation"
               src="../frontend/images/background-shape/seo-ball-1.png"
             />
             <img
-              class="img-fluid hero-bg-3 left-right-animation"
+              className="img-fluid hero-bg-3 left-right-animation"
               src="../frontend/images/background-shape/seo-half-cycle.png"
             />
             <img
-              class="img-fluid hero-bg-4 up-down-animation"
+              className="img-fluid hero-bg-4 up-down-animation"
               src="../frontend/images/background-shape/green-dot.png"
             />
             <img
-              class="img-fluid hero-bg-5 left-right-animation"
+              className="img-fluid hero-bg-5 left-right-animation"
               src="../frontend/images/background-shape/blue-half-cycle.png"
             />
             <img
-              class="img-fluid hero-bg-6 up-down-animation"
+              className="img-fluid hero-bg-6 up-down-animation"
               src="../frontend/images/background-shape/seo-ball-1.png"
             />
             <img
-              class="img-fluid hero-bg-7 left-right-animation"
+              className="img-fluid hero-bg-7 left-right-animation"
               src="../frontend/images/background-shape/yellow-triangle.png"
             />
             <img
-              class="img-fluid hero-bg-8 up-down-animation"
+              className="img-fluid hero-bg-8 up-down-animation"
               src="../frontend/images/background-shape/service-half-cycle.png"
             />
             <img
-              class="img-fluid hero-bg-9 up-down-animation"
+              className="img-fluid hero-bg-9 up-down-animation"
               src="../frontend/images/background-shape/team-bg-triangle.png"
             />
           </div>
         </section>
 
-        <section class="section-lg feature mb-0" id="feature">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-4 mb-80">
-                <div class="d-flex feature-item">
+        <section className="section-lg feature mb-0" id="feature">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-4 mb-80">
+                <div className="d-flex feature-item">
                   <div>
-                    <i class="ti-bar-chart-alt feature-icon mr-4"></i>
+                    <i className="ti-bar-chart-alt feature-icon mr-4"></i>
                   </div>
                   <div>
                     <h4>2,166</h4>
@@ -132,10 +132,10 @@ export default class Index extends Component {
                 </div>
               </div>
 
-              <div class="col-md-4 mb-80">
-                <div class="d-flex feature-item">
+              <div className="col-md-4 mb-80">
+                <div className="d-flex feature-item">
                   <div>
-                    <i class="ti-direction-alt feature-icon mr-4"></i>
+                    <i className="ti-direction-alt feature-icon mr-4"></i>
                   </div>
                   <div>
                     <h4>1,310</h4>
@@ -144,10 +144,10 @@ export default class Index extends Component {
                 </div>
               </div>
 
-              <div class="col-md-4 mb-80">
-                <div class="d-flex feature-item">
+              <div className="col-md-4 mb-80">
+                <div className="d-flex feature-item">
                   <div>
-                    <i class="ti-user feature-icon mr-4"></i>
+                    <i className="ti-user feature-icon mr-4"></i>
                   </div>
                   <div>
                     <h4>52,486</h4>
@@ -159,7 +159,7 @@ export default class Index extends Component {
 
             <div className="row">
               <div className="col-lg-12">
-                <h2 class="section-title text-center my-5">
+                <h2 className="section-title text-center my-5">
                   $94.8 Million Dollars of Assets Connected
                 </h2>
 
@@ -188,60 +188,60 @@ export default class Index extends Component {
             </div>
           </div>
           <img
-            class="feature-bg-1 up-down-animation"
+            className="feature-bg-1 up-down-animation"
             src="../frontend/images/background-shape/feature-bg-1.png"
             alt="bg-shape"
           />
           <img
-            class="feature-bg-2 left-right-animation"
+            className="feature-bg-2 left-right-animation"
             src="../frontend/images/background-shape/feature-bg-2.png"
             alt="bg-shape"
           />
         </section>
 
-        <section class="section-lg seo">
-          <div class="container">
+        <section className="section-lg seo">
+          <div className="container">
             <div className="row py-5">
               <div className="col m-auto">
-                <a href="#" class="text-center">
+                <a href="#" className="text-center">
                   <img
-                    class="img-fluid"
+                    className="img-fluid"
                     src="../frontend/images/clients-logo/press-barrons-logo.png"
                     alt="press-barrons-logo"
                   />
                 </a>
               </div>
               <div className="col m-auto">
-                <a href="#" class="text-center">
+                <a href="#" className="text-center">
                   <img
-                    class="img-fluid"
+                    className="img-fluid"
                     src="../frontend/images/clients-logo/press-benzinga-logo.png"
                     alt="press-benzinga-logo"
                   />
                 </a>
               </div>
               <div className="col m-auto">
-                <a href="#" class="text-center">
+                <a href="#" className="text-center">
                   <img
-                    class="img-fluid"
+                    className="img-fluid"
                     src="../frontend/images/clients-logo/press-bloomberg-logo.png"
                     alt="press-bloomberg-logo"
                   />
                 </a>
               </div>
               <div className="col m-auto">
-                <a href="#" class="text-center">
+                <a href="#" className="text-center">
                   <img
-                    class="img-fluid"
+                    className="img-fluid"
                     src="../frontend/images/clients-logo/press-ft-logo.png"
                     alt="press-ft-logo"
                   />
                 </a>
               </div>
               <div className="col m-auto">
-                <a href="#" class="text-center">
+                <a href="#" className="text-center">
                   <img
-                    class="img-fluid"
+                    className="img-fluid"
                     src="../frontend/images/clients-logo/press-huffpost-logo.png"
                     alt="press-huffpost-logo"
                   />
@@ -251,14 +251,16 @@ export default class Index extends Component {
           </div>
         </section>
 
-        <section class="section-lg seo">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-                <h2 class="section-title text-center">Featured Strategies</h2>
+        <section className="section-lg seo">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <h2 className="section-title text-center">
+                  Featured Strategies
+                </h2>
 
                 <div className="my-4">
-                  <div class="rounded bg-white p-4 shadow-primary">
+                  <div className="rounded bg-white p-4 shadow-primary">
                     <div className="table-responsive p-0">
                       <table
                         id="datatable"
@@ -369,63 +371,63 @@ export default class Index extends Component {
             </div>
           </div>
           <img
-            class="seo-bg-shape-1 left-right-animation"
+            className="seo-bg-shape-1 left-right-animation"
             src="../frontend/images/background-shape/seo-ball-1.png"
             alt="bg-shape"
           />
           <img
-            class="seo-bg-shape-2 up-down-animation"
+            className="seo-bg-shape-2 up-down-animation"
             src="../frontend/images/background-shape/seo-half-cycle.png"
             alt="bg-shape"
           />
           <img
-            class="seo-bg-shape-3 left-right-animation"
+            className="seo-bg-shape-3 left-right-animation"
             src="../frontend/images/background-shape/seo-ball-2.png"
             alt="bg-shape"
           />
         </section>
 
-        <section class="section-lg service">
-          <div class="container">
-            <div class="row justify-content-between">
-              <div class="col-md-4 mb-80 text-center">
-                <i class="ti-shield feature-icon mb-3"></i>
+        <section className="section-lg service">
+          <div className="container">
+            <div className="row justify-content-between">
+              <div className="col-md-4 mb-80 text-center">
+                <i className="ti-shield feature-icon mb-3"></i>
                 <p>Money stays in your brokerage account at all times</p>
               </div>
 
-              <div class="col-md-4 mb-80 text-center">
-                <i class="ti-power-off feature-icon mb-3"></i>
+              <div className="col-md-4 mb-80 text-center">
+                <i className="ti-power-off feature-icon mb-3"></i>
                 <p>Start and stop at any time</p>
               </div>
 
-              <div class="col-md-4 mb-80 text-center">
-                <i class="ti-world feature-icon mb-3"></i>
+              <div className="col-md-4 mb-80 text-center">
+                <i className="ti-world feature-icon mb-3"></i>
                 <p>We are a U.S.-regulated company, based in New York</p>
               </div>
             </div>
           </div>
 
           <img
-            class="service-bg-shape-1 up-down-animation"
+            className="service-bg-shape-1 up-down-animation"
             src="../frontend/images/background-shape/service-half-cycle.png"
             alt="background-shape"
           />
           <img
-            class="service-bg-shape-2 left-right-animation"
+            className="service-bg-shape-2 left-right-animation"
             src="../frontend/images/background-shape/feature-bg-2.png"
             alt="background-shape"
           />
         </section>
 
-        <section class="section-lg service-bottom">
-          <div class="container">
-            <div class="row">
-              <div class="col-12 text-center">
-                <h2 class="section-title">Is CopyTrading for you?</h2>
+        <section className="section-lg service-bottom">
+          <div className="container">
+            <div className="row">
+              <div className="col-12 text-center">
+                <h2 className="section-title">Is CopyTrading for you?</h2>
               </div>
 
-              <div class="col-sm-6 mb-4">
-                <div class="rounded bg-white p-4 shadow-primary">
+              <div className="col-sm-6 mb-4">
+                <div className="rounded bg-white p-4 shadow-primary">
                   <h4>Multiple Instruments</h4>
                   <p>
                     CopyTrading offers automated strategies that trade stocks,
@@ -434,8 +436,8 @@ export default class Index extends Component {
                 </div>
               </div>
 
-              <div class="col-sm-6 mb-4 translate-y-150">
-                <div class="rounded bg-primary p-4 shadow-primary">
+              <div className="col-sm-6 mb-4 translate-y-150">
+                <div className="rounded bg-primary p-4 shadow-primary">
                   <h4 className="text-white">Flat Monthly Fees</h4>
                   <p className="text-white">
                     One thing we hate about hedge funds: they charge a
@@ -446,8 +448,8 @@ export default class Index extends Component {
                 </div>
               </div>
 
-              <div class="col-sm-6 mb-4">
-                <div class="rounded bg-white p-4 shadow-primary">
+              <div className="col-sm-6 mb-4">
+                <div className="rounded bg-white p-4 shadow-primary">
                   <h4>Money stays in your account</h4>
                   <p>
                     Another thing we hate about hedge funds: when you want your
@@ -459,8 +461,8 @@ export default class Index extends Component {
                 </div>
               </div>
 
-              <div class="col-sm-6 mb-4 translate-y-150">
-                <div class="rounded bg-white p-4 shadow-primary">
+              <div className="col-sm-6 mb-4 translate-y-150">
+                <div className="rounded bg-white p-4 shadow-primary">
                   <h4>Minimum Investment</h4>
                   <p>
                     Some strategies on CopyTrading can be traded with as little
@@ -470,8 +472,8 @@ export default class Index extends Component {
                 </div>
               </div>
 
-              <div class="col-sm-6 mb-4">
-                <div class="rounded bg-primary p-4 shadow-primary">
+              <div className="col-sm-6 mb-4">
+                <div className="rounded bg-primary p-4 shadow-primary">
                   <h4 className="text-white">Full transparency</h4>
                   <p className="text-white">
                     We show you all the results of all the strategies tracked by
@@ -481,8 +483,8 @@ export default class Index extends Component {
                 </div>
               </div>
 
-              <div class="col-sm-6 mb-4 translate-y-150">
-                <div class="rounded bg-white p-4 shadow-primary">
+              <div className="col-sm-6 mb-4 translate-y-150">
+                <div className="rounded bg-white p-4 shadow-primary">
                   <h4>Start and stop instantly</h4>
                   <p>
                     If you find a strategy you like, turn it on instantly.
@@ -495,33 +497,33 @@ export default class Index extends Component {
           </div>
 
           <img
-            class="service-bg-1 up-down-animation"
+            className="service-bg-1 up-down-animation"
             src="../frontend/images/background-shape/feature-bg-2.png"
           />
           <img
-            class="service-bg-2 left-right-animation"
+            className="service-bg-2 left-right-animation"
             src="../frontend/images/background-shape/seo-half-cycle.png"
           />
           <img
-            class="service-bg-3 up-down-animation"
+            className="service-bg-3 up-down-animation"
             src="../frontend/images/background-shape/team-bg-triangle.png"
           />
           <img
-            class="service-bg-4 left-right-animation"
+            className="service-bg-4 left-right-animation"
             src="../frontend/images/background-shape/green-dot.png"
           />
           <img
-            class="service-bg-5 up-down-animation"
+            className="service-bg-5 up-down-animation"
             src="../frontend/images/background-shape/team-bg-triangle.png"
           />
         </section>
 
-        <section class="section-lg team">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-lg-12 text-center">
-                <h2 class="section-title">Our Team</h2>
-                <p class="mb-100">
+        <section className="section-lg team">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-lg-12 text-center">
+                <h2 className="section-title">Our Team</h2>
+                <p className="mb-100">
                   Duis aute irure dolor in reprehenderit in voluptate velit esse
                   cillum dolore eu
                   <br />
@@ -530,19 +532,19 @@ export default class Index extends Component {
               </div>
             </div>
             <div className="row">
-              <div class="col-lg-3 mx-auto mb-3">
-                <div class="team-member">
-                  <div class="d-flex mb-4">
-                    <div class="mr-3">
+              <div className="col-lg-3 mx-auto mb-3">
+                <div className="team-member">
+                  <div className="d-flex mb-4">
+                    <div className="mr-3">
                       <img
-                        class="rounded-circle img-fluid"
+                        className="rounded-circle img-fluid"
                         src="../frontend/images/team/team-1.jpg"
                         alt="team-member"
                       />
                     </div>
-                    <div class="align-self-center">
+                    <div className="align-self-center">
                       <h4>Becroft</h4>
-                      <h6 class="text-color">web designer</h6>
+                      <h6 className="text-color">web designer</h6>
                     </div>
                   </div>
                   <p>
@@ -552,19 +554,19 @@ export default class Index extends Component {
                   </p>
                 </div>
               </div>
-              <div class="col-lg-3 mx-auto mb-3">
-                <div class="team-member">
-                  <div class="d-flex mb-4">
-                    <div class="mr-3">
+              <div className="col-lg-3 mx-auto mb-3">
+                <div className="team-member">
+                  <div className="d-flex mb-4">
+                    <div className="mr-3">
                       <img
-                        class="rounded-circle img-fluid"
+                        className="rounded-circle img-fluid"
                         src="../frontend/images/team/team-2.jpg"
                         alt="team-member"
                       />
                     </div>
-                    <div class="align-self-center">
+                    <div className="align-self-center">
                       <h4>John Doe</h4>
-                      <h6 class="text-color">web developer</h6>
+                      <h6 className="text-color">web developer</h6>
                     </div>
                   </div>
                   <p>
@@ -574,19 +576,19 @@ export default class Index extends Component {
                   </p>
                 </div>
               </div>
-              <div class="col-lg-3 mx-auto mb-3">
-                <div class="team-member">
-                  <div class="d-flex mb-4">
-                    <div class="mr-3">
+              <div className="col-lg-3 mx-auto mb-3">
+                <div className="team-member">
+                  <div className="d-flex mb-4">
+                    <div className="mr-3">
                       <img
-                        class="rounded-circle img-fluid"
+                        className="rounded-circle img-fluid"
                         src="../frontend/images/team/team-3.jpg"
                         alt="team-member"
                       />
                     </div>
-                    <div class="align-self-center">
+                    <div className="align-self-center">
                       <h4>Erik Ligas</h4>
-                      <h6 class="text-color">Programmer</h6>
+                      <h6 className="text-color">Programmer</h6>
                     </div>
                   </div>
                   <p>
@@ -596,19 +598,19 @@ export default class Index extends Component {
                   </p>
                 </div>
               </div>
-              <div class="col-lg-3 mx-auto mb-3">
-                <div class="team-member">
-                  <div class="d-flex mb-4">
-                    <div class="mr-3">
+              <div className="col-lg-3 mx-auto mb-3">
+                <div className="team-member">
+                  <div className="d-flex mb-4">
+                    <div className="mr-3">
                       <img
-                        class="rounded-circle img-fluid"
+                        className="rounded-circle img-fluid"
                         src="../frontend/images/team/team-1.jpg"
                         alt="team-member"
                       />
                     </div>
-                    <div class="align-self-center">
+                    <div className="align-self-center">
                       <h4>Erik Ligas</h4>
-                      <h6 class="text-color">Programmer</h6>
+                      <h6 className="text-color">Programmer</h6>
                     </div>
                   </div>
                   <p>
@@ -622,44 +624,44 @@ export default class Index extends Component {
           </div>
 
           <img
-            class="team-bg-shape-1 up-down-animation"
+            className="team-bg-shape-1 up-down-animation"
             src="../frontend/images/background-shape/seo-ball-1.png"
             alt="background-shape"
           />
           <img
-            class="team-bg-shape-2 left-right-animation"
+            className="team-bg-shape-2 left-right-animation"
             src="../frontend/images/background-shape/seo-ball-1.png"
             alt="background-shape"
           />
           <img
-            class="team-bg-shape-3 left-right-animation"
+            className="team-bg-shape-3 left-right-animation"
             src="../frontend/images/background-shape/team-bg-triangle.png"
             alt="background-shape"
           />
           <img
-            class="team-bg-shape-4 up-down-animation img-fluid"
+            className="team-bg-shape-4 up-down-animation img-fluid"
             src="../frontend/images/background-shape/team-bg-dots.png"
             alt="background-shape"
           />
         </section>
 
-        <section class="newsletter py-5">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12 text-center">
+        <section className="newsletter py-5">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12 text-center">
                 <h2>Ready to Start Investing?</h2>
-                <p class="mb-5">
+                <p className="mb-5">
                   Set up your account and start choosing strategies.
                 </p>
                 <p>
-                  <a class="btn btn-secondary btn-lg">START TRADING</a>
+                  <a className="btn btn-secondary btn-lg">START TRADING</a>
                 </p>
               </div>
             </div>
           </div>
 
           <img
-            class="newsletter-bg-shape left-right-animation"
+            className="newsletter-bg-shape left-right-animation"
             src="../frontend/images/background-shape/seo-ball-2.png"
             alt="background-shape"
           />

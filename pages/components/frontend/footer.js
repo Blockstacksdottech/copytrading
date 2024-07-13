@@ -8,15 +8,15 @@ export default function Footer() {
   }, []);
   return (
     <>
-      <footer class="footer-section footer">
-        <div class="container-fluid">
-          <div class="row">
+      <footer className="footer-section footer">
+        <div className="container-fluid">
+          <div className="row">
             <div className="col-lg-6">
               <p>
                 Copyright &copy; {year} <a>CopyTrading</a>. All rights reserved.
               </p>
             </div>
-            <div class="col-lg-6">
+            <div className="col-lg-6">
               <p className="float-right">
                 Designed & Developed by{" "}
                 <a href="#">Blockstacks Technologies Ltd</a>
