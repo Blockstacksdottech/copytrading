@@ -38,10 +38,7 @@ export default class Subscribedstrategy extends Component {
                   <div className="card card-primary card-outline">
                     <div className="card-body">
                       <div className="table-responsive p-0">
-                        <table
-                          id="datatable"
-                          className="table table-bordered table-hover table-sm"
-                        >
+                        <table className="table table-bordered table-hover table-sm">
                           <thead>
                             <tr className="bg-light">
                               <th>STRATEGY</th>

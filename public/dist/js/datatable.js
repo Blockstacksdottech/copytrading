@@ -1,5 +1,5 @@
 $(function () {
-  $("#datatable").DataTable({
+  $("table.datatable").DataTable({
     retrieve: true,
     pageLength: 5,
     paging: true,

@@ -262,10 +262,7 @@ export default class Index extends Component {
                 <div className="my-4">
                   <div className="rounded bg-white p-4 shadow-primary">
                     <div className="table-responsive p-0">
-                      <table
-                        id="datatable"
-                        className="table table-borderless table-sm"
-                      >
+                      <table className="table table-borderless table-sm indexdatatable">
                         <tbody>
                           <tr>
                             <td>
