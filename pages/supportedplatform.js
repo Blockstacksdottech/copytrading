@@ -120,7 +120,7 @@ export default class Supportedplatform extends Component {
                           className="btn btn-login primary-shadow"
                           target="_blank"
                         >
-                          Open Account
+                          Get Started
                         </a>
                         <p className="mt-1 mb-0">
                           <a
