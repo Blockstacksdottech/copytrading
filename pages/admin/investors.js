@@ -38,13 +38,10 @@ export default class Investors extends Component {
                   <div className="card card-primary card-outline">
                     <div className="card-body">
                       <div className="table-responsive p-0">
-                        <table
-                          id="datatable"
-                          className="table table-bordered table-sm"
-                        >
+                        <table className="table table-bordered table-sm datatable projects">
                           <thead>
                             <tr className="bg-light">
-                              <th className="w-5"></th>
+                              <th></th>
                               <th>Name</th>
                               <th>Email</th>
                               <th>Mobile</th>
@@ -59,7 +56,7 @@ export default class Investors extends Component {
                               <td>
                                 <img
                                   src="/dist/img/avatar5.png"
-                                  className="img-circle elevation-1 img-fluid"
+                                  className="table-avatar"
                                   alt="Investor Image"
                                 />
                               </td>
@@ -109,7 +106,7 @@ export default class Investors extends Component {
                               <td>
                                 <img
                                   src="/dist/img/avatar5.png"
-                                  className="img-circle elevation-1 img-fluid"
+                                  className="table-avatar"
                                   alt="Investor Image"
                                 />
                               </td>
@@ -159,7 +156,7 @@ export default class Investors extends Component {
                               <td>
                                 <img
                                   src="/dist/img/avatar5.png"
-                                  className="img-circle elevation-1 img-fluid"
+                                  className="table-avatar"
                                   alt="Investor Image"
                                 />
                               </td>
@@ -209,7 +206,7 @@ export default class Investors extends Component {
                               <td>
                                 <img
                                   src="/dist/img/avatar5.png"
-                                  className="img-circle elevation-1 img-fluid"
+                                  className="table-avatar"
                                   alt="Investor Image"
                                 />
                               </td>

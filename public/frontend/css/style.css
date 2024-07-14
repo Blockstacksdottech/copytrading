@@ -1104,6 +1104,8 @@ a:hover {
 .about {
   position: relative;
   overflow: visible;
+  padding-top: 150px;
+  padding-bottom: 100px;
 }
 .about-video {
   position: relative;
