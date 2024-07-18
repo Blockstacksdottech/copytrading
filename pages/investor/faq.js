@@ -32,7 +32,7 @@ export default class FAQ extends Component {
           </div>
           <div className="content">
             <div className="row">
-              <div className="col-12" id="accordion">
+              <div className="col-lg-12" id="accordion">
                 <div className="card card-default">
                   <a
                     className="d-block w-100"
