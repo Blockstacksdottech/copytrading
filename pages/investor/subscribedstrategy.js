@@ -8,6 +8,12 @@ import Admscripttag from "../components/admscripttag";
 import React, { Component } from "react";
 
 export default class Subscribedstrategy extends Component {
+  componentDidMount() {
+    const script = document.createElement("script");
+    script.src = "/dist/js/datatable.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }
   render() {
     return (
       <>
@@ -38,7 +44,7 @@ export default class Subscribedstrategy extends Component {
                   <div className="card card-primary card-outline">
                     <div className="card-body">
                       <div className="table-responsive p-0">
-                        <table className="table table-bordered table-hover table-sm">
+                        <table className="table table-bordered table-hover table-sm datatable">
                           <thead>
                             <tr className="bg-light">
                               <th>STRATEGY</th>

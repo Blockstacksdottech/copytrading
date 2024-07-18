@@ -48,7 +48,7 @@ export default class Support extends Component {
                   <div className="card card-primary card-outline">
                     <div className="card-body p-0">
                       <div className="table-responsive mailbox-messages">
-                        <table className="table table-hover mb-0">
+                        <table className="table mb-0">
                           <tbody>
                             <tr>
                               <td className="mailbox-name td-chat">

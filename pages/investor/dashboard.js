@@ -70,10 +70,7 @@ const Dashboard = () => {
                     </div>
 
                     <div className="table-responsive p-0">
-                      <table
-                        id="datatable"
-                        className="table table-bordered table-hover table-sm datatable"
-                      >
+                      <table className="table table-bordered table-hover table-sm datatable">
                         <thead>
                           <tr className="bg-light">
                             <th>STRATEGY</th>
