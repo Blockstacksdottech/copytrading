@@ -1,10 +1,10 @@
 import Head from "next/head";
-import Navbar from "../components/navbar";
-import Sidebar from "../components/sidebar";
-import Feed from "../components/feed";
-import Footer from "../components/footer";
-import Admheadtag from "../components/admheadtag";
-import Admscripttag from "../components/admscripttag";
+import Navbar from "../components/panel/navbar";
+import Sidebar from "./components/sidebar";
+import Feed from "./components/feed";
+import Footer from "../components/panel/footer";
+import Headtag from "../components/panel/headtag";
+import Scripttag from "../components/panel/scripttag";
 import React from "react";
 import {
   AreaChart,
@@ -43,7 +43,7 @@ const hypotheticalData = [
   },
 ];
 
-export default function StrategyDetails() {
+const StrategyDetails = () => {
   return (
     <>
       <Head>
@@ -51,7 +51,7 @@ export default function StrategyDetails() {
         <meta name="description" content="Easiest" />
       </Head>
 
-      <Admheadtag />
+      <Headtag />
       <Navbar />
       <Sidebar />
 
@@ -59,33 +59,13 @@ export default function StrategyDetails() {
         <div className="content-header">
           <div className="container-fluid">
             <div className="row mb-2">
-              <div className="col-sm-8">
+              <div className="col-sm-12">
                 <div className="alert alert-light alert-dismissible fade show">
                   These are hypothetical performance results that have certain
                   inherent limitations.
                 </div>
               </div>
-              <div className="col-sm-4">
-                <div className="clearfix">
-                  <div className="float-right">
-                    <a className="btn btn-app bg-light">
-                      <i className="far fa-eye"></i> Add to Watchlist
-                    </a>
-                    <a
-                      className="btn btn-app bg-primary"
-                      href="/investor/support"
-                    >
-                      <i class="far fa-envelope"></i> Support
-                    </a>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-
-        <div className="content">
-          <div className="container-fluid">
             <div className="row mb-2">
               <div className="col-sm-5 mb-2">
                 <p className="small mb-0">(142728137)</p>
@@ -174,6 +154,137 @@ export default function StrategyDetails() {
                 </div>
               </div>
             </div>
+            <div className="row mb-2">
+              <div className="col-sm-12">
+                <div className="card card-primary card-outline mb-3">
+                  <div className="card-body p-0">
+                    <div className="table-responsive">
+                      <table className=" table table-bordered mb-0">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>Jan</th>
+                            <th>Feb</th>
+                            <th>Mar</th>
+                            <th>Apr</th>
+                            <th>May</th>
+                            <th>Jun</th>
+                            <th>Jul</th>
+                            <th>Aug</th>
+                            <th>Sep</th>
+                            <th>Oct</th>
+                            <th>Nov</th>
+                            <th>Dec</th>
+                            <th>YTD</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                              <span className="text-danger">2.3%</span>
+                            </td>
+                            <td>
+                              <span className="text-success">+25.9%</span>
+                            </td>
+                            <td>
+                              <span className="text-success font-weight-bold">
+                                +25.9%
+                              </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>2023</td>
+                            <td>
+                              <span className="text-danger">2.3%</span>
+                            </td>
+                            <td>
+                              <span className="text-success">+25.9%</span>
+                            </td>
+                            <td>
+                              <span className="text-danger">2.3%</span>
+                            </td>
+                            <td>
+                              <span className="text-danger">2.3%</span>
+                            </td>
+                            <td>
+                              <span className="text-success">+25.9%</span>
+                            </td>
+                            <td>
+                              <span className="text-danger">2.3%</span>
+                            </td>
+                            <td>
+                              <span className="text-danger">2.3%</span>
+                            </td>
+                            <td>
+                              <span className="text-success">+25.9%</span>
+                            </td>
+                            <td>
+                              <span className="text-success">+25.9%</span>
+                            </td>
+                            <td>
+                              <span className="text-success">+25.9%</span>
+                            </td>
+                            <td>
+                              <span className="text-danger">2.3%</span>
+                            </td>
+                            <td>
+                              <span className="text-danger">2.3%</span>
+                            </td>
+                            <td>
+                              <span className="text-success font-weight-bold">
+                                +25.9%
+                              </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>2024</td>
+                            <td>
+                              <span className="text-danger">2.3%</span>
+                            </td>
+                            <td>
+                              <span className="text-success">+25.9%</span>
+                            </td>
+                            <td>
+                              <span className="text-danger">2.3%</span>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                              <span className="text-success font-weight-bold">
+                                +25.9%
+                              </span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="content">
+          <div className="container-fluid">
             <div className="row mb-2">
               <div className="col-sm-9">
                 <div className="card card-primary card-outline mb-3">
@@ -603,7 +714,9 @@ export default function StrategyDetails() {
       </div>
       <Feed />
       <Footer />
-      <Admscripttag />
+      <Scripttag />
     </>
   );
-}
+};
+
+export default StrategyDetails;
