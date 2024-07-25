@@ -43,7 +43,7 @@ const hypotheticalData = [
   },
 ];
 
-export default function StrategyDetails() {
+const StrategyDetails = () => {
   return (
     <>
       <Head>
@@ -606,4 +606,6 @@ export default function StrategyDetails() {
       <Scripttag />
     </>
   );
-}
+};
+
+export default StrategyDetails;

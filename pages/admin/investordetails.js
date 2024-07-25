@@ -201,94 +201,90 @@ const dataBrushBarChart = [
   { name: "40", uv: -50, pv: 186 },
 ];
 
-export default class Investordetails extends Component {
-  render() {
-    return (
-      <>
-        <Head>
-          <title>Investors Details</title>
-          <meta name="description" content="Investors Details" />
-        </Head>
+const Investordetails = () => {
+  return (
+    <>
+      <Head>
+        <title>Investors Details</title>
+        <meta name="description" content="Investors Details" />
+      </Head>
 
-        <Headtag />
-        <Navbar />
-        <Sidebar />
+      <Headtag />
+      <Navbar />
+      <Sidebar />
 
-        <div className="content-wrapper">
-          <div className="content-header">
-            <div className="container-fluid">
-              <div className="row mb-2">
-                <div className="col-sm-12">
-                  <h1 className="m-0">Investors Details</h1>
-                </div>
+      <div className="content-wrapper">
+        <div className="content-header">
+          <div className="container-fluid">
+            <div className="row mb-2">
+              <div className="col-sm-12">
+                <h1 className="m-0">Investors Details</h1>
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="content">
-            <div className="container-fluid">
-              <div className="row">
-                <div className="col-lg-12">
-                  <div className="card card-primary card-outline">
-                    <div className="card-header">
-                      <h5 className="mb-0">Profile</h5>
-                    </div>
-                    <div className="card-body">
-                      <div className="row">
-                        <div className="col-lg-3 m-auto">
-                          <img
-                            src="/dist/img/avatar5.png"
-                            alt="Testing111"
-                            className="img-circle img-fluid w-50"
-                          />
+        <div className="content">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="card card-primary card-outline">
+                  <div className="card-header">
+                    <h5 className="mb-0">Profile</h5>
+                  </div>
+                  <div className="card-body">
+                    <div className="row">
+                      <div className="col-lg-3 m-auto">
+                        <img
+                          src="/dist/img/avatar5.png"
+                          alt="Testing111"
+                          className="img-circle img-fluid w-50"
+                        />
+                      </div>
+                      <div className="col-lg-3 m-auto">
+                        <div className="form-group">
+                          <label>Name:</label>
+                          <span className="ml-2">Testing111 asdf</span>
                         </div>
-                        <div className="col-lg-3 m-auto">
-                          <div className="form-group">
-                            <label>Name:</label>
-                            <span className="ml-2">Testing111 asdf</span>
-                          </div>
-                          <div className="form-group">
-                            <label>Mobile:</label>
-                            <span className="ml-2">1234567890</span>
-                          </div>
-                          <div className="form-group">
-                            <label>City:</label>
-                            <span className="ml-2">xyz</span>
-                          </div>
-                          <div className="form-group">
-                            <label>Country:</label>
-                            <span className="ml-2">xyz</span>
-                          </div>
+                        <div className="form-group">
+                          <label>Mobile:</label>
+                          <span className="ml-2">1234567890</span>
                         </div>
-                        <div className="col-lg-3 m-auto">
-                          <div className="form-group">
-                            <label>Email:</label>
-                            <span className="ml-2">test@email.com</span>
-                          </div>
-                          <div className="form-group">
-                            <label>Zip / Postal Code:</label>
-                            <span className="ml-2">2365</span>
-                          </div>
-                          <div className="form-group">
-                            <label>State:</label>
-                            <span className="ml-2">tyuio</span>
-                          </div>
-                          <div className="form-group">
-                            <label>Address:</label>
-                            <span className="ml-2">Demo Street 123, Demo</span>
-                          </div>
+                        <div className="form-group">
+                          <label>City:</label>
+                          <span className="ml-2">xyz</span>
                         </div>
-                        <div className="col-lg-3 m-auto">
-                          <div class="info-box">
-                            <span class="info-box-icon bg-primary">
-                              <h1 className="mb-0">S</h1>
-                            </span>
-                            <div class="info-box-content">
-                              <span class="info-box-text">
-                                Subscription Plan
-                              </span>
-                              <span class="info-box-number">$499/month</span>
-                            </div>
+                        <div className="form-group">
+                          <label>Country:</label>
+                          <span className="ml-2">xyz</span>
+                        </div>
+                      </div>
+                      <div className="col-lg-3 m-auto">
+                        <div className="form-group">
+                          <label>Email:</label>
+                          <span className="ml-2">test@email.com</span>
+                        </div>
+                        <div className="form-group">
+                          <label>Zip / Postal Code:</label>
+                          <span className="ml-2">2365</span>
+                        </div>
+                        <div className="form-group">
+                          <label>State:</label>
+                          <span className="ml-2">tyuio</span>
+                        </div>
+                        <div className="form-group">
+                          <label>Address:</label>
+                          <span className="ml-2">Demo Street 123, Demo</span>
+                        </div>
+                      </div>
+                      <div className="col-lg-3 m-auto">
+                        <div class="info-box">
+                          <span class="info-box-icon bg-primary">
+                            <h1 className="mb-0">S</h1>
+                          </span>
+                          <div class="info-box-content">
+                            <span class="info-box-text">Subscription Plan</span>
+                            <span class="info-box-number">$499/month</span>
                           </div>
                         </div>
                       </div>
@@ -296,234 +292,230 @@ export default class Investordetails extends Component {
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div className="row">
-                <div className="col-lg-12 mx-auto">
-                  <div className="card card-primary card-outline">
-                    <div className="card-header">
-                      <h5>Strategy Subscribed</h5>
-                    </div>
-                    <div className="card-body">
-                      <div className="table-responsive p-0">
-                        <table
-                          id="Subscribedstrategy"
-                          className="table table-bordered table-hover table-sm"
-                        >
-                          <thead>
-                            <tr className="bg-light">
-                              <th>STRATEGY</th>
-                              <th>Date | Time</th>
-                              <th>Manager</th>
-                              <th></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <a
-                                  className="fas fa-external-link-alt mr-2"
-                                  href="/admin/strategydetails"
-                                ></a>
-                                <span className="h6 mb-0">Easiest</span>
-                              </td>
-                              <td>09-06-2024 | 01:58 AM</td>
-                              <td>CopyTrading</td>
-                              <td>
-                                <a
-                                  type="button"
-                                  className="btn btn-default"
-                                  href="/admin/strategydetails"
-                                >
-                                  <i className="fas fa-external-link-alt"></i>
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <a
-                                  className="fas fa-external-link-alt mr-2"
-                                  href="/admin/strategydetails"
-                                ></a>
-                                <span className="h6 mb-0">Easiest</span>
-                              </td>
-                              <td>09-06-2024 | 01:58 AM</td>
-                              <td>CopyTrading</td>
-                              <td>
-                                <a
-                                  type="button"
-                                  className="btn btn-default"
-                                  href="/admin/strategydetails"
-                                >
-                                  <i className="fas fa-external-link-alt"></i>
-                                </a>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
+            <div className="row">
+              <div className="col-lg-12 mx-auto">
+                <div className="card card-primary card-outline">
+                  <div className="card-header">
+                    <h5>Strategy Subscribed</h5>
+                  </div>
+                  <div className="card-body">
+                    <div className="table-responsive p-0">
+                      <table
+                        id="Subscribedstrategy"
+                        className="table table-bordered table-hover table-sm"
+                      >
+                        <thead>
+                          <tr className="bg-light">
+                            <th>STRATEGY</th>
+                            <th>Date | Time</th>
+                            <th>Manager</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a
+                                className="fas fa-external-link-alt mr-2"
+                                href="/admin/strategydetails"
+                              ></a>
+                              <span className="h6 mb-0">Easiest</span>
+                            </td>
+                            <td>09-06-2024 | 01:58 AM</td>
+                            <td>CopyTrading</td>
+                            <td>
+                              <a
+                                type="button"
+                                className="btn btn-default"
+                                href="/admin/strategydetails"
+                              >
+                                <i className="fas fa-external-link-alt"></i>
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <a
+                                className="fas fa-external-link-alt mr-2"
+                                href="/admin/strategydetails"
+                              ></a>
+                              <span className="h6 mb-0">Easiest</span>
+                            </td>
+                            <td>09-06-2024 | 01:58 AM</td>
+                            <td>CopyTrading</td>
+                            <td>
+                              <a
+                                type="button"
+                                className="btn btn-default"
+                                href="/admin/strategydetails"
+                              >
+                                <i className="fas fa-external-link-alt"></i>
+                              </a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div className="row">
-                <div className="col-lg-12 mx-auto">
-                  <div className="card card-primary card-outline">
-                    <div className="card-header">
-                      <h5>Brokerage Account</h5>
-                    </div>
-                    <div className="card-body">
-                      <div className="table-responsive p-0">
-                        <table className="table table-bordered table-hover table-sm">
-                          <thead>
-                            <tr className="bg-light">
-                              <th>Broker</th>
-                              <th>Trade Type</th>
-                              <th>Unique Account Identifier</th>
-                              <th>Status</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>Stonex</td>
-                              <td>Futures</td>
-                              <td>AsD45678</td>
-                              <td>
-                                <span className="badge bg-success">Active</span>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
+            <div className="row">
+              <div className="col-lg-12 mx-auto">
+                <div className="card card-primary card-outline">
+                  <div className="card-header">
+                    <h5>Brokerage Account</h5>
+                  </div>
+                  <div className="card-body">
+                    <div className="table-responsive p-0">
+                      <table className="table table-bordered table-hover table-sm">
+                        <thead>
+                          <tr className="bg-light">
+                            <th>Broker</th>
+                            <th>Trade Type</th>
+                            <th>Unique Account Identifier</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Stonex</td>
+                            <td>Futures</td>
+                            <td>AsD45678</td>
+                            <td>
+                              <span className="badge bg-success">Active</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div className="row">
-                <div className="col-lg-6">
-                  <div className="card card-primary card-outline">
-                    <div className="card-header">
-                      <h5>Trade Area Chart</h5>
-                    </div>
-                    <div className="card-body">
-                      <ResponsiveContainer width="100%" height={300}>
-                        <AreaChart data={dataAreaChart}>
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="name" />
-                          <YAxis />
-                          <Tooltip />
-                          <Area
-                            type="monotone"
-                            dataKey="uv"
-                            stroke="#0909ff"
-                            fill="#0909ff"
-                          />
-                        </AreaChart>
-                      </ResponsiveContainer>
-                    </div>
+            <div className="row">
+              <div className="col-lg-6">
+                <div className="card card-primary card-outline">
+                  <div className="card-header">
+                    <h5>Trade Area Chart</h5>
                   </div>
-                </div>
-                <div className="col-lg-6">
-                  <div className="card card-primary card-outline">
-                    <div className="card-header">
-                      <h5>Trade Line Chart</h5>
-                    </div>
-                    <div className="card-body">
-                      <ResponsiveContainer width="100%" height={300}>
-                        <LineChart
-                          width={500}
-                          height={300}
-                          data={dataLineChart}
-                        >
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="name" />
-                          <YAxis />
-                          <Tooltip />
-                          <Legend />
-                          <Line
-                            type="monotone"
-                            dataKey="pv"
-                            stroke="#0909ff"
-                            activeDot={{ r: 8 }}
-                          />
-                          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-                        </LineChart>
-                      </ResponsiveContainer>
-                    </div>
+                  <div className="card-body">
+                    <ResponsiveContainer width="100%" height={300}>
+                      <AreaChart data={dataAreaChart}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Area
+                          type="monotone"
+                          dataKey="uv"
+                          stroke="#0909ff"
+                          fill="#0909ff"
+                        />
+                      </AreaChart>
+                    </ResponsiveContainer>
                   </div>
                 </div>
               </div>
-
-              <div className="row">
-                <div className="col-lg-6">
-                  <div className="card card-primary card-outline">
-                    <div className="card-header">
-                      <h5>Trade Bar Chart</h5>
-                    </div>
-                    <div className="card-body">
-                      <ResponsiveContainer width="100%" height={300}>
-                        <BarChart width={500} height={300} data={dataBarChart}>
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="name" />
-                          <YAxis />
-                          <Tooltip />
-                          <Legend />
-                          <Bar
-                            dataKey="pv"
-                            fill="#0909ff"
-                            activeBar={<Rectangle fill="pink" stroke="blue" />}
-                          />
-                          <Bar
-                            dataKey="uv"
-                            fill="#82ca9d"
-                            activeBar={
-                              <Rectangle fill="gold" stroke="purple" />
-                            }
-                          />
-                        </BarChart>
-                      </ResponsiveContainer>
-                    </div>
+              <div className="col-lg-6">
+                <div className="card card-primary card-outline">
+                  <div className="card-header">
+                    <h5>Trade Line Chart</h5>
+                  </div>
+                  <div className="card-body">
+                    <ResponsiveContainer width="100%" height={300}>
+                      <LineChart width={500} height={300} data={dataLineChart}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Line
+                          type="monotone"
+                          dataKey="pv"
+                          stroke="#0909ff"
+                          activeDot={{ r: 8 }}
+                        />
+                        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                      </LineChart>
+                    </ResponsiveContainer>
                   </div>
                 </div>
-                <div className="col-lg-6">
-                  <div className="card card-primary card-outline">
-                    <div className="card-header">
-                      <h5>Trade Brush Bar Chart</h5>
-                    </div>
-                    <div className="card-body">
-                      <ResponsiveContainer width="100%" height={300}>
-                        <BarChart
-                          width={500}
-                          height={300}
-                          data={dataBrushBarChart}
-                        >
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="name" />
-                          <YAxis />
-                          <Tooltip />
-                          <Legend
-                            verticalAlign="top"
-                            wrapperStyle={{ lineHeight: "40px" }}
-                          />
-                          <ReferenceLine y={0} stroke="#000" />
-                          <Brush dataKey="name" height={30} stroke="#0909ff" />
-                          <Bar dataKey="pv" fill="#0909ff" />
-                          <Bar dataKey="uv" fill="#82ca9d" />
-                        </BarChart>
-                      </ResponsiveContainer>
-                    </div>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-lg-6">
+                <div className="card card-primary card-outline">
+                  <div className="card-header">
+                    <h5>Trade Bar Chart</h5>
+                  </div>
+                  <div className="card-body">
+                    <ResponsiveContainer width="100%" height={300}>
+                      <BarChart width={500} height={300} data={dataBarChart}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar
+                          dataKey="pv"
+                          fill="#0909ff"
+                          activeBar={<Rectangle fill="pink" stroke="blue" />}
+                        />
+                        <Bar
+                          dataKey="uv"
+                          fill="#82ca9d"
+                          activeBar={<Rectangle fill="gold" stroke="purple" />}
+                        />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-6">
+                <div className="card card-primary card-outline">
+                  <div className="card-header">
+                    <h5>Trade Brush Bar Chart</h5>
+                  </div>
+                  <div className="card-body">
+                    <ResponsiveContainer width="100%" height={300}>
+                      <BarChart
+                        width={500}
+                        height={300}
+                        data={dataBrushBarChart}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend
+                          verticalAlign="top"
+                          wrapperStyle={{ lineHeight: "40px" }}
+                        />
+                        <ReferenceLine y={0} stroke="#000" />
+                        <Brush dataKey="name" height={30} stroke="#0909ff" />
+                        <Bar dataKey="pv" fill="#0909ff" />
+                        <Bar dataKey="uv" fill="#82ca9d" />
+                      </BarChart>
+                    </ResponsiveContainer>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <Feed />
-        <Footer />
-        <Scripttag />
-      </>
-    );
-  }
-}
+      <Feed />
+      <Footer />
+      <Scripttag />
+    </>
+  );
+};
+
+export default Investordetails;
