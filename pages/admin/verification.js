@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Head from "next/head";
-import Navbar from "../components/navbar";
-import Sidebar from "../components/sidebar2";
-import Feed from "../components/feed";
-import Footer from "../components/footer";
-import Admheadtag from "../components/admheadtag";
-import Admscripttag from "../components/admscripttag";
+import Navbar from "../components/panel/navbar";
+import Sidebar from "./components/sidebar";
+import Feed from "./components/feed";
+import Footer from "../components/panel/footer";
+import Headtag from "../components/panel/headtag";
+import Scripttag from "../components/panel/scripttag";
 
 export default class Verification extends Component {
   render() {
@@ -16,7 +16,7 @@ export default class Verification extends Component {
           <meta name="description" content="Investors Verification" />
         </Head>
 
-        <Admheadtag />
+        <Headtag />
         <Navbar />
         <Sidebar />
 
@@ -183,7 +183,7 @@ export default class Verification extends Component {
 
         <Feed />
         <Footer />
-        <Admscripttag />
+        <Scripttag />
       </>
     );
   }

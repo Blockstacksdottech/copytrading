@@ -1,5 +1,6 @@
 $(function () {
   $("table.datatable").DataTable({
+    order: [0, "desc"],
     retrieve: true,
     pageLength: 5,
     paging: true,

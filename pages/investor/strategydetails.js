@@ -287,151 +287,131 @@ const StrategyDetails = () => {
           <div className="container-fluid">
             <div className="row mb-2">
               <div className="col-sm-9">
-                <div className="card card-primary card-outline mb-3">
-                  <div className="card-body p-0">
-                    <div className="table-responsive">
-                      <table className=" table table-bordered mb-0">
-                        <thead>
-                          <tr>
-                            <th></th>
-                            <th>Jan</th>
-                            <th>Feb</th>
-                            <th>Mar</th>
-                            <th>Apr</th>
-                            <th>May</th>
-                            <th>Jun</th>
-                            <th>Jul</th>
-                            <th>Aug</th>
-                            <th>Sep</th>
-                            <th>Oct</th>
-                            <th>Nov</th>
-                            <th>Dec</th>
-                            <th>YTD</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>2022</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-success">+25.9%</span>
-                            </td>
-                            <td>
-                              <span className="text-success font-weight-bold">
-                                +25.9%
-                              </span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>2023</td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-success">+25.9%</span>
-                            </td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-success">+25.9%</span>
-                            </td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-success">+25.9%</span>
-                            </td>
-                            <td>
-                              <span className="text-success">+25.9%</span>
-                            </td>
-                            <td>
-                              <span className="text-success">+25.9%</span>
-                            </td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-success font-weight-bold">
-                                +25.9%
-                              </span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>2024</td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-success">+25.9%</span>
-                            </td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                              <span className="text-success font-weight-bold">
-                                +25.9%
-                              </span>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                <div className="mb-2">
+                  <div className="card">
+                    <div className="card-header">
+                      <h3 className="card-title">CUMULATIVE P&L (ALL DATES)</h3>
+                      <div className="card-tools">
+                        <a>
+                          <i className="fas fa-info-circle"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div className="card-body">
+                      <ResponsiveContainer width="100%" height={500}>
+                        <AreaChart data={hypotheticalData}>
+                          <CartesianGrid strokeDasharray="5 5" />
+                          <XAxis dataKey="name" />
+                          <YAxis />
+                          <Tooltip />
+                          <Area
+                            type="monotone"
+                            dataKey="Price"
+                            stroke="#0909ff"
+                            fill="#0909ff"
+                          />
+                        </AreaChart>
+                      </ResponsiveContainer>
                     </div>
                   </div>
                 </div>
-                <p className="text-center">
-                  Hypothetical Monthly Returns (includes system fee and Gain
-                  Capital commissions and fees)
-                </p>
+              </div>
+              <div className="col-sm-3">
+                <div className="card card-primary card-outline">
+                  <div className="card-body box-profile">
+                    <div className="text-center">
+                      <h5>SUMMARY STATISTICS</h5>
+                      <select className="form-control">
+                        <option>Typical Broker Commissions</option>
 
-                <div className="mb-2">
-                  <ResponsiveContainer width="100%" height={300}>
-                    <AreaChart data={hypotheticalData}>
-                      <CartesianGrid strokeDasharray="5 5" />
-                      <XAxis dataKey="name" />
-                      <YAxis />
-                      <Tooltip />
-                      <Area
-                        type="monotone"
-                        dataKey="Price"
-                        stroke="#0909ff"
-                        fill="#0909ff"
-                      />
-                    </AreaChart>
-                  </ResponsiveContainer>
-                  <p className="text-center">Hypothetical Performance</p>
+                        <option>
+                          Gain Capital commiss. and AutoTrade fees
+                        </option>
+
+                        <option>
+                          Interactive Brokers commiss. and AutoTrade fees
+                        </option>
+
+                        <option>
+                          Interactive Brokers commiss. (no monthly AutoTrade
+                          fees)
+                        </option>
+
+                        <option>
+                          Tradovate with monthly Tradovate membership
+                        </option>
+
+                        <option>
+                          Infinity Futures commiss. and AutoTrade fees
+                        </option>
+                      </select>
+                    </div>
+                    <ul className="list-group list-group-unbordered mt-3">
+                      <li className="list-group-item">
+                        <span>Strategy began</span>
+                        <b className="float-right">2022-11-30</b>
+                      </li>
+                      <li className="list-group-item">
+                        <span>Suggested Min Capital</span>
+                        <b className="float-right">$25,000</b>
+                      </li>
+                      <li className="list-group-item">
+                        <span>Rank at C2 %</span>
+                        <span className="float-right">
+                          <sub>TOP</sub>
+                          <b>0.4%</b>
+                        </span>
+                      </li>
+                      <li className="list-group-item">
+                        <span>Rank#</span>
+                        <b className="float-right">#3</b>
+                      </li>
+                      <li className="list-group-item">
+                        <span>#Trades</span>
+                        <b className="float-right">100</b>
+                      </li>
+                      <li className="list-group-item">
+                        <span>#Profitable</span>
+                        <b className="float-right text-success">69</b>
+                      </li>
+                      <li className="list-group-item">
+                        <span>%Profitable</span>
+                        <b className="float-right">69.0</b>
+                      </li>
+                      <li className="list-group-item">
+                        <span>Correlation S&P500</span>
+                        <b className="float-right">-0.136</b>
+                      </li>
+                      <li className="list-group-item">
+                        <span>Sharpe Ratio</span>
+                        <b className="float-right">1.65</b>
+                      </li>
+                      <li className="list-group-item">
+                        <span>Sortino Ratio</span>
+                        <b className="float-right">2.78</b>
+                      </li>
+                      <li className="list-group-item">
+                        <span>Beta</span>
+                        <b className="float-right">-0.23</b>
+                      </li>
+                      <li className="list-group-item">
+                        <span>Alpha</span>
+                        <b className="float-right">0.13</b>
+                      </li>
+                      <li className="list-group-item">
+                        <span>Leverage</span>
+                        <b className="float-right">
+                          2.08(Avg)
+                          <span className="ml-2">2.44(Max)</span>
+                        </b>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-
+              </div>
+            </div>
+            <div className="row mb-2">
+              <div className="col-sm-12">
                 {/* All Records */}
 
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
@@ -466,36 +446,6 @@ const StrategyDetails = () => {
                 <div className="tab-content" id="myTabContent">
                   <div className="tab-pane fade show active" id="trade">
                     <div className="card">
-                      <div className="card-header border-0">
-                        <button className="btn btn-sm btn-primary">
-                          Download CSV
-                        </button>
-
-                        <div className="card-tools">
-                          <div className="btn-group mr-2">
-                            <button className="btn btn-outline-primary btn-sm">
-                              Long
-                            </button>
-                            <button className="btn btn-outline-primary btn-sm">
-                              Short
-                            </button>
-                            <button className="btn btn-outline-primary btn-sm">
-                              Both
-                            </button>
-                          </div>
-                          <div className="btn-group">
-                            <button className="btn btn-outline-primary btn-sm">
-                              Win
-                            </button>
-                            <button className="btn btn-outline-primary btn-sm">
-                              Loss
-                            </button>
-                            <button className="btn btn-outline-primary btn-sm">
-                              Both
-                            </button>
-                          </div>
-                        </div>
-                      </div>
                       <div className="card-body">
                         <div className="table-responsive">
                           <table className="table table-bordered">
@@ -612,99 +562,6 @@ const StrategyDetails = () => {
                         </p>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-sm-3">
-                <div className="card card-primary card-outline">
-                  <div className="card-body box-profile">
-                    <div className="text-center">
-                      <h5>SUMMARY STATISTICS</h5>
-                      <select className="form-control">
-                        <option>Typical Broker Commissions</option>
-
-                        <option>
-                          Gain Capital commiss. and AutoTrade fees
-                        </option>
-
-                        <option>
-                          Interactive Brokers commiss. and AutoTrade fees
-                        </option>
-
-                        <option>
-                          Interactive Brokers commiss. (no monthly AutoTrade
-                          fees)
-                        </option>
-
-                        <option>
-                          Tradovate with monthly Tradovate membership
-                        </option>
-
-                        <option>
-                          Infinity Futures commiss. and AutoTrade fees
-                        </option>
-                      </select>
-                    </div>
-                    <ul className="list-group list-group-unbordered mb-3">
-                      <li className="list-group-item">
-                        <span>Strategy began</span>
-                        <b className="float-right">2022-11-30</b>
-                      </li>
-                      <li className="list-group-item">
-                        <span>Suggested Min Capital</span>
-                        <b className="float-right">$25,000</b>
-                      </li>
-                      <li className="list-group-item">
-                        <span>Rank at C2 %</span>
-                        <span className="float-right">
-                          <sub>TOP</sub>
-                          <b>0.4%</b>
-                        </span>
-                      </li>
-                      <li className="list-group-item">
-                        <span>Rank#</span>
-                        <b className="float-right">#3</b>
-                      </li>
-                      <li className="list-group-item">
-                        <span>#Trades</span>
-                        <b className="float-right">100</b>
-                      </li>
-                      <li className="list-group-item">
-                        <span>#Profitable</span>
-                        <b className="float-right text-success">69</b>
-                      </li>
-                      <li className="list-group-item">
-                        <span>%Profitable</span>
-                        <b className="float-right">69.0</b>
-                      </li>
-                      <li className="list-group-item">
-                        <span>Correlation S&P500</span>
-                        <b className="float-right">-0.136</b>
-                      </li>
-                      <li className="list-group-item">
-                        <span>Sharpe Ratio</span>
-                        <b className="float-right">1.65</b>
-                      </li>
-                      <li className="list-group-item">
-                        <span>Sortino Ratio</span>
-                        <b className="float-right">2.78</b>
-                      </li>
-                      <li className="list-group-item">
-                        <span>Beta</span>
-                        <b className="float-right">-0.23</b>
-                      </li>
-                      <li className="list-group-item">
-                        <span>Alpha</span>
-                        <b className="float-right">0.13</b>
-                      </li>
-                      <li className="list-group-item">
-                        <span>Leverage</span>
-                        <b className="float-right">
-                          2.08(Avg)
-                          <span className="ml-2">2.44(Max)</span>
-                        </b>
-                      </li>
-                    </ul>
                   </div>
                 </div>
               </div>
