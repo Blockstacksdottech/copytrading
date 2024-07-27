@@ -128,6 +128,15 @@ export default function Register() {
                       onChange={(e) => setConfirmPassword(e.target.value)}
                     />
                   </div>
+
+                  <div className="input-group mb-3">
+                    <select className="form-control">
+                      <option>Register as</option>
+                      <option>Investor</option>
+                      <option>Manager</option>
+                    </select>
+                  </div>
+
                   <div className="row">
                     <div className="col-8 my-auto">
                       <div className="icheck-primary">
