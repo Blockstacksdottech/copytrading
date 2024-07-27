@@ -438,9 +438,21 @@ const Accountmanagement = () => {
               <div className="col-lg-6">
                 <div className="card card-primary card-outline">
                   <div className="card-header">
-                    <h5 className="mb-0">Link Platform</h5>
+                    <h5 className="mb-0">Link Broker</h5>
                   </div>
                   <div className="card-body">
+                    <div className="form-group">
+                      <label>Broker</label>
+                      <select
+                        id="broker"
+                        name="broker"
+                        className="form-control"
+                      >
+                        <option>Select Broker</option>
+                        <option>Stonex</option>
+                        <option>Interactive Broker</option>
+                      </select>
+                    </div>
                     <div className="form-group">
                       <label>API KEY</label>
                       <input

@@ -54,7 +54,7 @@ const Strategy = () => {
                     <div className="table-responsive p-0">
                       <table className="table table-bordered table-hover table-sm datatable">
                         <thead>
-                          <tr className="bg-light">
+                          <tr>
                             <th>Strategy Name</th>
                             <th>Trades</th>
                             <th>Sub Fee</th>

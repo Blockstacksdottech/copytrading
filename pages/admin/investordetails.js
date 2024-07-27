@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import Navbar from "../components/panel/navbar";
 import Sidebar from "./components/sidebar";
@@ -202,6 +202,12 @@ const dataBrushBarChart = [
 ];
 
 const Investordetails = () => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "/dist/js/datatable.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
   return (
     <>
       <Head>
@@ -278,13 +284,15 @@ const Investordetails = () => {
                         </div>
                       </div>
                       <div className="col-lg-3 m-auto">
-                        <div class="info-box">
-                          <span class="info-box-icon bg-primary">
+                        <div className="info-box">
+                          <span className="info-box-icon bg-primary">
                             <h1 className="mb-0">S</h1>
                           </span>
-                          <div class="info-box-content">
-                            <span class="info-box-text">Subscription Plan</span>
-                            <span class="info-box-number">$499/month</span>
+                          <div className="info-box-content">
+                            <span className="info-box-text">
+                              Subscription Plan
+                            </span>
+                            <span className="info-box-number">$499/month</span>
                           </div>
                         </div>
                       </div>
@@ -298,16 +306,47 @@ const Investordetails = () => {
               <div className="col-lg-12 mx-auto">
                 <div className="card card-primary card-outline">
                   <div className="card-header">
-                    <h5>Strategy Subscribed</h5>
+                    <h5>Brokerage Account</h5>
                   </div>
                   <div className="card-body">
                     <div className="table-responsive p-0">
-                      <table
-                        id="Subscribedstrategy"
-                        className="table table-bordered table-hover table-sm"
-                      >
+                      <table className="table table-bordered table-hover table-sm">
                         <thead>
                           <tr className="bg-light">
+                            <th>Broker</th>
+                            <th>Trade Type</th>
+                            <th>Unique Account Identifier</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Stonex</td>
+                            <td>Futures</td>
+                            <td>AsD45678</td>
+                            <td>
+                              <span className="badge bg-success">Active</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-lg-12 mx-auto">
+                <div className="card card-primary card-outline">
+                  <div className="card-header">
+                    <h5>Subscribed Strategy</h5>
+                  </div>
+                  <div className="card-body">
+                    <div className="table-responsive p-0">
+                      <table className="table table-bordered table-hover table-sm datatable">
+                        <thead>
+                          <tr>
                             <th>STRATEGY</th>
                             <th>Date | Time</th>
                             <th>Manager</th>
@@ -353,40 +392,6 @@ const Investordetails = () => {
                               >
                                 <i className="fas fa-external-link-alt"></i>
                               </a>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="row">
-              <div className="col-lg-12 mx-auto">
-                <div className="card card-primary card-outline">
-                  <div className="card-header">
-                    <h5>Brokerage Account</h5>
-                  </div>
-                  <div className="card-body">
-                    <div className="table-responsive p-0">
-                      <table className="table table-bordered table-hover table-sm">
-                        <thead>
-                          <tr className="bg-light">
-                            <th>Broker</th>
-                            <th>Trade Type</th>
-                            <th>Unique Account Identifier</th>
-                            <th>Status</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Stonex</td>
-                            <td>Futures</td>
-                            <td>AsD45678</td>
-                            <td>
-                              <span className="badge bg-success">Active</span>
                             </td>
                           </tr>
                         </tbody>

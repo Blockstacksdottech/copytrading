@@ -11,5 +11,9 @@ $(function () {
     info: true,
     autoWidth: false,
     responsive: true,
+    language: {
+      search: "",
+      searchPlaceholder: "Search",
+    },
   });
 });

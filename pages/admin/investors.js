@@ -43,10 +43,10 @@ const Investors = () => {
               <div className="col-lg-12">
                 <div className="card card-primary card-outline">
                   <div className="card-body">
-                    <div className="table-responsive p-0">
+                    <div className="table-responsive">
                       <table className="table table-bordered table-sm datatable projects">
                         <thead>
-                          <tr className="bg-light">
+                          <tr>
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>
@@ -77,33 +77,43 @@ const Investors = () => {
                               <span className="badge bg-success">Active</span>
                             </td>
                             <td>
-                              <a
-                                className="btn-default btn mr-2"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title="Investor Details"
-                                href="/admin/investordetails"
-                              >
-                                <i className="fas fa-eye"></i>
-                              </a>
-                              <a
-                                className="btn-success btn mr-2"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title="Verification"
-                                href="/admin/verification"
-                              >
-                                <i className="fas fa-user-check"></i>
-                              </a>
-                              <a
-                                className="btn-danger btn"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title="Ban"
-                                href="#"
-                              >
-                                <i className="fas fa-ban"></i>
-                              </a>
+                              <div className="btn-group">
+                                <a
+                                  type="button"
+                                  className="text-dark dropdown-toggle"
+                                  data-toggle="dropdown"
+                                >
+                                  <i className="fas fa-ellipsis-v"></i>
+                                </a>
+                                <ul className="dropdown-menu">
+                                  <li>
+                                    <a
+                                      className="dropdown-item"
+                                      href="./investordetails"
+                                    >
+                                      Investor Name Details
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a
+                                      className="dropdown-item"
+                                      href="./verification"
+                                    >
+                                      Verify Investor Name
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a className="dropdown-item" href="#">
+                                      Ban Investor Name
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a className="dropdown-item" href="#">
+                                      Delete Investor Name
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
                             </td>
                           </tr>
                           <tr>
@@ -125,33 +135,43 @@ const Investors = () => {
                               <span className="badge bg-danger">Banned</span>
                             </td>
                             <td>
-                              <a
-                                className="btn-default btn mr-2"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title="Investor Details"
-                                href="/admin/investordetails"
-                              >
-                                <i className="fas fa-eye"></i>
-                              </a>
-                              <a
-                                className="btn-success btn mr-2"
-                                href="/admin/verification"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title="Verification"
-                              >
-                                <i className="fas fa-user-check"></i>
-                              </a>
-                              <a
-                                className="btn-danger btn"
-                                href="#"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title="Ban"
-                              >
-                                <i className="fas fa-ban"></i>
-                              </a>
+                              <div className="btn-group">
+                                <a
+                                  type="button"
+                                  className="text-dark dropdown-toggle"
+                                  data-toggle="dropdown"
+                                >
+                                  <i className="fas fa-ellipsis-v"></i>
+                                </a>
+                                <ul className="dropdown-menu">
+                                  <li>
+                                    <a
+                                      className="dropdown-item"
+                                      href="./investordetails"
+                                    >
+                                      Investor Name Details
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a
+                                      className="dropdown-item"
+                                      href="./verification"
+                                    >
+                                      Verify Investor Name
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a className="dropdown-item" href="#">
+                                      Ban Investor Name
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a className="dropdown-item" href="#">
+                                      Delete Investor Name
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
                             </td>
                           </tr>
                           <tr>
@@ -173,33 +193,43 @@ const Investors = () => {
                               <span className="badge bg-warning">Active</span>
                             </td>
                             <td>
-                              <a
-                                className="btn-default btn mr-2"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title="Investor Details"
-                                href="/admin/investordetails"
-                              >
-                                <i className="fas fa-eye"></i>
-                              </a>
-                              <a
-                                className="btn-warning btn mr-2"
-                                href="/admin/verification"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title="Verification"
-                              >
-                                <i className="fas fa-user-check"></i>
-                              </a>
-                              <a
-                                className="btn-danger btn"
-                                href="#"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title="Ban"
-                              >
-                                <i className="fas fa-ban"></i>
-                              </a>
+                              <div className="btn-group">
+                                <a
+                                  type="button"
+                                  className="text-dark dropdown-toggle"
+                                  data-toggle="dropdown"
+                                >
+                                  <i className="fas fa-ellipsis-v"></i>
+                                </a>
+                                <ul className="dropdown-menu">
+                                  <li>
+                                    <a
+                                      className="dropdown-item"
+                                      href="./investordetails"
+                                    >
+                                      Investor Name Details
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a
+                                      className="dropdown-item"
+                                      href="./verification"
+                                    >
+                                      Verify Investor Name
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a className="dropdown-item" href="#">
+                                      Ban Investor Name
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a className="dropdown-item" href="#">
+                                      Delete Investor Name
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
                             </td>
                           </tr>
                           <tr>
@@ -224,33 +254,43 @@ const Investors = () => {
                               <span className="badge bg-danger">Banned</span>
                             </td>
                             <td>
-                              <a
-                                className="btn-default btn mr-2"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title="Investor Details"
-                                href="/admin/investordetails"
-                              >
-                                <i className="fas fa-eye"></i>
-                              </a>
-                              <a
-                                className="btn-danger btn mr-2"
-                                href="/admin/verification"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title="Verification"
-                              >
-                                <i className="fas fa-user-check"></i>
-                              </a>
-                              <a
-                                className="btn-danger btn"
-                                href="#"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title="Ban"
-                              >
-                                <i className="fas fa-ban"></i>
-                              </a>
+                              <div className="btn-group">
+                                <a
+                                  type="button"
+                                  className="text-dark dropdown-toggle"
+                                  data-toggle="dropdown"
+                                >
+                                  <i className="fas fa-ellipsis-v"></i>
+                                </a>
+                                <ul className="dropdown-menu">
+                                  <li>
+                                    <a
+                                      className="dropdown-item"
+                                      href="./investordetails"
+                                    >
+                                      Investor Name Details
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a
+                                      className="dropdown-item"
+                                      href="./verification"
+                                    >
+                                      Verify Investor Name
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a className="dropdown-item" href="#">
+                                      Ban Investor Name
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a className="dropdown-item" href="#">
+                                      Delete Investor Name
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
                             </td>
                           </tr>
                         </tbody>
