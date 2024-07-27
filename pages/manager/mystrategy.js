@@ -7,7 +7,7 @@ import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
 import React, { useEffect } from "react";
 
-const Dashboard = () => {
+const MyStrategy = () => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "/dist/js/datatable.js";
@@ -18,8 +18,8 @@ const Dashboard = () => {
   return (
     <>
       <Head>
-        <title>Dashboard</title>
-        <meta name="description" content="Dashboard" />
+        <title>My Strategy</title>
+        <meta name="description" content="My Strategy" />
       </Head>
 
       <Headtag />
@@ -31,7 +31,7 @@ const Dashboard = () => {
           <div className="container-fluid">
             <div className="row mb-2">
               <div className="col-sm-6">
-                <h1 className="m-0">Dashboard</h1>
+                <h1 className="m-0">My Strategy</h1>
               </div>
             </div>
           </div>
@@ -48,31 +48,14 @@ const Dashboard = () => {
                         <thead>
                           <tr>
                             <th>STRATEGY</th>
-                            <th>
-                              TODAY P/L
-                              <br />
-                              <span className="small font-italic">
-                                Change %
-                              </span>
-                            </th>
-                            <th>
-                              ALL TIME
-                              <br />
-                              <span className="small font-italic">
-                                Change %
-                              </span>
-                            </th>
-                            <th>
-                              SIMULATIONS <br />
-                              <span className="small font-italic">Today</span>
-                            </th>
+                            <th>SARTED ON</th>
+                            <th>Trade</th>
+                            <th>Account Size</th>
+                            <th>Platform</th>
+                            <th>Subscription Charge</th>
                             <th>
                               SUBSCRIBERS <br />
-                              <span className="small font-italic">Today</span>
-                            </th>
-                            <th>
-                              AUM <br />
-                              <span className="small font-italic">Today</span>
+                              <span className="small font-italic">Total</span>
                             </th>
                             <th></th>
                           </tr>
@@ -80,40 +63,48 @@ const Dashboard = () => {
                         <tbody>
                           <tr>
                             <td>
-                              <a
-                                className="fas fa-external-link-alt mr-2"
-                                href="/manager/strategydetails"
-                              ></a>
+                              <a href="/manager/strategydetails">
+                                <i className="fas fa-external-link-alt mr-2"></i>
+                              </a>
                               <span className="h6 mb-0">Easiest</span>
                             </td>
-                            <td>$0</td>
-                            <td>$0</td>
+                            <td>22/11/2024</td>
+                            <td>Futures</td>
+                            <td>$10000</td>
+                            <td>TradeStation</td>
+                            <td>$199</td>
                             <td>0</td>
-                            <td>0</td>
-                            <td>$0</td>
                             <td>
                               <div className="btn-group">
-                                <button
+                                <a
                                   type="button"
-                                  className="btn btn-primary btn-sm dropdown-toggle"
+                                  className="text-dark dropdown-toggle"
                                   data-toggle="dropdown"
                                 >
-                                  <i className="fas fa-cog"></i>
-                                </button>
+                                  <i className="fas fa-ellipsis-v"></i>
+                                </a>
                                 <ul className="dropdown-menu">
                                   <li>
                                     <a className="dropdown-item" href="#">
-                                      Stop Sim
+                                      Broadcast
                                     </a>
                                   </li>
                                   <li>
                                     <a className="dropdown-item" href="#">
-                                      Change Sim Allocation
+                                      Hide From Strategy List
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a
+                                      className="dropdown-item"
+                                      href="./createstrategy"
+                                    >
+                                      Edit
                                     </a>
                                   </li>
                                   <li>
                                     <a className="dropdown-item" href="#">
-                                      Message to Leader
+                                      Delete
                                     </a>
                                   </li>
                                 </ul>
@@ -121,15 +112,6 @@ const Dashboard = () => {
                             </td>
                           </tr>
                         </tbody>
-                        <tfoot>
-                          <tr className="bg-light">
-                            <td colSpan="3"></td>
-                            <td>Total</td>
-                            <td className="text-danger">$150</td>
-                            <td className="text-success">$1000</td>
-                            <td></td>
-                          </tr>
-                        </tfoot>
                       </table>
                     </div>
                   </div>
@@ -147,4 +129,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default MyStrategy;

@@ -75,18 +75,27 @@ const Dashboard = () => {
                           <tr className="bg-light">
                             <th>STRATEGY</th>
                             <th>STARTED</th>
-                            <th colSpan="2">
-                              ALLOCATION <br /> (Starting | Latest)
+                            <th>
+                              ALLOCATION <br />
+                              <span className="small font-italic">
+                                (Starting)
+                              </span>
+                            </th>
+                            <th>
+                              ALLOCATION <br />
+                              <span className="small font-italic">
+                                (Latest)
+                              </span>
                             </th>
                             <th>
                               TODAY
-                              <br />{" "}
+                              <br />
                               <span className="small font-italic">
                                 Change %
                               </span>
                             </th>
                             <th>
-                              ALL TIME <br />{" "}
+                              ALL TIME <br />
                               <span className="small font-italic">
                                 Change %
                               </span>

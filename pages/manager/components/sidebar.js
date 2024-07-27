@@ -92,14 +92,32 @@ export default function Sidebar() {
             </li> */}
             <li className="nav-item">
               <a href="/manager/createstrategy" className="nav-link">
-                <i className="nav-icon fas fa-chart-line"></i>
+                <i className="nav-icon fas fa-plus-circle"></i>
                 <p>Create Strategy</p>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="/manager/mystrategy" className="nav-link">
+                <i className="nav-icon fas fa-chart-line"></i>
+                <p>My Strategy</p>
               </a>
             </li>
             <li className="nav-item">
               <a href="/manager/strategy" className="nav-link">
                 <i className="nav-icon fas fa-search-dollar"></i>
                 <p>Find Strategy</p>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="/manager/brokertransmit" className="nav-link">
+                <i className="nav-icon fas fa-handshake"></i>
+                <p>BrokerTransmit</p>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="/manager/platformtransmit" className="nav-link">
+                <i className="nav-icon fas fa-tv"></i>
+                <p>PlatformTransmit</p>
               </a>
             </li>
             <li className="nav-item">

@@ -156,7 +156,7 @@ const StrategyDetails = () => {
             </div>
             <div className="row mb-2">
               <div className="col-sm-12">
-                <div className="card card-primary card-outline mb-3">
+                <div className="card card-primary shadow-none mb-3">
                   <div className="card-body p-0">
                     <div className="table-responsive">
                       <table className=" table table-bordered mb-0">
@@ -288,7 +288,7 @@ const StrategyDetails = () => {
             <div className="row mb-2">
               <div className="col-sm-9">
                 <div className="mb-2">
-                  <div className="card">
+                  <div className="card shadow-none">
                     <div className="card-header">
                       <h3 className="card-title">CUMULATIVE P&L (ALL DATES)</h3>
                       <div className="card-tools">
@@ -317,7 +317,7 @@ const StrategyDetails = () => {
                 </div>
               </div>
               <div className="col-sm-3">
-                <div className="card card-primary card-outline">
+                <div className="card card-primary shadow-none">
                   <div className="card-body box-profile">
                     <div className="text-center">
                       <h5>SUMMARY STATISTICS</h5>
@@ -417,7 +417,7 @@ const StrategyDetails = () => {
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                   <li className="nav-item">
                     <a
-                      className="nav-link active"
+                      className="nav-link active shadow-none"
                       data-toggle="tab"
                       href="#trade"
                     >
@@ -426,7 +426,7 @@ const StrategyDetails = () => {
                   </li>
                   <li className="nav-item">
                     <a
-                      className="nav-link"
+                      className="nav-link shadow-none"
                       data-toggle="tab"
                       href="#statistics"
                     >
@@ -435,7 +435,7 @@ const StrategyDetails = () => {
                   </li>
                   <li className="nav-item">
                     <a
-                      className="nav-link"
+                      className="nav-link shadow-none"
                       data-toggle="tab"
                       href="#description"
                     >
@@ -445,7 +445,7 @@ const StrategyDetails = () => {
                 </ul>
                 <div className="tab-content" id="myTabContent">
                   <div className="tab-pane fade show active" id="trade">
-                    <div className="card">
+                    <div className="card shadow-none">
                       <div className="card-body">
                         <div className="table-responsive">
                           <table className="table table-bordered">
@@ -483,7 +483,7 @@ const StrategyDetails = () => {
                     </div>
                   </div>
                   <div className="tab-pane fade" id="statistics">
-                    <div className="card mb-2">
+                    <div className="card shadow-none mb-2">
                       <div className="card-body">
                         <ul className="list-group list-group-unbordered">
                           <li className="list-group-item">
@@ -545,7 +545,7 @@ const StrategyDetails = () => {
                     </div>
                   </div>
                   <div className="tab-pane fade" id="description">
-                    <div className="card">
+                    <div className="card shadow-none">
                       <div className="card-body">
                         <p>
                           System ares trades MNQ Future long and short. Risk per

@@ -123,7 +123,7 @@ const Trade = () => {
                           <small>Avbl 0.000000000 USDT</small>
                         </div>
                         <div class="input-group mb-2">
-                          <div class="input-group-prepend">
+                          <div class="input-group-prepend input-group-prepend-trade">
                             <span class="input-group-text input-group-text-trade">
                               Price
                             </span>
@@ -133,14 +133,14 @@ const Trade = () => {
                             class="form-control"
                             placeholder="0"
                           />
-                          <div class="input-group-append">
+                          <div class="input-group-append input-group-append-trade">
                             <span class="input-group-text input-group-text-trade">
                               USDT
                             </span>
                           </div>
                         </div>
                         <div class="input-group mb-2">
-                          <div class="input-group-prepend">
+                          <div class="input-group-prepend input-group-prepend-trade">
                             <span class="input-group-text input-group-text-trade">
                               Amount
                             </span>
@@ -150,14 +150,14 @@ const Trade = () => {
                             class="form-control"
                             placeholder="0"
                           />
-                          <div class="input-group-append">
+                          <div class="input-group-append input-group-append-trade">
                             <span class="input-group-text input-group-text-trade">
                               FDUSD
                             </span>
                           </div>
                         </div>
                         <div class="input-group mb-2">
-                          <div class="input-group-prepend">
+                          <div class="input-group-prepend input-group-prepend-trade">
                             <span class="input-group-text input-group-text-trade">
                               Total
                             </span>
@@ -167,7 +167,7 @@ const Trade = () => {
                             class="form-control"
                             placeholder="0"
                           />
-                          <div class="input-group-append">
+                          <div class="input-group-append input-group-append-trade">
                             <span class="input-group-text input-group-text-trade">
                               USDT
                             </span>
@@ -193,7 +193,7 @@ const Trade = () => {
                           <small>Avbl 0.98652314 FDUSD</small>
                         </div>
                         <div class="input-group mb-2">
-                          <div class="input-group-prepend">
+                          <div class="input-group-prepend input-group-prepend-trade">
                             <span class="input-group-text input-group-text-trade">
                               Price
                             </span>
@@ -203,14 +203,14 @@ const Trade = () => {
                             class="form-control"
                             placeholder="0"
                           />
-                          <div class="input-group-append">
+                          <div class="input-group-append input-group-append-trade">
                             <span class="input-group-text input-group-text-trade">
                               USDT
                             </span>
                           </div>
                         </div>
                         <div class="input-group mb-2">
-                          <div class="input-group-prepend">
+                          <div class="input-group-prepend input-group-prepend-trade">
                             <span class="input-group-text input-group-text-trade">
                               Amount
                             </span>
@@ -220,14 +220,14 @@ const Trade = () => {
                             class="form-control"
                             placeholder="0"
                           />
-                          <div class="input-group-append">
+                          <div class="input-group-append input-group-append-trade">
                             <span class="input-group-text input-group-text-trade">
                               FDUSD
                             </span>
                           </div>
                         </div>
                         <div class="input-group mb-2">
-                          <div class="input-group-prepend">
+                          <div class="input-group-prepend input-group-prepend-trade">
                             <span class="input-group-text input-group-text-trade">
                               Total
                             </span>
@@ -237,7 +237,7 @@ const Trade = () => {
                             class="form-control"
                             placeholder="0"
                           />
-                          <div class="input-group-append">
+                          <div class="input-group-append input-group-append-trade">
                             <span class="input-group-text input-group-text-trade">
                               USDT
                             </span>
@@ -274,7 +274,7 @@ const Trade = () => {
                           <small>Avbl 0.000000000 USDT</small>
                         </div>
                         <div class="input-group mb-2">
-                          <div class="input-group-prepend">
+                          <div class="input-group-prepend input-group-prepend-trade">
                             <span class="input-group-text input-group-text-trade">
                               Price
                             </span>
@@ -284,14 +284,14 @@ const Trade = () => {
                             class="form-control"
                             placeholder="0"
                           />
-                          <div class="input-group-append">
+                          <div class="input-group-append input-group-append-trade">
                             <span class="input-group-text input-group-text-trade">
                               USDT
                             </span>
                           </div>
                         </div>
                         <div class="input-group mb-2">
-                          <div class="input-group-prepend">
+                          <div class="input-group-prepend input-group-prepend-trade">
                             <span class="input-group-text input-group-text-trade">
                               Amount
                             </span>
@@ -301,14 +301,14 @@ const Trade = () => {
                             class="form-control"
                             placeholder="0"
                           />
-                          <div class="input-group-append">
+                          <div class="input-group-append input-group-append-trade">
                             <span class="input-group-text input-group-text-trade">
                               FDUSD
                             </span>
                           </div>
                         </div>
                         <div class="input-group mb-2">
-                          <div class="input-group-prepend">
+                          <div class="input-group-prepend input-group-prepend-trade">
                             <span class="input-group-text input-group-text-trade">
                               Total
                             </span>
@@ -318,7 +318,7 @@ const Trade = () => {
                             class="form-control"
                             placeholder="0"
                           />
-                          <div class="input-group-append">
+                          <div class="input-group-append input-group-append-trade">
                             <span class="input-group-text input-group-text-trade">
                               USDT
                             </span>
@@ -344,7 +344,7 @@ const Trade = () => {
                           <small>Avbl 0.98652314 FDUSD</small>
                         </div>
                         <div class="input-group mb-2">
-                          <div class="input-group-prepend">
+                          <div class="input-group-prepend input-group-prepend-trade">
                             <span class="input-group-text input-group-text-trade">
                               Price
                             </span>
@@ -354,14 +354,14 @@ const Trade = () => {
                             class="form-control"
                             placeholder="0"
                           />
-                          <div class="input-group-append">
+                          <div class="input-group-append input-group-append-trade">
                             <span class="input-group-text input-group-text-trade">
                               USDT
                             </span>
                           </div>
                         </div>
                         <div class="input-group mb-2">
-                          <div class="input-group-prepend">
+                          <div class="input-group-prepend input-group-prepend-trade">
                             <span class="input-group-text input-group-text-trade">
                               Amount
                             </span>
@@ -371,14 +371,14 @@ const Trade = () => {
                             class="form-control"
                             placeholder="0"
                           />
-                          <div class="input-group-append">
+                          <div class="input-group-append input-group-append-trade">
                             <span class="input-group-text input-group-text-trade">
                               FDUSD
                             </span>
                           </div>
                         </div>
                         <div class="input-group mb-2">
-                          <div class="input-group-prepend">
+                          <div class="input-group-prepend input-group-prepend-trade">
                             <span class="input-group-text input-group-text-trade">
                               Total
                             </span>
@@ -388,7 +388,7 @@ const Trade = () => {
                             class="form-control"
                             placeholder="0"
                           />
-                          <div class="input-group-append">
+                          <div class="input-group-append input-group-append-trade">
                             <span class="input-group-text input-group-text-trade">
                               USDT
                             </span>

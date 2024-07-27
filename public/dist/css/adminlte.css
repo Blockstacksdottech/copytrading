@@ -2710,7 +2710,7 @@ textarea.form-control.is-invalid {
   -ms-user-select: none;
   user-select: none;
   background-color: transparent;
-  padding: 10px 20px;
+  padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
   box-shadow: 0px 35px 46px 0px rgba(172, 189, 199, 0.28) !important;
@@ -2756,6 +2756,7 @@ fieldset:disabled a.btn {
 .btn-primary {
   color: #fff;
   background: #0909ff linear-gradient(180deg, #6b6bff, #0909ff) repeat-x !important;
+  padding: 10px 20px !important;
 }
 
 .btn-primary:hover {
@@ -3512,7 +3513,7 @@ input[type="button"].btn-block {
   white-space: nowrap;
 }
 
-.dropdown-toggle::after {
+/* .dropdown-toggle::after {
   display: inline-block;
   margin-left: 0.255em;
   vertical-align: 0.255em;
@@ -3521,7 +3522,7 @@ input[type="button"].btn-block {
   border-right: 0.3em solid transparent;
   border-bottom: 0;
   border-left: 0.3em solid transparent;
-}
+} */
 
 .dropdown-toggle:empty::after {
   margin-left: 0;
@@ -3991,11 +3992,12 @@ input[type="button"].btn-block {
   border-bottom-right-radius: 0;
 }
 
-.input-group>.input-group-prepend, .input-group-append {
-    flex: 0 0 24% !important;
+.input-group > .input-group-prepend-trade,
+.input-group-append-trade {
+  flex: 0 0 24% !important;
 }
 .input-group .input-group-text-trade {
-    width: 100%;
+  width: 100%;
 }
 
 .input-group-prepend,
@@ -4694,7 +4696,8 @@ input[type="button"].btn-block {
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #495057;
+  color: #495057 !important;
+  font-weight: 700 !important;
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
 }
@@ -12667,7 +12670,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 }
 
 .main-footer {
-  background: #f8f8ff;
+  background: #fff;
   border-top: 1px solid #d8d8d8;
   color: #869099;
   padding: 1rem;
@@ -13840,12 +13843,12 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 
 .user-panel img {
   height: auto;
-  width: 2.1rem;
+  width: 3.2rem;
 }
 
 .user-panel .info {
   display: inline-block;
-  padding: 0px 5px 5px 10px;
+  padding: 5px 5px 5px 10px;
 }
 
 .investor-badge {
