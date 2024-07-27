@@ -59,7 +59,7 @@ const Dashboard = () => {
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary">
+                <div className="card card-primary shadow-none">
                   <div className="card-body">
                     {/* Message to show if there no any simulation */}
                     <div className="text-center py-5">
@@ -70,9 +70,9 @@ const Dashboard = () => {
                     </div>
 
                     <div className="table-responsive p-0">
-                      <table className="table table-bordered table-hover table-sm datatable">
+                      <table className="table table-bordered table-sm datatable">
                         <thead>
-                          <tr className="bg-light">
+                          <tr>
                             <th>STRATEGY</th>
                             <th>STARTED</th>
                             <th>
@@ -133,7 +133,7 @@ const Dashboard = () => {
                               <div className="btn-group">
                                 <button
                                   type="button"
-                                  className="btn btn-default dropdown-toggle"
+                                  className="btn btn-secondary dropdown-toggle"
                                   data-toggle="dropdown"
                                 >
                                   <i className="fas fa-cog"></i>
@@ -161,7 +161,9 @@ const Dashboard = () => {
                         </tbody>
                         <tfoot>
                           <tr className="bg-light">
-                            <td colSpan="3"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td>Total</td>
                             <td className="text-danger">$150</td>
                             <td className="text-success">$1000</td>

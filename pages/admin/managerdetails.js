@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import Head from "next/head";
 import Navbar from "../components/panel/navbar";
 import Sidebar from "./components/sidebar";
@@ -6,6 +5,7 @@ import Feed from "./components/feed";
 import Footer from "../components/panel/footer";
 import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
+import React, { useEffect } from "react";
 import {
   BarChart,
   Bar,
@@ -201,7 +201,7 @@ const dataBrushBarChart = [
   { name: "40", uv: -50, pv: 186 },
 ];
 
-const Investordetails = () => {
+const ManagerProfile = () => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "/dist/js/datatable.js";
@@ -211,8 +211,8 @@ const Investordetails = () => {
   return (
     <>
       <Head>
-        <title>Investors Details</title>
-        <meta name="description" content="Investors Details" />
+        <title>Manager Profile</title>
+        <meta name="description" content="Manager Profile" />
       </Head>
 
       <Headtag />
@@ -224,7 +224,7 @@ const Investordetails = () => {
           <div className="container-fluid">
             <div className="row mb-2">
               <div className="col-sm-12">
-                <h1 className="m-0">Investor Details</h1>
+                <h1 className="m-0">Manager Profile</h1>
               </div>
             </div>
           </div>
@@ -306,26 +306,32 @@ const Investordetails = () => {
               <div className="col-lg-12 mx-auto">
                 <div className="card shadow-none">
                   <div className="card-header">
-                    <h5>Brokerage Account</h5>
+                    <h5>Broker Account</h5>
                   </div>
                   <div className="card-body">
                     <div className="table-responsive p-0">
                       <table className="table table-bordered table-hover table-sm">
                         <thead>
-                          <tr className="bg-light">
+                          <tr>
                             <th>Broker</th>
-                            <th>Trade Type</th>
-                            <th>Unique Account Identifier</th>
                             <th>Status</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <td>Stonex</td>
-                            <td>Futures</td>
-                            <td>AsD45678</td>
                             <td>
-                              <span className="badge bg-success">Active</span>
+                              <span className="badge bg-success">
+                                Connected
+                              </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Interactive Brokers</td>
+                            <td>
+                              <span className="badge bg-danger">
+                                Disconnected
+                              </span>
                             </td>
                           </tr>
                         </tbody>
@@ -340,17 +346,77 @@ const Investordetails = () => {
               <div className="col-lg-12 mx-auto">
                 <div className="card shadow-none">
                   <div className="card-header">
-                    <h5>Subscribed Strategy</h5>
+                    <h5>Platform Account</h5>
                   </div>
                   <div className="card-body">
                     <div className="table-responsive p-0">
-                      <table className="table table-bordered table-hover table-sm datatable">
+                      <table className="table table-bordered table-sm">
+                        <thead>
+                          <tr>
+                            <th>Platform</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>NINJATRADER</td>
+                            <td>
+                              <span className="badge bg-success">
+                                Connected
+                              </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>TradeStation</td>
+                            <td>
+                              <span className="badge bg-danger">
+                                Disconnected
+                              </span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-lg-12 mx-auto">
+                <div className="card shadow-none">
+                  <div className="card-header">
+                    <h5>Strategy</h5>
+                  </div>
+                  <div className="card-body">
+                    <div className="table-responsive p-0">
+                      <table className="table table-bordered table-sm datatable">
                         <thead>
                           <tr>
                             <th>STRATEGY</th>
-                            <th>Date | Time</th>
-                            <th>Manager</th>
-                            <th></th>
+                            <th>Trades</th>
+                            <th>Sub Fee</th>
+                            <th>
+                              <select className="form-control form-control-sm">
+                                <option>All Time</option>
+                                <option>1 Month</option>
+                                <option>3 Months</option>
+                                <option>6 Months</option>
+                              </select>
+                            </th>
+                            <th>
+                              <select className="form-control form-control-sm">
+                                <option>Strategy Age</option>
+                                <option>Avg Leverage</option>
+                                <option>Heart Attack Index</option>
+                                <option>W:L Ratio</option>
+                                <option>Sharpe Ratio</option>
+                                <option>% Profitable</option>
+                                <option>Suggested Capital</option>
+                              </select>
+                            </th>
+                            <th>Max DD</th>
+                            <th>Return</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -362,36 +428,21 @@ const Investordetails = () => {
                               ></a>
                               <span className="h6 mb-0">Easiest</span>
                             </td>
-                            <td>09-06-2024 | 01:58 AM</td>
-                            <td>CopyTrading</td>
                             <td>
-                              <a
-                                type="button"
-                                className="btn btn-default"
-                                href="/admin/strategydetails"
-                              >
-                                <i className="fas fa-external-link-alt"></i>
-                              </a>
+                              <span className="badge badge-light">Futures</span>
                             </td>
-                          </tr>
-                          <tr>
+                            <td>$20/month</td>
                             <td>
-                              <a
-                                className="fas fa-external-link-alt mr-2"
-                                href="/admin/strategydetails"
-                              ></a>
-                              <span className="h6 mb-0">Easiest</span>
+                              <h6 className="text-success mb-0">+110.5%</h6>
+                              $34,600
                             </td>
-                            <td>09-06-2024 | 01:58 AM</td>
-                            <td>CopyTrading</td>
                             <td>
-                              <a
-                                type="button"
-                                className="btn btn-default"
-                                href="/admin/strategydetails"
-                              >
-                                <i className="fas fa-external-link-alt"></i>
-                              </a>
+                              <h6 className="mb-0">1 Year</h6>
+                            </td>
+                            <td>16.65%</td>
+                            <td>
+                              <h6 className="text-success mb-0">+110.5%</h6>
+                              Annual Return since March 31, 2023
                             </td>
                           </tr>
                         </tbody>
@@ -523,4 +574,4 @@ const Investordetails = () => {
   );
 };
 
-export default Investordetails;
+export default ManagerProfile;

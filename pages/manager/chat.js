@@ -10,7 +10,7 @@ const Chat = () => {
   return (
     <>
       <Head>
-        <title>Chat | Investor</title>
+        <title>Chat | Manager</title>
         <meta name="description" content="Chat" />
       </Head>
 
@@ -25,8 +25,8 @@ const Chat = () => {
               <div className="col-sm-12">
                 <a
                   type="button"
-                  className="btn btn-primary btn-sm"
-                  href="/investor/support"
+                  className="btn btn-secondary btn-sm"
+                  href="/manager/support"
                 >
                   Back to Support
                 </a>
@@ -38,7 +38,7 @@ const Chat = () => {
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary card-outline direct-chat direct-chat-primary">
+                <div className="card shadow-none direct-chat direct-chat-primary">
                   <div className="card-header">
                     <h3 className="card-title">
                       Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
@@ -50,7 +50,7 @@ const Chat = () => {
                       <div className="direct-chat-msg">
                         <div className="direct-chat-infos clearfix">
                           <span className="direct-chat-name float-left">
-                            Investor
+                            Manager
                           </span>
                           <span className="direct-chat-timestamp float-right">
                             23 Jan 2:00 pm
@@ -97,7 +97,7 @@ const Chat = () => {
                           type="text"
                           name="message"
                           placeholder="Type Message ..."
-                          className="form-control"
+                          className="form-control form-control-lg"
                         />
                         <span className="input-group-append">
                           <button type="submit" className="btn btn-primary">

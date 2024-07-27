@@ -45,7 +45,7 @@ const Watchlist = () => {
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary card-outline">
+                <div className="card shadow-none">
                   <div className="card-body">
                     <div className="table-responsive p-0">
                       <table className="table table-bordered table-hover table-sm datatable">

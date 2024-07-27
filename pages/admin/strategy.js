@@ -49,13 +49,14 @@ const Strategy = () => {
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary card-outline">
+                <div className="card shadow-none">
                   <div className="card-body">
                     <div className="table-responsive p-0">
-                      <table className="table table-bordered table-hover table-sm datatable">
+                      <table className="table table-bordered table-sm datatable">
                         <thead>
                           <tr>
                             <th>Strategy Name</th>
+                            <th>Manager</th>
                             <th>Trades</th>
                             <th>Sub Fee</th>
                             <th>
@@ -88,70 +89,19 @@ const Strategy = () => {
                               <span className="badge badge-warning">
                                 Featured
                               </span>
-                              <h6 className="mb-0">Easiest</h6>
-                              <p className="mb-0">
-                                Manager: PatienceToInvest_com
-                              </p>
+
+                              <h6 className="mb-0">
+                                <a
+                                  className="fas fa-external-link-alt mr-1"
+                                  href="/admin/strategydetails"
+                                ></a>
+                                Easiest
+                              </h6>
                             </td>
                             <td>
-                              <span className="badge badge-light">Futures</span>
-                            </td>
-                            <td>$20/month</td>
-                            <td>
-                              <h6 className="text-success mb-0">+110.5%</h6>
-                              $34,600
-                            </td>
-                            <td>
-                              <h6 className="mb-0">1 Year</h6>
-                            </td>
-                            <td>16.65%</td>
-                            <td>
-                              <h6 className="text-success mb-0">+110.5%</h6>
-                              Annual Return since March 31, 2023
-                            </td>
-                            <td>
-                              <a
-                                className="fas fa-external-link-alt"
-                                href="/admin/strategydetails"
-                              ></a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <h6 className="mb-0">Easiest</h6>
-                              <p className="mb-0">
-                                Manager: PatienceToInvest_com
-                              </p>
-                            </td>
-                            <td>
-                              <span className="badge badge-light">Futures</span>
-                            </td>
-                            <td>$20/month</td>
-                            <td>
-                              <h6 className="text-success mb-0">+110.5%</h6>
-                              $34,600
-                            </td>
-                            <td>
-                              <h6 className="mb-0">1 Year</h6>
-                            </td>
-                            <td>16.65%</td>
-                            <td>
-                              <h6 className="text-success mb-0">+110.5%</h6>
-                              Annual Return since March 31, 2023
-                            </td>
-                            <td>
-                              <a
-                                className="fas fa-external-link-alt"
-                                href="/admin/strategydetails"
-                              ></a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <h6 className="mb-0">Easiest</h6>
-                              <p className="mb-0">
-                                Manager: PatienceToInvest_com
-                              </p>
+                              <a href="./managerprofile">
+                                PatienceToInvest_com
+                              </a>
                             </td>
                             <td>
                               <span className="badge badge-light">Futures</span>

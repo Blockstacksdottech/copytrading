@@ -59,7 +59,7 @@ export default function Sidebar() {
             <img
               src="/dist/img/avatar4.png"
               className="img-circle elevation-1"
-              alt="User Image"
+              alt="Admin Photo"
             />
           </div>
           <div className="info">
@@ -78,8 +78,14 @@ export default function Sidebar() {
           >
             <li className="nav-item">
               <a href="/admin/investors" className="nav-link">
-                <i className="nav-icon fas fa-tachometer-alt"></i>
+                <i className="nav-icon fas fa-user"></i>
                 <p>Investors</p>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="/admin/managers" className="nav-link">
+                <i className="nav-icon fas fa-user-tie"></i>
+                <p>Managers</p>
               </a>
             </li>
             <li className="nav-item">

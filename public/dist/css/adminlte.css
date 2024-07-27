@@ -3538,7 +3538,7 @@ input[type="button"].btn-block {
   min-width: 10rem;
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
-  font-size: 1rem;
+  font-size: 13px;
   color: #212529;
   text-align: left;
   list-style: none;
@@ -13834,6 +13834,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 .user-panel .info {
   overflow: hidden;
   white-space: nowrap;
+  text-transform: capitalize;
 }
 
 .user-panel .image {

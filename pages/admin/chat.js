@@ -39,7 +39,7 @@ const Chat = () => {
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary card-outline direct-chat direct-chat-primary">
+                <div className="card shadow-none direct-chat direct-chat-primary">
                   <div className="card-header">
                     <h5 className="card-title mb-0">
                       Lorem ipsum dolor sit amet, consectetuer adipiscing elit.

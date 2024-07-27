@@ -11,7 +11,7 @@ const Verification = () => {
   return (
     <>
       <Head>
-        <title>Investor Verification</title>
+        <title>Verification</title>
         <meta name="description" content="Investors Verification" />
       </Head>
 
@@ -24,7 +24,7 @@ const Verification = () => {
           <div className="container-fluid">
             <div className="row mb-2">
               <div className="col-sm-12">
-                <h1 className="m-0">Investors Verification</h1>
+                <h1 className="m-0">Verification</h1>
               </div>
             </div>
           </div>
@@ -34,13 +34,25 @@ const Verification = () => {
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary card-outline">
+                <div className="card shadow-none">
                   <div className="card-header">
-                    <h5 className="mb-0">Profile</h5>
+                    <h3 className="card-title">Profile</h3>
                   </div>
                   <div className="card-body">
                     <div className="row">
-                      <div className="col-lg-4 m-auto">
+                      <div className="col-lg-2">
+                        <div className="card shadow-none text-center">
+                          <img
+                            className="img-fluid"
+                            src="../dist/img/avatar5.png"
+                            alt="Profile Photo"
+                          />
+                          <div className="card-footer bg-light">
+                            <h5>Investor</h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-lg-3 m-auto">
                         <div className="form-group">
                           <label>Name:</label>
                           <span className="ml-2">Testing111 asdf</span>
@@ -58,7 +70,7 @@ const Verification = () => {
                           <span className="ml-2">xyz</span>
                         </div>
                       </div>
-                      <div className="col-lg-4 m-auto">
+                      <div className="col-lg-3 m-auto">
                         <div className="form-group">
                           <label>Email:</label>
                           <span className="ml-2">test@email.com</span>
@@ -77,11 +89,17 @@ const Verification = () => {
                         </div>
                       </div>
                       <div className="col-lg-4 m-auto">
-                        <img
-                          src="/dist/img/avatar5.png"
-                          alt="Testing111"
-                          className="img-circle img-fluid"
-                        />
+                        <div className="info-box">
+                          <span className="info-box-icon bg-primary">
+                            <h1 className="mb-0">S</h1>
+                          </span>
+                          <div className="info-box-content">
+                            <span className="info-box-text">
+                              Subscription Plan
+                            </span>
+                            <span className="info-box-number">$499/month</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -90,7 +108,7 @@ const Verification = () => {
             </div>
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary card-outline">
+                <div className="card shadow-none">
                   <div className="card-header">
                     <h5 className="mb-0">Documentation</h5>
                   </div>
@@ -146,7 +164,7 @@ const Verification = () => {
             </div>
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary card-outline">
+                <div className="card shadow-none">
                   <div className="card-header">
                     <h5 className="mb-0">Verification Status</h5>
                   </div>

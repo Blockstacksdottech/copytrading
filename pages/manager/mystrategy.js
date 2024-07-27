@@ -41,17 +41,18 @@ const MyStrategy = () => {
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary">
+                <div className="card shadow-none">
                   <div className="card-body">
                     <div className="table-responsive p-0">
                       <table className="table table-bordered table-sm datatable">
                         <thead>
                           <tr>
-                            <th>STRATEGY</th>
-                            <th>SARTED ON</th>
+                            <th>Strategy</th>
+                            <th>Started On</th>
                             <th>Trade</th>
                             <th>Account Size</th>
                             <th>Platform</th>
+                            <th>Broker</th>
                             <th>Subscription Charge</th>
                             <th>
                               SUBSCRIBERS <br />
@@ -72,6 +73,7 @@ const MyStrategy = () => {
                             <td>Futures</td>
                             <td>$10000</td>
                             <td>TradeStation</td>
+                            <td>Interactive Brokers</td>
                             <td>$199</td>
                             <td>0</td>
                             <td>
@@ -85,13 +87,30 @@ const MyStrategy = () => {
                                 </a>
                                 <ul className="dropdown-menu">
                                   <li>
+                                    <a
+                                      className="dropdown-item"
+                                      href="./subscribers"
+                                    >
+                                      <i class="fas fa-user-tag mr-1"></i>
+                                      Subscribers
+                                    </a>
+                                  </li>
+                                  <li>
                                     <a className="dropdown-item" href="#">
+                                      <i class="fas fa-bullhorn mr-1"></i>
                                       Broadcast
                                     </a>
                                   </li>
                                   <li>
                                     <a className="dropdown-item" href="#">
-                                      Hide From Strategy List
+                                      <i class="fas fa-stream mr-1"></i>
+                                      Featured
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a className="dropdown-item" href="#">
+                                      <i class="fas fa-eye-slash mr-1"></i>Hide
+                                      From Strategy List
                                     </a>
                                   </li>
                                   <li>
@@ -99,11 +118,91 @@ const MyStrategy = () => {
                                       className="dropdown-item"
                                       href="./createstrategy"
                                     >
+                                      <i class="fas fa-edit mr-1"></i>
                                       Edit
                                     </a>
                                   </li>
                                   <li>
+                                    <a
+                                      class="dropdown-item text-danger"
+                                      href="#"
+                                    >
+                                      <i class="fas fa-trash-alt mr-1"></i>
+                                      Delete
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="badge badge-warning">Featured</span>
+                              <br />
+                              <a href="/manager/strategydetails">
+                                <i className="fas fa-external-link-alt mr-2"></i>
+                              </a>
+                              <span className="h6 mb-0">JingleTrade</span>
+                            </td>
+                            <td>22/11/2024</td>
+                            <td>Futures</td>
+                            <td>$10000</td>
+                            <td>TradeStation</td>
+                            <td>Interactive Brokers</td>
+                            <td>$199</td>
+                            <td>0</td>
+                            <td>
+                              <div className="btn-group">
+                                <a
+                                  type="button"
+                                  className="text-dark dropdown-toggle"
+                                  data-toggle="dropdown"
+                                >
+                                  <i className="fas fa-ellipsis-v"></i>
+                                </a>
+                                <ul className="dropdown-menu">
+                                  <li>
+                                    <a
+                                      className="dropdown-item"
+                                      href="./subscribers"
+                                    >
+                                      <i class="fas fa-user-tag mr-1"></i>
+                                      Subscribers
+                                    </a>
+                                  </li>
+                                  <li>
                                     <a className="dropdown-item" href="#">
+                                      <i class="fas fa-bullhorn mr-1"></i>
+                                      Broadcast
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a className="dropdown-item" href="#">
+                                      <i class="fas fa-stream mr-1"></i>
+                                      Featured
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a className="dropdown-item" href="#">
+                                      <i class="fas fa-eye-slash mr-1"></i>Hide
+                                      From Strategy List
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a
+                                      className="dropdown-item"
+                                      href="./createstrategy"
+                                    >
+                                      <i class="fas fa-edit mr-1"></i>
+                                      Edit
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a
+                                      class="dropdown-item text-danger"
+                                      href="#"
+                                    >
+                                      <i class="fas fa-trash-alt mr-1"></i>
                                       Delete
                                     </a>
                                   </li>

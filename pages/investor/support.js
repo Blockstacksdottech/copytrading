@@ -44,7 +44,7 @@ const Support = () => {
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary card-outline">
+                <div className="card shadow-none">
                   <div className="card-body p-0">
                     <div className="table-responsive mailbox-messages">
                       <table className="table mb-0">

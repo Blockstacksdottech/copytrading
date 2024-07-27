@@ -7,7 +7,7 @@ import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
 import React, { useEffect } from "react";
 
-const Subscribedstrategy = () => {
+const Subscribers = () => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "/dist/js/datatable.js";
@@ -18,8 +18,8 @@ const Subscribedstrategy = () => {
   return (
     <>
       <Head>
-        <title>Subscribed Strategy</title>
-        <meta name="description" content="Subscribed Strategy" />
+        <title>Subscribers</title>
+        <meta name="description" content="Subscribers" />
       </Head>
 
       <Headtag />
@@ -30,8 +30,8 @@ const Subscribedstrategy = () => {
         <div className="content-header">
           <div className="container-fluid">
             <div className="row mb-2">
-              <div className="col-sm-12">
-                <h1 className="m-0 text-center">Subscribed Strategy</h1>
+              <div className="col-sm-6">
+                <h1 className="m-0">Subscribers</h1>
               </div>
             </div>
           </div>
@@ -40,34 +40,39 @@ const Subscribedstrategy = () => {
         <div className="content">
           <div className="container-fluid">
             <div className="row">
-              <div className="col-lg-12 mx-auto">
+              <div className="col-lg-12">
                 <div className="card shadow-none">
                   <div className="card-body">
                     <div className="table-responsive p-0">
-                      <table className="table table-bordered table-hover table-sm datatable">
+                      <table className="table table-bordered table-sm datatable">
                         <thead>
-                          <tr className="bg-light">
-                            <th>STRATEGY</th>
-                            <th>Date | Time</th>
-                            <th>Manager</th>
+                          <tr>
+                            <th>Name</th>
+                            <th>Strategy Subscribed</th>
+                            <th>Date</th>
+                            <th>Trade</th>
+                            <th>Account Size</th>
+                            <th>Subscription Paid</th>
                             <th></th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
+                            <td>Investor Name</td>
                             <td>
-                              <a
-                                className="fas fa-external-link-alt mr-2"
-                                href="/investor/strategydetails"
-                              ></a>
+                              <a href="/manager/strategydetails">
+                                <i className="fas fa-external-link-alt mr-2"></i>
+                              </a>
                               <span className="h6 mb-0">Easiest</span>
                             </td>
-                            <td>09-06-2024 | 01:58 AM</td>
-                            <td>CopyTrading</td>
+                            <td>22/11/2024</td>
+                            <td>Futures</td>
+                            <td>$10000</td>
+                            <td>$199</td>
                             <td>
-                              <button type="button" className="btn btn-danger">
-                                Unsubsribe
-                              </button>
+                              <a className="btn btn-sm btn-danger">
+                                <i class="fas fa-trash-alt"></i>
+                              </a>
                             </td>
                           </tr>
                         </tbody>
@@ -88,4 +93,4 @@ const Subscribedstrategy = () => {
   );
 };
 
-export default Subscribedstrategy;
+export default Subscribers;

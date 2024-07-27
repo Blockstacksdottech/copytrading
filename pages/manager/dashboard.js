@@ -41,7 +41,7 @@ const Dashboard = () => {
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary">
+                <div className="card card-primary shadow-none">
                   <div className="card-body">
                     <div className="table-responsive p-0">
                       <table className="table table-bordered table-sm datatable">
@@ -95,7 +95,7 @@ const Dashboard = () => {
                               <div className="btn-group">
                                 <button
                                   type="button"
-                                  className="btn btn-primary btn-sm dropdown-toggle"
+                                  className="btn btn-secondary dropdown-toggle"
                                   data-toggle="dropdown"
                                 >
                                   <i className="fas fa-cog"></i>
@@ -122,8 +122,10 @@ const Dashboard = () => {
                           </tr>
                         </tbody>
                         <tfoot>
-                          <tr className="bg-light">
-                            <td colSpan="3"></td>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td>Total</td>
                             <td className="text-danger">$150</td>
                             <td className="text-success">$1000</td>

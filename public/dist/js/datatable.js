@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function () {
   $("table.datatable").DataTable({
     order: [0, "desc"],
     retrieve: true,

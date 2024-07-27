@@ -33,7 +33,7 @@ const Accountmanagement = () => {
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary card-outline">
+                <div className="card shadow-none">
                   <div className="card-header">
                     <h5 className="mb-0">Profile</h5>
                   </div>
@@ -462,7 +462,7 @@ const Accountmanagement = () => {
             </div>
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary card-outline">
+                <div className="card shadow-none">
                   <div className="card-header">
                     <h5 className="mb-0">Upload Documents</h5>
                     <p className="mb-0">
@@ -523,7 +523,7 @@ const Accountmanagement = () => {
 
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary card-outline">
+                <div className="card shadow-none">
                   <div className="card-header">
                     <h5 className="mb-0">Brokerage Account</h5>
                   </div>
@@ -609,7 +609,7 @@ const Accountmanagement = () => {
 
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary card-outline">
+                <div className="card shadow-none">
                   <div className="card-header">
                     <h5 className="mb-0">Security</h5>
                   </div>

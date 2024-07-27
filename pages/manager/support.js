@@ -31,7 +31,7 @@ const Support = () => {
                   <a
                     type="button"
                     className="btn btn-primary btn-sm"
-                    href="/investor/submitrequest"
+                    href="/manager/submitrequest"
                   >
                     Submit a Request
                   </a>
@@ -44,14 +44,14 @@ const Support = () => {
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
-                <div className="card card-primary card-outline">
+                <div className="card shadow-none">
                   <div className="card-body p-0">
                     <div className="table-responsive mailbox-messages">
                       <table className="table mb-0">
                         <tbody>
                           <tr>
                             <td className="mailbox-name td-chat">
-                              <a href="/investor/chat">
+                              <a href="/manager/chat">
                                 <h6 className="text-dark">
                                   Lorem ipsum dolor sit amet, consectetuer
                                   adipiscing elit. Aenean commodo ligula eget

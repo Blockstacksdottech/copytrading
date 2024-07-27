@@ -7,7 +7,7 @@ import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
 import React, { useEffect } from "react";
 
-const Investors = () => {
+const Managers = () => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "/dist/js/datatable.js";
@@ -18,8 +18,8 @@ const Investors = () => {
   return (
     <>
       <Head>
-        <title>Investors</title>
-        <meta name="description" content="Investors" />
+        <title>Managers</title>
+        <meta name="description" content="Managers" />
       </Head>
 
       <Headtag />
@@ -31,7 +31,7 @@ const Investors = () => {
           <div className="container-fluid">
             <div className="row mb-2">
               <div className="col-sm-12">
-                <h1 className="m-0">Investors</h1>
+                <h1 className="m-0">Managers</h1>
               </div>
             </div>
           </div>
@@ -63,7 +63,7 @@ const Investors = () => {
                               <img
                                 src="/dist/img/avatar5.png"
                                 className="table-avatar"
-                                alt="Investor Image"
+                                alt="Manager Image"
                               />
                             </td>
                             <td>Testing1111</td>
@@ -89,7 +89,7 @@ const Investors = () => {
                                   <li>
                                     <a
                                       className="dropdown-item"
-                                      href="./investordetails"
+                                      href="./managerdetails"
                                     >
                                       <i className="fas fa-info-circle mr-1"></i>{" "}
                                       Details
@@ -128,7 +128,7 @@ const Investors = () => {
                               <img
                                 src="/dist/img/avatar5.png"
                                 className="table-avatar"
-                                alt="Investor Image"
+                                alt="Manager Image"
                               />
                             </td>
                             <td>Testing1111</td>
@@ -154,7 +154,7 @@ const Investors = () => {
                                   <li>
                                     <a
                                       className="dropdown-item"
-                                      href="./investordetails"
+                                      href="./managerdetails"
                                     >
                                       <i className="fas fa-info-circle mr-1"></i>{" "}
                                       Details
@@ -193,7 +193,7 @@ const Investors = () => {
                               <img
                                 src="/dist/img/avatar5.png"
                                 className="table-avatar"
-                                alt="Investor Image"
+                                alt="Manager Image"
                               />
                             </td>
                             <td>Testing1111</td>
@@ -219,7 +219,7 @@ const Investors = () => {
                                   <li>
                                     <a
                                       className="dropdown-item"
-                                      href="./investordetails"
+                                      href="./managerdetails"
                                     >
                                       <i className="fas fa-info-circle mr-1"></i>{" "}
                                       Details
@@ -258,7 +258,7 @@ const Investors = () => {
                               <img
                                 src="/dist/img/avatar5.png"
                                 className="table-avatar"
-                                alt="Investor Image"
+                                alt="Manager Image"
                               />
                             </td>
                             <td>Testing1111</td>
@@ -287,7 +287,7 @@ const Investors = () => {
                                   <li>
                                     <a
                                       className="dropdown-item"
-                                      href="./investordetails"
+                                      href="./managerdetails"
                                     >
                                       <i className="fas fa-info-circle mr-1"></i>{" "}
                                       Details
@@ -339,4 +339,4 @@ const Investors = () => {
   );
 };
 
-export default Investors;
+export default Managers;
