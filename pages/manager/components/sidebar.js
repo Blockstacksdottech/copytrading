@@ -103,12 +103,6 @@ export default function Sidebar() {
               </a>
             </li>
             <li className="nav-item">
-              <a href="/manager/strategy" className="nav-link">
-                <i className="nav-icon fas fa-search-dollar"></i>
-                <p>Find Strategy</p>
-              </a>
-            </li>
-            <li className="nav-item">
               <a href="/manager/brokertransmit" className="nav-link">
                 <i className="nav-icon fas fa-handshake"></i>
                 <p>BrokerTransmit</p>

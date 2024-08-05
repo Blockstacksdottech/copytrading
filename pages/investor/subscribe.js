@@ -14,7 +14,7 @@ const Subscribe = () => {
         <meta name="description" content="Subscribe" />
       </Head>
 
-      <headtag />
+      <Headtag />
       <Navbar />
       <Sidebar />
 
@@ -125,7 +125,7 @@ const Subscribe = () => {
 
       <Feed />
       <Footer />
-      <scripttag />
+      <Scripttag />
     </>
   );
 };

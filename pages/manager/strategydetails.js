@@ -67,7 +67,7 @@ const StrategyDetails = () => {
               </div>
             </div>
             <div className="row mb-2">
-              <div className="col-sm-5 mb-2">
+              <div className="col-sm-6 mb-2">
                 <p className="small mb-0">(142728137)</p>
                 <h1 className="m-0">Easiest</h1>
                 <p className="mb-0">
@@ -78,20 +78,7 @@ const StrategyDetails = () => {
                 </p>
                 <p>Started: 11/2022 | Futures | Last trade: 8 days ago</p>
               </div>
-              <div className="col-sm-3 mb-2">
-                <a className="btn btn-success btn-block btn-sm">
-                  <span className="h6">Simulate This</span> <br /> Track at
-                  simulated broker
-                </a>
-                <a
-                  className="btn btn-warning btn-block btn-sm"
-                  href="/investor/subscribe"
-                >
-                  <span className="h6">Subscribe</span> <br /> Full access for
-                  $499/Month
-                </a>
-              </div>
-              <div className="col-sm-4 mb-2 m-auto">
+              <div className="col-sm-6 mb-2 float-right">
                 <p className="text-center">
                   Trading Category: <span className="h6">Futures</span>
                 </p>

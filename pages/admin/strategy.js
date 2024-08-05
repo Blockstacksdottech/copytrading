@@ -99,7 +99,7 @@ const Strategy = () => {
                               </h6>
                             </td>
                             <td>
-                              <a href="./managerprofile">
+                              <a href="./managerdetails">
                                 PatienceToInvest_com
                               </a>
                             </td>

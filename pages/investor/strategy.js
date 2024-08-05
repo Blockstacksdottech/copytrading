@@ -52,7 +52,7 @@ const Strategy = () => {
                 <div className="card shadow-none">
                   <div className="card-body">
                     <div className="table-responsive p-0">
-                      <table className="table table-bordered table-hover table-sm datatable">
+                      <table className="table table-bordered table-sm datatable">
                         <thead>
                           <tr>
                             <th>Strategy Name</th>

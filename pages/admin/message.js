@@ -24,7 +24,7 @@ const Message = () => {
           <div className="container-fluid">
             <div className="row">
               <div className="col-sm-6">
-                <h1 className="m-0">Messages from Investor</h1>
+                <h1 className="m-0">Messages</h1>
               </div>
             </div>
           </div>
@@ -36,11 +36,16 @@ const Message = () => {
                 <div className="card shadow-none">
                   <div className="card-body p-0">
                     <div className="table-responsive mailbox-messages">
-                      <table className="table table-hover mb-0">
+                      <table className="table mb-0">
                         <tbody>
                           <tr>
                             <td className="mailbox-name td-chat">
                               <a href="/admin/chat">
+                                <p>
+                                  <span className="border border-dark rounded p-1">
+                                    INVESTOR
+                                  </span>
+                                </p>
                                 <h6 className="text-dark">
                                   Lorem ipsum dolor sit amet, consectetuer
                                   adipiscing elit. Aenean commodo ligula eget
@@ -64,6 +69,11 @@ const Message = () => {
                           <tr>
                             <td className="mailbox-name td-chat">
                               <a href="/admin/chat">
+                                <p>
+                                  <span className="border border-dark rounded p-1">
+                                    MANAGER
+                                  </span>
+                                </p>
                                 <h6 className="text-dark">
                                   Lorem ipsum dolor sit amet, consectetuer
                                   adipiscing elit. Aenean commodo ligula eget

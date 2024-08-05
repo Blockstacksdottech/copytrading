@@ -26,7 +26,7 @@ const Chat = () => {
               <div className="col-sm-12">
                 <a
                   type="button"
-                  className="btn btn-primary btn-sm"
+                  className="btn btn-secondary btn-sm"
                   href="/investor/support"
                 >
                   Back to Support
