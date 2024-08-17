@@ -1,7 +1,7 @@
 import axios from "axios";
 
-//export const base = "http://127.0.0.1:8000";
-export const base = "http://31.220.111.70";
+export const base = "http://127.0.0.1:8000";
+//export const base = "http://31.220.111.70";
 export const api = base + "/api/";
 //var fileDownload = require('js-file-download');
 function set_header(token = null) {
@@ -413,6 +413,35 @@ export async function postReq(url, body) {
   }
 }
 
+export async function patchReq(url, body) {
+  let access = sessionStorage.getItem("accessToken");
+  let headers = set_header(access);
+
+  let options = {
+    method: "PATCH",  // Change the method to PATCH
+    body: JSON.stringify(body),
+    headers: headers,
+    mode: "cors",
+  };
+
+  let preResp = await fetch(api + url, options);
+  if (preResp.ok) {
+    let resp = await preResp.json();
+    console.log(resp);
+    return resp;
+  } else if (preResp.status == 401) {
+    let dec = await refreshToken();
+    if (dec) {
+      return patchReq(url, body);  // Recursively call patchReq if token refresh succeeds
+    } else {
+      return false;
+    }
+  } else {
+    console.log("other errors");
+    return false;
+  }
+}
+
 export async function req(url) {
   let access = sessionStorage.getItem("accessToken");
   let headers = set_header(access);
@@ -439,6 +468,34 @@ export async function req(url) {
     return false;
   }
 }
+
+export async function delReq(url) {
+  let access = sessionStorage.getItem("accessToken");
+  let headers = set_header(access);
+
+  let options = {
+    method: "DELETE",  // Change the method to DELETE
+    headers: headers,
+    mode: "cors",
+  };
+
+  let preResp = await fetch(api + url, options);
+  if (preResp.ok) {
+    let resp = await preResp.json();
+    return resp;
+  } else if (preResp.status == 401) {
+    let dec = await refreshToken();
+    if (dec) {
+      return delReq(url);  // Recursively call delReq if token refresh succeeds
+    } else {
+      return false;
+    }
+  } else {
+    console.log("other errors");
+    return false;
+  }
+}
+
 
 export async function req_body(url, body) {
   let access = sessionStorage.getItem("accessToken");

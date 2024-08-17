@@ -7,10 +7,12 @@ import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
 import React, { useEffect , useState} from "react";
 import { toast } from "react-toastify";
-import { postReq } from "@/helpers";
+import { postReq,req,patchReq } from "@/helpers";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 
 
-const CreateStrategy = () => {
+const UpdateStrategy = () => {
   const [strategyData, setStrategyData] = useState({
     name: "",
     tradeType: "",
@@ -23,6 +25,13 @@ const CreateStrategy = () => {
     maxSubscribers: "",
   });
 
+  const [loading,setLoading] = useState(true)
+  //const [id,setId] = useState(-1)
+
+  const params = useSearchParams()
+  const id = params.get("id")
+  const router = useRouter()
+
 
   const handleChange = (e) => {
     setStrategyData({
@@ -31,6 +40,23 @@ const CreateStrategy = () => {
     });
   };
 
+  /* useEffect(() =>  {
+    
+    console.log(params)
+    if (id){
+      setId(id)
+    }else{
+      toast.info("no id")
+      //router.push("/manager/mystrategy")
+    }
+  },[params]) */
+
+  useEffect(() => {
+    if (id){
+      fetchStrategy(id)
+      
+    }
+  },[id])
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -39,7 +65,18 @@ const CreateStrategy = () => {
     document.body.appendChild(script);
   }, []);
 
-  const createStrategy = async () => {
+  const fetchStrategy = async (id) => {
+    const resp = await req(`strategies/${id}/`)
+    if (resp){
+      setStrategyData(resp)
+      setLoading(false)
+    }else{
+      toast.error('Failed fetching strat data')
+      //router.push("/manager/mystrategy")
+    }
+  }
+
+  const update = async () => {
     // Check if all required fields are filled
     const { name, tradeType, accountSize, broker, controlModel, price } = strategyData;
     if (!name || !tradeType || !accountSize || !broker || !controlModel || !price) {
@@ -49,7 +86,7 @@ const CreateStrategy = () => {
     console.log(strategyData)
 
     try {
-      const response = await postReq("strategies/", strategyData);
+      const response = await patchReq(`strategies/${strategyData.id}/`, strategyData);
 
       if (response) {
         console.log("Strategy created successfully:", response);
@@ -74,7 +111,8 @@ const CreateStrategy = () => {
       <Headtag />
       <Navbar />
       <Sidebar />
-
+    {
+      !loading && <>
       <div className="content-wrapper p-4">
       {/* Your form JSX */}
       <form>
@@ -233,13 +271,16 @@ const CreateStrategy = () => {
           <button
             type="button"
             className="btn btn-primary float-right"
-            onClick={createStrategy}
+            onClick={update}
           >
-            Create Strategy
+            Update Strategy
           </button>
         </div>
       </form>
     </div>
+      </>
+    }
+      
 
       <Feed />
       <Footer />
@@ -248,5 +289,5 @@ const CreateStrategy = () => {
   );
 };
 
-export default CreateStrategy;
+export default UpdateStrategy;
 

@@ -5,15 +5,44 @@ import Feed from "./components/feed";
 import Footer from "../components/panel/footer";
 import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { formatDate, req, postReq } from "@/helpers";
+import { toast } from "react-toastify";
 
 const Subscribedstrategy = () => {
+
+  const [strategies,setStrategies] = useState([])
+  const [loading,setLoading] = useState(true)
+
+
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "/dist/js/datatable.js";
     script.async = true;
     document.body.appendChild(script);
   }, []);
+
+  useEffect(()  => {
+    fetchStrategies()
+  },[])
+
+
+  const fetchStrategies = async () => {
+    const res = await req('strategies/subscribed')
+    if (res) {
+      setStrategies(res)
+      setLoading(false)
+    }
+  }
+
+  const unsubscribe = async (e) => {
+    const res = await postReq(`strategies/${e.id}/unsubscribe/`)
+    if (res){
+      toast.success("Subscription cancelled")
+      fetchStrategies()
+    }
+  }
 
   return (
     <>
@@ -44,7 +73,8 @@ const Subscribedstrategy = () => {
                 <div className="card shadow-none">
                   <div className="card-body">
                     <div className="table-responsive p-0">
-                      <table className="table table-bordered table-hover table-sm datatable">
+                      {
+                        !loading && <table className="table table-bordered table-hover table-sm datatable">
                         <thead>
                           <tr className="bg-light">
                             <th>STRATEGY</th>
@@ -53,25 +83,33 @@ const Subscribedstrategy = () => {
                             <th></th>
                           </tr>
                         </thead>
+                        
                         <tbody>
-                          <tr>
-                            <td>
-                              <a
-                                className="fas fa-external-link-alt mr-2"
-                                href="/investor/strategydetails"
-                              ></a>
-                              <span className="h6 mb-0">Easiest</span>
-                            </td>
-                            <td>09-06-2024 | 01:58 AM</td>
-                            <td>CopyTrading</td>
-                            <td>
-                              <button type="button" className="btn btn-danger">
-                                Unsubsribe
-                              </button>
-                            </td>
-                          </tr>
+                          {
+                            strategies.length > 0 && strategies.map((e,i) => {
+                              return <tr>
+                              <td>
+                                {/* <a
+                                  className="fas fa-external-link-alt mr-2"
+                                  href="/investor/strategydetails"
+                                ></a> */}
+                                <span className="h6 mb-0">{e.strategy.name}</span>
+                              </td>
+                              <td>{formatDate(new Date(e.date_subscribed))}</td>
+                              <td>{e.subscriber.username}</td>
+                              <td>
+                                <button type="button" className="btn btn-danger" onClick={() => unsubscribe(e)}>
+                                  Unsubsribe
+                                </button>
+                              </td>
+                            </tr>
+                            })
+                          }
+                          
                         </tbody>
                       </table>
+                      }
+                      
                     </div>
                   </div>
                 </div>

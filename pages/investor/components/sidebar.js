@@ -22,6 +22,7 @@ export default function Sidebar() {
         obj.username = resp.username;
         obj.email = resp.email;
         obj.isAdmin = resp.is_superuser;
+        obj.isInvestor = resp.isInvestor;
         setUser(obj);
         return obj;
       } else {
@@ -107,6 +108,12 @@ export default function Sidebar() {
               <a href="/investor/accountmanagement" className="nav-link">
                 <i className="nav-icon fas fa-id-card"></i>
                 <p>Account Management</p>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="/manager/dashboard" className="nav-link">
+                <i className="nav-icon fas fa-tachometer-alt"></i>
+                <p>Manager Dashboard</p>
               </a>
             </li>
             <li className="nav-item">

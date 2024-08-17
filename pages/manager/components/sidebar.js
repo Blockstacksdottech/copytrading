@@ -22,6 +22,7 @@ export default function Sidebar() {
         obj.username = resp.username;
         obj.email = resp.email;
         obj.isAdmin = resp.is_superuser;
+        obj.isInvestor = resp.isInvestor;
         setUser(obj);
         return obj;
       } else {
@@ -33,6 +34,11 @@ export default function Sidebar() {
       if (obj.logged) {
         if (obj.isAdmin) {
           nav.push("/admin/investors");
+        }
+        else if (obj.isInvestor){
+
+        }else{
+          nav.push('/investor/dashboard')
         }
       } else {
         nav.push("/login");
@@ -84,6 +90,12 @@ export default function Sidebar() {
                 <p>Dashboard</p>
               </a>
             </li>
+            <li className="nav-item">
+              <a href="/investor/dashboard" className="nav-link">
+                <i className="nav-icon fas fa-tachometer-alt"></i>
+                <p>Investor Dashboard</p>
+              </a>
+            </li>
             {/* <li className="nav-item">
               <a href="/investor/watchlist" className="nav-link">
                 <i className="nav-icon fas fa-binoculars"></i>
@@ -102,7 +114,7 @@ export default function Sidebar() {
                 <p>My Strategy</p>
               </a>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a href="/manager/brokertransmit" className="nav-link">
                 <i className="nav-icon fas fa-handshake"></i>
                 <p>BrokerTransmit</p>
@@ -113,13 +125,13 @@ export default function Sidebar() {
                 <i className="nav-icon fas fa-tv"></i>
                 <p>PlatformTransmit</p>
               </a>
-            </li>
-            <li className="nav-item">
+            </li> */}
+            {/* <li className="nav-item">
               <a href="/manager/accountmanagement" className="nav-link">
                 <i className="nav-icon fas fa-id-card"></i>
                 <p>Account Management</p>
               </a>
-            </li>
+            </li> */}
             <li className="nav-item">
               <a href="/manager/faq" className="nav-link">
                 <i className="nav-icon far fa-question-circle"></i>

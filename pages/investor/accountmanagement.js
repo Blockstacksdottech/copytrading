@@ -5,8 +5,80 @@ import Feed from "./components/feed";
 import Footer from "../components/panel/footer";
 import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
+import { useEffect, useState } from "react";
+import { postReq, req } from "@/helpers";
+import { toast } from "react-toastify";
 
 const Accountmanagement = () => {
+
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [profileData, setProfileData] = useState({
+    fullName: '',
+    email: '',
+    mobile: '',
+    address: '',
+    city: '',
+    state: '',
+    country: '',
+    postalCode: '',
+    governmentIdType: '',
+    governmentIdNumber: '',
+    tin: '',
+    profilePicture: null,
+    user : null
+  });
+  const [loading,setLoading] = useState(true)
+
+
+  useEffect(() => {
+    fetchProfile()
+  },[])
+
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setProfileData({ ...profileData, [name]: value });
+  };
+
+  const handleFileChange = (e) => {
+    setProfileData({ ...profileData, profilePicture: e.target.files[0] });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const {body,image : profilePicture} = profileData
+    // Handle form submission here
+    console.log(body);
+    console.log(profilePicture)
+  };
+
+  const handleChangePassword = async (e) => {
+    e.preventDefault();
+
+    const body = {
+      old_password: currentPassword,
+      new_password: newPassword,
+      confirm_password: confirmPassword,
+    };
+
+    const response = await postReq("change-password", body);
+    if (response){
+      toast.success("Password updated")
+    }
+    
+  };
+
+  const fetchProfile = async () => {
+    const resp = await req("profile")
+    if (resp){
+      if (resp.length > 0){setProfileData(resp)}
+      
+    }
+  }
+
+
   return (
     <>
       <Head>
@@ -31,104 +103,130 @@ const Accountmanagement = () => {
 
         <div className="content">
           <div className="container-fluid">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="card shadow-none">
-                  <div className="card-header">
-                    <h5 className="mb-0">Profile</h5>
+          <div className="row">
+      <div className="col-lg-12">
+        <div className="card shadow-none">
+          <div className="card-header">
+            <h5 className="mb-0">Profile</h5>
+          </div>
+          <div className="card-body">
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label>Profile Picture</label>
+                <div className="row">
+                  <div className="col-lg-3">
+                    <img
+                      src="/dist/img/avatar5.png"
+                      className="img-circle elevation-1 img-fluid"
+                      alt="Profile"
+                    />
                   </div>
-                  <div className="card-body">
-                    <div className="form-group">
-                      <label>Profile Picture</label>
-                      <div className="row">
-                        <div className="col-lg-3">
-                          <img
-                            src="/dist/img/avatar5.png"
-                            className="img-circle elevation-1 img-fluid"
-                            alt="Investor Image"
-                          />
-                        </div>
-                        <div className="col-lg-3 my-auto">
-                          <input className="form-control" type="file" />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <label>Full Name</label>
-                          <input
-                            type="name"
-                            className="form-control"
-                            placeholder="Enter Full Name"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <label>Email address</label>
-                          <input
-                            type="email"
-                            className="form-control"
-                            placeholder="Enter Email"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <label>Mobile</label>
-                          <input
-                            type="number"
-                            className="form-control"
-                            placeholder="Enter Contact Number"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <label>Address</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Enter Address"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <label>City</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Enter City Name"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <label>State or Province</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Your State or Province"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <label>Country</label>
-                          <select
-                            id="country"
-                            name="country"
-                            className="form-control"
-                          >
-                            <option value="US">United States</option>
+                  <div className="col-lg-3 my-auto">
+                    <input
+                      className="form-control"
+                      type="file"
+                      name="profilePicture"
+                      onChange={handleFileChange}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <label>Full Name</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter Full Name"
+                      name="fullName"
+                      value={profileData.fullName}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <label>Email address</label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      placeholder="Enter Email"
+                      name="email"
+                      value={profileData.email}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <label>Mobile</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      placeholder="Enter Contact Number"
+                      name="mobile"
+                      value={profileData.mobile}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <label>Address</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter Address"
+                      name="address"
+                      value={profileData.address}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <label>City</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter City Name"
+                      name="city"
+                      value={profileData.city}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <label>State or Province</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Your State or Province"
+                      name="state"
+                      value={profileData.state}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <label>Country</label>
+                    <select
+                      id="country"
+                      name="country"
+                      className="form-control"
+                      value={profileData.country}
+                      onChange={handleChange}
+                    >
+                      <option value="US">United States</option>
                             <option value="AF">Afghanistan</option>
                             <option value="AX">Åland Islands</option>
                             <option value="AL">Albania</option>
@@ -408,58 +506,74 @@ const Accountmanagement = () => {
                             <option value="YE">Yemen</option>
                             <option value="ZM">Zambia</option>
                             <option value="ZW">Zimbabwe</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <label>Zip / Postal Code</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Zip / Postal Code"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label>Government-issued ID</label>
-                          <div className="input-group">
-                            <select className="form-control">
-                              <option>Choose</option>
-                              <option>Passport</option>
-                              <option>Driving Licenese</option>
-                            </select>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="ID Number"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label>Taxpayer Identification Number (TIN)</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="TIN"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="form-group float-right mb-0">
-                      <button type="submit" className="btn btn-primary">
-                        Save
-                      </button>
-                    </div>
+                    </select>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <label>Zip / Postal Code</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Zip / Postal Code"
+                      name="postalCode"
+                      value={profileData.postalCode}
+                      onChange={handleChange}
+                    />
                   </div>
                 </div>
               </div>
-            </div>
+              <div className="row">
+                <div className="col-lg-6">
+                  <div className="form-group">
+                    <label>Government-issued ID</label>
+                    <div className="input-group">
+                      <select
+                        className="form-control"
+                        name="governmentIdType"
+                        value={profileData.governmentIdType}
+                        onChange={handleChange}
+                      >
+                        <option>Choose</option>
+                        <option value="Passport">Passport</option>
+                        <option value="Driving License">Driving License</option>
+                      </select>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="ID Number"
+                        name="governmentIdNumber"
+                        value={profileData.governmentIdNumber}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-6">
+                  <div className="form-group">
+                    <label>Taxpayer Identification Number (TIN)</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="TIN"
+                      name="tin"
+                      value={profileData.tin}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="form-group float-right mb-0">
+                <button type="submit" className="btn btn-primary">
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+            
             <div className="row">
               <div className="col-lg-12">
                 <div className="card shadow-none">
@@ -521,140 +635,65 @@ const Accountmanagement = () => {
               </div>
             </div>
 
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="card shadow-none">
-                  <div className="card-header">
-                    <h5 className="mb-0">Brokerage Account</h5>
-                  </div>
-                  <div className="card-body">
-                    <div className="row">
-                      <div className="col-md-4">
-                        <div className="form-group">
-                          <label>API KEY</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="API KEY"
-                          />
-                        </div>
-                        <div className="form-group">
-                          <label>Account Name</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Account Name"
-                          />
-                        </div>
-                        <div className="form-group">
-                          <label>Password</label>
-                          <input
-                            type="password"
-                            className="form-control"
-                            placeholder="Password"
-                          />
-                        </div>
-                        <div className="form-group float-right mb-0">
-                          <button type="submit" className="btn btn-primary">
-                            Save
-                          </button>
-                        </div>
-                      </div>
-                      <div className="col-md-8 pl-5">
-                        <h5>Important Security Reminders</h5>
-                        <ul className="list-unstyled">
-                          <li>
-                            Never share your full brokerage account password
-                            with a third-party platform.
-                          </li>
-                          <li>
-                            Look for platforms that utilize secure API key
-                            connections if available.
-                          </li>
-                          <li>
-                            Be cautious of platforms that request unnecessary
-                            access to your brokerage account data.
-                          </li>
-                          <li>
-                            Review the platform's security documentation and
-                            user agreements before linking your account.
-                          </li>
-                        </ul>
 
-                        <h5>Benefits of Linking Your Brokerage Account</h5>
-                        <ul className="list-unstyled">
-                          <li>
-                            <strong>Automated Trading:</strong> Once linked, the
-                            platform can automatically execute trades based on
-                            subscribed strategies, eliminating the need for
-                            manual intervention.
-                          </li>
-                          <li>
-                            <strong>Performance Monitoring:</strong> The
-                            platform can track your portfolio performance and
-                            provide insights based on your linked account data.
-                          </li>
-                          <li>
-                            <strong>Streamlined Experience:</strong> Linking
-                            your account simplifies the copy trading process and
-                            provides a more consolidated view of your activity.
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
+
+            <div className="row">
+      <div className="col-lg-12">
+        <div className="card shadow-none">
+          <div className="card-header">
+            <h5 className="mb-0">Security</h5>
+          </div>
+          <div className="card-body">
+            <form onSubmit={handleChangePassword}>
+              <div className="row">
+                <div className="col-md-4">
+                  <div className="form-group">
+                    <label>Current Password</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="Current Password"
+                      value={currentPassword}
+                      onChange={(e) => setCurrentPassword(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <div className="form-group">
+                    <label>New Password</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="New Password"
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <div className="form-group">
+                    <label>Confirm Password</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="Confirm Password"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="card shadow-none">
-                  <div className="card-header">
-                    <h5 className="mb-0">Security</h5>
-                  </div>
-                  <div className="card-body">
-                    <div className="row">
-                      <div className="col-md-4">
-                        <div className="form-group">
-                          <label>Current Password</label>
-                          <input
-                            type="password"
-                            className="form-control"
-                            placeholder="Current Password"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-md-4">
-                        <div className="form-group">
-                          <label>New Password</label>
-                          <input
-                            type="password"
-                            className="form-control"
-                            placeholder="New Password"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-md-4">
-                        <div className="form-group">
-                          <label>Confirm Password</label>
-                          <input
-                            type="password"
-                            className="form-control"
-                            placeholder="Confirm Password"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="form-group float-right mb-0">
-                      <button type="submit" className="btn btn-primary">
-                        Save
-                      </button>
-                    </div>
-                  </div>
-                </div>
+              <div className="form-group float-right mb-0">
+                <button type="submit" className="btn btn-primary">
+                  Save
+                </button>
               </div>
-            </div>
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
           </div>
         </div>
       </div>

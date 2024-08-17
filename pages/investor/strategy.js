@@ -5,15 +5,41 @@ import Feed from "./components/feed";
 import Footer from "../components/panel/footer";
 import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
-import React, { useEffect } from "react";
+import React, { useEffect , useState} from "react";
+import {req,formatDate,postReq} from "@/helpers"
+import { toast } from "react-toastify";
 
 const Strategy = () => {
+
+  const [strats,setStrats] = useState([])
+  
+
+  useEffect(() => {
+    fetchStrats()
+  },[])
+
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "/dist/js/datatable.js";
     script.async = true;
     document.body.appendChild(script);
   }, []);
+
+  const fetchStrats = async () => {
+    const res = await req('strategies/all')
+    if (res) {
+      setStrats(res)
+    }
+  }
+
+  const subscribe = async (e) => {
+    const res = await postReq(`strategies/${e.id}/subscribe/`)
+    if (res){
+      toast.success("Subscription request sent")
+      fetchStrats()
+    }
+  }
 
   return (
     <>
@@ -52,132 +78,78 @@ const Strategy = () => {
                 <div className="card shadow-none">
                   <div className="card-body">
                     <div className="table-responsive p-0">
-                      <table className="table table-bordered table-sm datatable">
+                    {
+                        strats.length > 0 && <table className="table table-bordered table-sm datatable">
                         <thead>
                           <tr>
-                            <th>Strategy Name</th>
-                            <th>Trades</th>
-                            <th>Sub Fee</th>
+                            <th>Strategy</th>
+                            <th>Started</th>
+                            <th>Trade</th>
+                            <th>Broker</th>
+                            <th>SUB FEE</th>
+                            <th>Active</th>
                             <th>
-                              <select className="form-control form-control-sm">
-                                <option>All Time</option>
-                                <option>1 Month</option>
-                                <option>3 Months</option>
-                                <option>6 Months</option>
-                              </select>
+                              SUBSCRIBERS <br />
+                              <span className="small font-italic">Total</span>
                             </th>
-                            <th>
-                              <select className="form-control form-control-sm">
-                                <option>Strategy Age</option>
-                                <option>Avg Leverage</option>
-                                <option>Heart Attack Index</option>
-                                <option>W:L Ratio</option>
-                                <option>Sharpe Ratio</option>
-                                <option>% Profitable</option>
-                                <option>Suggested Capital</option>
-                              </select>
-                            </th>
-                            <th>Max DD</th>
-                            <th>Return</th>
                             <th></th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <span className="badge badge-warning">
-                                Featured
-                              </span>
-                              <h6 className="mb-0">Easiest</h6>
-                              <p className="mb-0">
-                                Manager: PatienceToInvest_com
-                              </p>
-                            </td>
-                            <td>
-                              <span className="badge badge-light">Futures</span>
-                            </td>
-                            <td>$20/month</td>
-                            <td>
-                              <h6 className="text-success mb-0">+110.5%</h6>
-                              $34,600
-                            </td>
-                            <td>
-                              <h6 className="mb-0">1 Year</h6>
-                            </td>
-                            <td>16.65%</td>
-                            <td>
-                              <h6 className="text-success mb-0">+110.5%</h6>
-                              Annual Return since March 31, 2023
-                            </td>
-                            <td>
-                              <a
-                                className="fas fa-external-link-alt"
-                                href="/investor/strategydetails"
-                              ></a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <h6 className="mb-0">Easiest</h6>
-                              <p className="mb-0">
-                                Manager: PatienceToInvest_com
-                              </p>
-                            </td>
-                            <td>
-                              <span className="badge badge-light">Futures</span>
-                            </td>
-                            <td>$20/month</td>
-                            <td>
-                              <h6 className="text-success mb-0">+110.5%</h6>
-                              $34,600
-                            </td>
-                            <td>
-                              <h6 className="mb-0">1 Year</h6>
-                            </td>
-                            <td>16.65%</td>
-                            <td>
-                              <h6 className="text-success mb-0">+110.5%</h6>
-                              Annual Return since March 31, 2023
-                            </td>
-                            <td>
-                              <a
-                                className="fas fa-external-link-alt"
-                                href="/investor/strategydetails"
-                              ></a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <h6 className="mb-0">Easiest</h6>
-                              <p className="mb-0">
-                                Manager: PatienceToInvest_com
-                              </p>
-                            </td>
-                            <td>
-                              <span className="badge badge-light">Futures</span>
-                            </td>
-                            <td>$20/month</td>
-                            <td>
-                              <h6 className="text-success mb-0">+110.5%</h6>
-                              $34,600
-                            </td>
-                            <td>
-                              <h6 className="mb-0">1 Year</h6>
-                            </td>
-                            <td>16.65%</td>
-                            <td>
-                              <h6 className="text-success mb-0">+110.5%</h6>
-                              Annual Return since March 31, 2023
-                            </td>
-                            <td>
-                              <a
-                                className="fas fa-external-link-alt"
-                                href="/investor/strategydetails"
-                              ></a>
-                            </td>
-                          </tr>
+                        {
+                          strats.length > 0 && <tbody>
+                            {
+                              strats.map((e,i) => {
+                                return <tr>
+                                <td>
+                                  {/* <a href="/manager/strategydetails">
+                                    <i className="fas fa-external-link-alt mr-2"></i>
+                                  </a> */}
+                                  <span className="h6 mb-0">{e.name}</span>
+                                </td>
+                                <td>{formatDate(new Date(e.date))}</td>
+                                <td>{e.tradeType}</td>
+                                
+                                <td>{e.broker}</td>
+                                <td>${e.price}/month</td>
+                                <td>{e.enabled ? "Active" : "Not Active"}</td>
+                                <td>{e.subs}</td>
+                                <td>
+                                  <div className="btn-group">
+                                    <a
+                                      type="button"
+                                      className="text-dark dropdown-toggle"
+                                      data-toggle="dropdown"
+                                    >
+                                      <i className="fas fa-ellipsis-v"></i>
+                                    </a>
+                                    <ul className="dropdown-menu">
+                                    <li onClick={() => subscribe(e)}>
+                                        
+                                        <a
+                                            href="#"
+                                            className="dropdown-item"
+                                          >
+                                            Subscribe
+                                          </a>
+                                        </li>
+                                      
+                                      
+                                      
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              })
+                            }
+                          
+                          
                         </tbody>
+
+                          
+                        }
+                        
                       </table>
+                      }
                     </div>
                   </div>
                 </div>

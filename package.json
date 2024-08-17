@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@nextui-org/modal": "^2.0.39",
+    "@types/react": "^18.3.3",
     "axios": "^1.7.2",
     "next": "14.2.1",
     "react": "^18",

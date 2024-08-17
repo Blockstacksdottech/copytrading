@@ -22,6 +22,7 @@ export default function Sidebar() {
         obj.username = resp.username;
         obj.email = resp.email;
         obj.isAdmin = resp.is_superuser;
+        obj.isInvestor = resp.isInvestor;
         setUser(obj);
         return obj;
       } else {
@@ -82,12 +83,12 @@ export default function Sidebar() {
                 <p>Investors</p>
               </a>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a href="/admin/managers" className="nav-link">
                 <i className="nav-icon fas fa-user-tie"></i>
                 <p>Managers</p>
               </a>
-            </li>
+            </li> */}
             <li className="nav-item">
               <a href="/admin/brokers" className="nav-link">
                 <i className="nav-icon fas fa-user-secret"></i>

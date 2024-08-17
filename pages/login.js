@@ -30,8 +30,8 @@ export default function Login() {
         obj.username = resp.username;
         obj.email = resp.email;
         obj.isAdmin = resp.is_superuser;
+        obj.isInvestor = resp.isInvestor;
         setUser(obj);
-        //await updateSuppliers();
         return obj;
       } else {
         return obj;
@@ -42,7 +42,9 @@ export default function Login() {
       if (obj.logged) {
         if (!obj.isAdmin) {
           nav.push("/investor/dashboard");
-        } else {
+        }else if (obj.isInvestor){
+          nav.push("/manager/dashboard");
+        }else {
           nav.push("/admin/investors");
         }
       } else {
