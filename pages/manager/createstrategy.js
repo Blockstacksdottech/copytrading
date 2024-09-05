@@ -5,14 +5,16 @@ import Feed from "./components/feed";
 import Footer from "../components/panel/footer";
 import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
-import React, { useEffect , useState} from "react";
+import React, { useContext, useEffect , useState} from "react";
 import { toast } from "react-toastify";
 import { postReq } from "@/helpers";
 import Checker from "../components/utils/Checker";
 import { req } from "../../helpers";
+import { UserContext } from "@/contexts/UserContextData";
 
 
 const CreateStrategy = () => {
+  const {user,setUser} = useContext(UserContext)
   const [strategyData, setStrategyData] = useState({
     name: "",
     tradeType: "",
@@ -61,10 +63,10 @@ const CreateStrategy = () => {
       toast.error("Please fill in all the required fields.");
       return;
     }
-    console.log(strategyData)
+    const body = {creator:user.id,creator_id : user.id,...strategyData}
 
     try {
-      const response = await postReq("strategies/", strategyData);
+      const response = await postReq("create-strategy/", body);
 
       if (response) {
         console.log("Strategy created successfully:", response);
