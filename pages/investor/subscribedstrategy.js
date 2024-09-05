@@ -8,6 +8,7 @@ import Scripttag from "../components/panel/scripttag";
 import React, { useEffect, useState } from "react";
 import { formatDate, req, postReq } from "@/helpers";
 import { toast } from "react-toastify";
+import Checker from "../components/utils/Checker";
 
 const Subscribedstrategy = () => {
 
@@ -50,7 +51,8 @@ const Subscribedstrategy = () => {
         <title>Subscribed Strategy</title>
         <meta name="description" content="Subscribed Strategy" />
       </Head>
-
+      
+      <Checker>
       <Headtag />
       <Navbar />
       <Sidebar />
@@ -98,7 +100,7 @@ const Subscribedstrategy = () => {
                               <td>{formatDate(new Date(e.date_subscribed))}</td>
                               <td>{e.subscriber.username}</td>
                               <td>
-                                <button type="button" className="btn btn-danger" onClick={() => unsubscribe(e)}>
+                                <button type="button" className="btn btn-danger" onClick={() => unsubscribe(e.strategy)}>
                                   Unsubsribe
                                 </button>
                               </td>
@@ -122,6 +124,8 @@ const Subscribedstrategy = () => {
       <Feed />
       <Footer />
       <Scripttag />
+      </Checker>
+      
     </>
   );
 };

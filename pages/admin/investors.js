@@ -6,8 +6,9 @@ import Footer from "../components/panel/footer";
 import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
 import React, { useEffect,useState } from "react";
-import { patchReq, req } from "@/helpers";
+import { formatImage, patchReq, req } from "@/helpers";
 import { toast } from "react-toastify";
+import Checker from "../components/utils/Checker";
 
 const Investors = () => {
   const [investors,setInvestors] = useState([])
@@ -48,6 +49,7 @@ const Investors = () => {
         <meta name="description" content="Investors" />
       </Head>
 
+      <Checker only_admin={true}>
       <Headtag />
       <Navbar />
       <Sidebar />
@@ -86,7 +88,7 @@ const Investors = () => {
                               return <tr key={e.username}>
                               <td>
                                 <img
-                                  src="/dist/img/avatar5.png"
+                                  src={e.profile && e.profile.profile_picture ? formatImage(e.profile.profile_picture) : "/dist/img/avatar5.png"}
                                   className="table-avatar"
                                   alt="Investor Image"
                                 />
@@ -115,7 +117,7 @@ const Investors = () => {
                                     <li>
                                       <a
                                         className="dropdown-item"
-                                        href="./investordetails"
+                                        href={`./investordetails?id=${e.id}`}
                                       >
                                         <i className="fas fa-info-circle mr-1"></i>{" "}
                                         Details
@@ -124,7 +126,7 @@ const Investors = () => {
                                     <li>
                                       <a
                                         className="dropdown-item"
-                                        href="./verification"
+                                        href="#"
                                         onClick={() => verifyUser(e)}
                                       >
                                         <i className="fas fa-user-check mr-1"></i>
@@ -165,6 +167,9 @@ const Investors = () => {
       <Feed />
       <Footer />
       <Scripttag />
+      </Checker>
+
+      
     </>
   );
 };

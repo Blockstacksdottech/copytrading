@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Navbar from "../components/panel/navbar";
 import Sidebar from "./components/sidebar";
@@ -23,185 +23,55 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import Checker from "../components/utils/Checker";
+import { useSearchParams } from "next/navigation";
+import { formatDate, formatImage, patchReq, req } from "@/helpers";
+import { toast } from "react-toastify";
 
-const dataAreaChart = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
 
-const dataLineChart = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
-
-const dataBarChart = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
-
-const dataBrushBarChart = [
-  { name: "1", uv: 300, pv: 456 },
-  { name: "2", uv: -145, pv: 230 },
-  { name: "3", uv: -100, pv: 345 },
-  { name: "4", uv: -8, pv: 450 },
-  { name: "5", uv: 100, pv: 321 },
-  { name: "6", uv: 9, pv: 235 },
-  { name: "7", uv: 53, pv: 267 },
-  { name: "8", uv: 252, pv: -378 },
-  { name: "9", uv: 79, pv: -210 },
-  { name: "10", uv: 294, pv: -23 },
-  { name: "12", uv: 43, pv: 45 },
-  { name: "13", uv: -74, pv: 90 },
-  { name: "14", uv: -71, pv: 130 },
-  { name: "15", uv: -117, pv: 11 },
-  { name: "16", uv: -186, pv: 107 },
-  { name: "17", uv: -16, pv: 926 },
-  { name: "18", uv: -125, pv: 653 },
-  { name: "19", uv: 222, pv: 366 },
-  { name: "20", uv: 372, pv: 486 },
-  { name: "21", uv: 182, pv: 512 },
-  { name: "22", uv: 164, pv: 302 },
-  { name: "23", uv: 316, pv: 425 },
-  { name: "24", uv: 131, pv: 467 },
-  { name: "25", uv: 291, pv: -190 },
-  { name: "26", uv: -47, pv: 194 },
-  { name: "27", uv: -415, pv: 371 },
-  { name: "28", uv: -182, pv: 376 },
-  { name: "29", uv: -93, pv: 295 },
-  { name: "30", uv: -99, pv: 322 },
-  { name: "31", uv: -52, pv: 246 },
-  { name: "32", uv: 154, pv: 33 },
-  { name: "33", uv: 205, pv: 354 },
-  { name: "34", uv: 70, pv: 258 },
-  { name: "35", uv: -25, pv: 359 },
-  { name: "36", uv: -59, pv: 192 },
-  { name: "37", uv: -63, pv: 464 },
-  { name: "38", uv: -91, pv: -2 },
-  { name: "39", uv: -66, pv: 154 },
-  { name: "40", uv: -50, pv: 186 },
-];
 
 const Investordetails = () => {
+
+  const [investor,setInvestor] = useState({});
+  const [loading,setLoading] = useState(true);
+  const searchParams = useSearchParams()
+
+  const id = searchParams.get("id")
+
+
+  useEffect(() => {
+    if (id){
+      fetchUser(id)
+    }
+  },[id])
+
+  const fetchUser = async (id) => {
+    setLoading(true);
+    const resp = await req(`adminvestors/${id}`)
+    if (resp){
+      setInvestor(resp)
+    }
+    setLoading(false);
+  }
+
+  const updateVerificationStatus = async (e) => {
+    e.preventDefault()
+    const status = document.getElementById("status").value;
+    const reason = document.getElementById("reason").value;
+    const body = {
+      isVerified : status === "verified" ? true : false,
+      reason
+    }
+    const res = await patchReq(`adminvestors/${id}/`,body)
+    if (res){
+      toast.success("updated")
+      fetchUser(id)
+    }
+
+  }
+
+
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "/dist/js/datatable.js";
@@ -214,7 +84,7 @@ const Investordetails = () => {
         <title>Investors Details</title>
         <meta name="description" content="Investors Details" />
       </Head>
-
+      <Checker only_admin={true}>
       <Headtag />
       <Navbar />
       <Sidebar />
@@ -229,8 +99,8 @@ const Investordetails = () => {
             </div>
           </div>
         </div>
-
-        <div className="content">
+        {
+          !loading && investor && <div className="content">
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
@@ -242,7 +112,7 @@ const Investordetails = () => {
                     <div className="row">
                       <div className="col-lg-3 m-auto">
                         <img
-                          src="/dist/img/avatar5.png"
+                          src={investor.profile.profile_picture ? formatImage(investor.profile.profile_picture) : "/dist/img/avatar5.png"}
                           alt="Testing111"
                           className="img-circle img-fluid w-50"
                         />
@@ -250,37 +120,37 @@ const Investordetails = () => {
                       <div className="col-lg-3 m-auto">
                         <div className="form-group">
                           <label>Name:</label>
-                          <span className="ml-2">Testing111 asdf</span>
+                          <span className="ml-2">{investor.profile.full_name}</span>
                         </div>
                         <div className="form-group">
                           <label>Mobile:</label>
-                          <span className="ml-2">1234567890</span>
+                          <span className="ml-2">{investor.profile.mobile}</span>
                         </div>
                         <div className="form-group">
                           <label>City:</label>
-                          <span className="ml-2">xyz</span>
+                          <span className="ml-2">{investor.profile.city}</span>
                         </div>
                         <div className="form-group">
                           <label>Country:</label>
-                          <span className="ml-2">xyz</span>
+                          <span className="ml-2">{investor.profile.country}</span>
                         </div>
                       </div>
                       <div className="col-lg-3 m-auto">
                         <div className="form-group">
                           <label>Email:</label>
-                          <span className="ml-2">test@email.com</span>
+                          <span className="ml-2">{investor.email}</span>
                         </div>
                         <div className="form-group">
                           <label>Zip / Postal Code:</label>
-                          <span className="ml-2">2365</span>
+                          <span className="ml-2">{investor.profile.postal_code}</span>
                         </div>
                         <div className="form-group">
                           <label>State:</label>
-                          <span className="ml-2">tyuio</span>
+                          <span className="ml-2">{investor.profile.state}</span>
                         </div>
                         <div className="form-group">
                           <label>Address:</label>
-                          <span className="ml-2">Demo Street 123, Demo</span>
+                          <span className="ml-2">{investor.profile.address}</span>
                         </div>
                       </div>
                       <div className="col-lg-3 m-auto">
@@ -302,7 +172,7 @@ const Investordetails = () => {
               </div>
             </div>
 
-            <div className="row">
+            {/* <div className="row">
               <div className="col-lg-12 mx-auto">
                 <div className="card shadow-none">
                   <div className="card-header">
@@ -334,7 +204,7 @@ const Investordetails = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="row">
               <div className="col-lg-12 mx-auto">
@@ -354,46 +224,32 @@ const Investordetails = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>
-                              <a
-                                className="fas fa-external-link-alt mr-2"
-                                href="/admin/strategydetails"
-                              ></a>
-                              <span className="h6 mb-0">Easiest</span>
-                            </td>
-                            <td>09-06-2024 | 01:58 AM</td>
-                            <td>CopyTrading</td>
-                            <td>
-                              <a
-                                type="button"
-                                className="btn btn-default"
-                                href="/admin/strategydetails"
-                              >
-                                <i className="fas fa-external-link-alt"></i>
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <a
-                                className="fas fa-external-link-alt mr-2"
-                                href="/admin/strategydetails"
-                              ></a>
-                              <span className="h6 mb-0">Easiest</span>
-                            </td>
-                            <td>09-06-2024 | 01:58 AM</td>
-                            <td>CopyTrading</td>
-                            <td>
-                              <a
-                                type="button"
-                                className="btn btn-default"
-                                href="/admin/strategydetails"
-                              >
-                                <i className="fas fa-external-link-alt"></i>
-                              </a>
-                            </td>
-                          </tr>
+                          {
+                            investor.subscriptions.map((e,i) => {
+                              return <tr>
+                              <td>
+                                <a
+                                  className="fas fa-external-link-alt mr-2"
+                                  href={`/admin/strategydetails?id=${e.id}`}
+                                ></a>
+                                <span className="h6 mb-0">{e.strategy.name}</span>
+                              </td>
+                              <td>{formatDate(new Date(e.strategy.date))}</td>
+                              <td>{e.strategy.creator.name}</td>
+                              <td>
+                                <a
+                                  type="button"
+                                  className="btn btn-default"
+                                  href={`/admin/strategydetails?id=${e.id}`}
+                                >
+                                  <i className="fas fa-external-link-alt"></i>
+                                </a>
+                              </td>
+                            </tr>
+                            })
+                          }
+                          
+                          
                         </tbody>
                       </table>
                     </div>
@@ -403,6 +259,129 @@ const Investordetails = () => {
             </div>
 
             <div className="row">
+              <div className="col-lg-12">
+                <div className="card shadow-none">
+                  <div className="card-header">
+                    <h5 className="mb-0">Documentation</h5>
+                  </div>
+                  <div className="card-body">
+                    <div className="row">
+                      <div className="col-md-12">
+                        <div className="h4 mb-3">
+                          Government-issued ID : {investor.profile.government_id_type} ({investor.profile.government_id_number})
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="form-group">
+                          <label>Front</label>
+                          <br />
+                          {
+                            investor.documents.front && <img
+                            src={formatImage(investor.documents.front)}
+                            className="elevation-1 img-fluid"
+                            alt="Goverment Issued ID Card"
+                          />
+                          }
+                          
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="form-group">
+                          <label>Back</label>
+                          <br />
+                          {
+                            investor.documents.back && <img
+                            src={formatImage(investor.documents.back)}
+                            className="elevation-1 img-fluid"
+                            alt="Goverment Issued ID Card"
+                          />
+                          }
+                        </div>
+                      </div>
+                    </div>
+                    <div className="row mt-3">
+                      <div className="col-md-12">
+                        <div className="h4 mb-3">
+                          Tax Identification Number (TIN) : {investor.profile.tin}
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="form-group">
+                        {
+                            investor.documents.tin && <img
+                            src={formatImage(investor.documents.tin)}
+                            className="elevation-1 img-fluid"
+                            alt="Goverment Issued ID Card"
+                          />
+                          }
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="card shadow-none">
+                  <div className="card-header">
+                    <h5 className="mb-0">Verification Status</h5>
+                  </div>
+                  <div className="card-body">
+                    <div className="form-group">
+                      <label>Status</label>
+                      <select id="status" defaultValue={investor.isVerified ? "verified" : "rejected"} className="form-control">
+                        <option></option>
+                        <option value={"verified"}>Verified</option>
+                        <option value={"rejected"}>Rejected</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <label>Reason behind rejection</label>
+                      <input
+                        id="reason"
+                        className="form-control"
+                        placeholder="Reason behind rejection"
+                        defaultValue={investor.reason}
+                      />
+                    </div>
+                    <div className="form-group float-right mb-0">
+                      <button type="submit" className="btn btn-primary" onClick={updateVerificationStatus}>
+                        Update
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        }
+
+        
+      </div>
+
+      <Feed />
+      <Footer />
+      <Scripttag />
+      </Checker>
+      
+    </>
+  );
+};
+
+export default Investordetails;
+
+
+
+
+
+
+
+
+            {/* <div className="row">
               <div className="col-lg-6">
                 <div className="card shadow-none">
                   <div className="card-header">
@@ -511,16 +490,4 @@ const Investordetails = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <Feed />
-      <Footer />
-      <Scripttag />
-    </>
-  );
-};
-
-export default Investordetails;
+            </div> */}

@@ -7,6 +7,7 @@ import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
 import React, { useEffect,useState } from "react";
 import { formatDate, req , postReq } from "@/helpers";
+import Checker from "../components/utils/Checker";
 
 const MyStrategy = () => {
   const [strategies, setStrategies] = useState([]);
@@ -50,6 +51,10 @@ const MyStrategy = () => {
         <title>My Strategy</title>
         <meta name="description" content="My Strategy" />
       </Head>
+
+      <Checker only_manager={true}>
+        
+      </Checker>
 
       <Headtag />
       <Navbar />
@@ -107,7 +112,7 @@ const MyStrategy = () => {
                                 <td>{e.tradeType}</td>
                                 <td>${e.accountSize}</td>
                                 <td>{e.controlModel}</td>
-                                <td>{e.broker}</td>
+                                <td>{e.broker.name}</td>
                                 <td>${e.price}</td>
                                 <td>{e.enabled ? "Active" : "Not Active"}</td>
                                 <td>{e.subs}</td>

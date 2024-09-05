@@ -1,45 +1,8 @@
-import { useRouter } from "next/navigation";
-import { isLogged, logout } from "@/helpers";
-import { useEffect, useState } from "react";
+import { useContext} from "react";
+import {UserContext} from "../../../contexts/UserContextData"
 
 export default function Sidebar() {
-  const nav = useRouter();
-
-  const [user, setUser] = useState({
-    logged: false,
-    username: "",
-    email: "",
-    isAdmin: false,
-  });
-
-  useEffect(() => {
-    async function test() {
-      let resp = await isLogged();
-      console.log(resp);
-      let obj = { ...user };
-      if (resp) {
-        obj.logged = true;
-        obj.username = resp.username;
-        obj.email = resp.email;
-        obj.isAdmin = resp.is_superuser;
-        obj.isInvestor = resp.isInvestor;
-        setUser(obj);
-        return obj;
-      } else {
-        return obj;
-      }
-    }
-
-    test().then((obj) => {
-      if (obj.logged) {
-        if (obj.isAdmin) {
-          nav.push("/admin/investors");
-        }
-      } else {
-        nav.push("/login");
-      }
-    });
-  }, []);
+  const {user,setUser} = useContext(UserContext)
 
   return (
     <aside className="main-sidebar main-sidebar-custom sidebar-light-primary elevation-1">
@@ -104,18 +67,21 @@ export default function Sidebar() {
                 <p>Subscribed Strategy</p>
               </a>
             </li>
-            <li className="nav-item">
+             <li className="nav-item">
               <a href="/investor/accountmanagement" className="nav-link">
                 <i className="nav-icon fas fa-id-card"></i>
                 <p>Account Management</p>
               </a>
             </li>
+            
+            {
+              user.isInvestor &&
             <li className="nav-item">
-              <a href="/manager/dashboard" className="nav-link">
+              <a href="/manager/mystrategy" className="nav-link">
                 <i className="nav-icon fas fa-tachometer-alt"></i>
                 <p>Manager Dashboard</p>
               </a>
-            </li>
+            </li>}
             <li className="nav-item">
               <a href="/investor/faq" className="nav-link">
                 <i className="nav-icon far fa-question-circle"></i>

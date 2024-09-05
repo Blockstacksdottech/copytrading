@@ -8,6 +8,8 @@ import Scripttag from "../components/panel/scripttag";
 import React, { useEffect , useState} from "react";
 import { toast } from "react-toastify";
 import { postReq } from "@/helpers";
+import Checker from "../components/utils/Checker";
+import { req } from "../../helpers";
 
 
 const CreateStrategy = () => {
@@ -21,8 +23,17 @@ const CreateStrategy = () => {
     briefDescription: "",
     detailedDescription: "",
     maxSubscribers: "",
+    sheetUrl : ""
   });
 
+  const [brokers,setBrokers] = useState([])
+
+  const fetchBrokers = async () => {
+    const resp = await req("brokers")
+    if (resp){
+      setBrokers(resp)
+    }
+  }
 
   const handleChange = (e) => {
     setStrategyData({
@@ -30,6 +41,10 @@ const CreateStrategy = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  useEffect(() => {
+    fetchBrokers();
+  },[])
 
 
   useEffect(() => {
@@ -71,6 +86,7 @@ const CreateStrategy = () => {
         <meta name="description" content="Create Strategy" />
       </Head>
 
+      <Checker only_manager={true}>
       <Headtag />
       <Navbar />
       <Sidebar />
@@ -141,7 +157,12 @@ const CreateStrategy = () => {
             onChange={handleChange}
           >
             <option value="">Choose Broker</option>
-            <option value="IB">Interactive Broker</option>
+            {
+              brokers.map((e,i) => {
+                return <option value={e.id}>{e.name}</option>
+              })
+            }
+            
           </select>
         </div>
 
@@ -229,6 +250,24 @@ const CreateStrategy = () => {
           </div>
         </div>
 
+        <div className="form-group">
+          <label>Google sheets link</label>
+          <div className="form-text">
+            This Link will be used to sync trade history and update dashboard analytics.
+          </div>
+          <input
+            type="text"
+            className="form-control my-3"
+            name="sheetUrl"
+            value={strategyData.sheetUrl}
+            onChange={handleChange}
+            placeholder="https://docs.google.com/spreadsheets/d/XXXXXXXXXXXXXXXXXXXXXX"
+          />
+          <div className="form-text">
+            Create a blank google sheet and make it accessible publicly via link and submit it here.
+          </div>
+        </div>
+
         <div className="form-group mb-5">
           <button
             type="button"
@@ -244,6 +283,9 @@ const CreateStrategy = () => {
       <Feed />
       <Footer />
       <Scripttag />
+      </Checker>
+
+      
     </>
   );
 };

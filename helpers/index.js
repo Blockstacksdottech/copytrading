@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const base = "http://127.0.0.1:8000";
-//export const base = "http://31.220.111.70";
+//export const base = "http://127.0.0.1:8000";
+export const base = "http://31.220.111.70";
 export const api = base + "/api/";
 //var fileDownload = require('js-file-download');
 function set_header(token = null) {
@@ -261,8 +261,11 @@ export const uploadFiles = async (files, body, key, endpoint) => {
   let access = sessionStorage.getItem("accessToken");
   //access =  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ4OTc3OTkwLCJqdGkiOiIyY2EyY2NjMjFmMjQ0YjQyYTc3MjgzYjAzZGM2MTdhMSIsInVzZXJfaWQiOjJ9.uGyjMDKwWTMowoBgxNLiDbfijFcwutbKBkLNrXlvnTA"
   let headers = set_header(access, true);
+  headers["Content-Type"] = "multipart/form-data";
   console.log(files);
+  console.log(files.length);
   for (let i = 0; i < files.length; i++) {
+    console.log("adding");
     form_data.append(key, files[i], files[i].name);
   }
 
@@ -273,6 +276,7 @@ export const uploadFiles = async (files, body, key, endpoint) => {
   for (let key of Object.keys(body)) {
     form_data.append(key, body[key]);
   }
+  console.log(form_data);
   let url = api + endpoint;
   try {
     let resp = await axios.post(url, form_data, {
@@ -280,7 +284,7 @@ export const uploadFiles = async (files, body, key, endpoint) => {
     });
     console.log(resp.status);
 
-    if (resp.status == 201) {
+    if (resp.status == 201 || resp.status === 200) {
       return true;
     } else {
       console.log("other errors");
@@ -293,6 +297,58 @@ export const uploadFiles = async (files, body, key, endpoint) => {
       let dec = await refreshToken();
       if (dec) {
         return uploadFiles(files, body, key, endpoint);
+      } else {
+        return false;
+      }
+    } else {
+      console.log("other errors");
+      return false;
+    }
+  }
+};
+
+export const uploadMultiFiles = async (files, body, keys, endpoint) => {
+  let form_data = new FormData();
+  let access = sessionStorage.getItem("accessToken");
+  //access =  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ4OTc3OTkwLCJqdGkiOiIyY2EyY2NjMjFmMjQ0YjQyYTc3MjgzYjAzZGM2MTdhMSIsInVzZXJfaWQiOjJ9.uGyjMDKwWTMowoBgxNLiDbfijFcwutbKBkLNrXlvnTA"
+  let headers = set_header(access, true);
+  headers["Content-Type"] = "multipart/form-data";
+  if (files.length !== keys.length){
+    return false
+  }
+  for (let i = 0; i < files.length; i++) {
+    console.log("adding");
+    form_data.append(keys[i], files[i], files[i].name);
+  }
+
+  /* form_data.append('front',files.front,files.front.name);
+    form_data.append('back',files.back,files.back.name);
+    form_data.append('selfie',files.selfie,files.selfie.name); */
+
+  for (let key of Object.keys(body)) {
+    form_data.append(key, body[key]);
+  }
+  console.log(form_data);
+  let url = api + endpoint;
+  try {
+    let resp = await axios.post(url, form_data, {
+      headers,
+    });
+    console.log(resp.status);
+
+    if (resp.status == 201 || resp.status === 200) {
+      return true;
+    } else {
+      console.log("other errors");
+      return false;
+    }
+  } catch (error) {
+    let resp = error.response;
+    console.log(resp);
+    if (resp.status == 401) {
+      let dec = await refreshToken();
+      if (dec) {
+        return uploadMultiFiles(files, body, keys, endpoint);
       } else {
         return false;
       }
@@ -481,8 +537,13 @@ export async function delReq(url) {
 
   let preResp = await fetch(api + url, options);
   if (preResp.ok) {
-    let resp = await preResp.json();
-    return resp;
+    try{
+      let resp = await preResp.json();
+      return resp;
+    }catch (e){
+      return true
+    }
+    
   } else if (preResp.status == 401) {
     let dec = await refreshToken();
     if (dec) {
@@ -546,4 +607,9 @@ export function formatDate(date) {
     padTo2Digits(date.getMonth() + 1),
     date.getFullYear(),
   ].join("/");
+}
+
+
+export function formatImage(path) {
+  return base + ("/media"+path.split("media")[1]);
 }

@@ -5,9 +5,37 @@ import Feed from "./components/feed";
 import Footer from "../components/panel/footer";
 import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
-import React, { useEffect } from "react";
+import Checker from "../components/utils/Checker";
+import React, { useEffect, useState } from "react";
+import {delReq, formatImage, req} from "../../helpers"
+import { toast } from "react-toastify";
 
 const Brokers = () => {
+  
+  const [loading,setLoading] = useState(true);
+  const [brokers,setBrokers] = useState([])
+
+  const fetchBrokers = async () => {
+    const resp = await req("brokers")
+    if (resp){
+      setBrokers(resp)
+      setLoading(false)
+    }
+  }
+
+  const deleteBroker = async (id) => {
+    const resp = await delReq(`brokers/${id}/`)
+    if (resp){
+      toast.success("Deleted")
+      fetchBrokers();
+    }
+  }
+
+  useEffect(() => {
+    fetchBrokers()
+  },[])
+
+  
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "/dist/js/datatable.js";
@@ -21,7 +49,7 @@ const Brokers = () => {
         <title>Brokers</title>
         <meta name="description" content="Brokers" />
       </Head>
-
+      <Checker only_admin={true}>
       <Headtag />
       <Navbar />
       <Sidebar />
@@ -57,41 +85,33 @@ const Brokers = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Trade Type</th>
                             <th></th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>
-                              <img
-                                src="../frontend/images/clients-logo/interactiveBroker.png"
-                                className="img-fluid"
-                                alt="Broker Image"
-                              />
-                            </td>
-                            <td>Interactive Brokers</td>
-                            <td>tt@t.com</td>
-                            <td>
-                              <span class="badge bg-primary text-white mr-2">
-                                STOCKS
-                              </span>
-                              <span class="badge bg-primary text-white mr-2">
-                                OPTIONS
-                              </span>
-                              <span class="badge bg-primary text-white mr-2">
-                                FUTURES
-                              </span>
-                              <span class="badge bg-primary text-white">
-                                FOREX
-                              </span>
-                            </td>
-                            <td>
-                              <a className="dropdown-item text-danger" href="#">
-                                <i className="fas fa-trash-alt mr-1"></i>
-                              </a>
-                            </td>
-                          </tr>
+                          {
+                            brokers.map((e,i) => {
+                              return <tr key={e.image}>
+                              <td>
+                                <img
+                                  src={formatImage(e.image)}
+                                  className="img-fluid"
+                                  alt="Broker Image"
+                                  style={{width:100}}
+                                />
+                              </td>
+                              <td>{e.name}</td>
+                              <td>{e.email}</td>
+                              
+                              <td>
+                                <a className="dropdown-item text-danger" href="#" onClick={() => deleteBroker(e.id)}>
+                                  <i className="fas fa-trash-alt mr-1"></i>
+                                </a>
+                              </td>
+                            </tr>
+                            })
+                          }
+                          
                         </tbody>
                       </table>
                     </div>
@@ -106,6 +126,8 @@ const Brokers = () => {
       <Feed />
       <Footer />
       <Scripttag />
+      </Checker>
+      
     </>
   );
 };

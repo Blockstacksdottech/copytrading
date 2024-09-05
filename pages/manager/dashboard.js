@@ -6,6 +6,7 @@ import Footer from "../components/panel/footer";
 import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
 import React, { useEffect } from "react";
+import Checker from "../components/utils/Checker";
 
 const Dashboard = () => {
   useEffect(() => {
@@ -22,6 +23,9 @@ const Dashboard = () => {
         <meta name="description" content="Dashboard" />
       </Head>
 
+
+      
+      <Checker only_manager={true}>
       <Headtag />
       <Navbar />
       <Sidebar />
@@ -145,6 +149,10 @@ const Dashboard = () => {
       <Feed />
       <Footer />
       <Scripttag />
+      </Checker>
+
+
+      
     </>
   );
 };

@@ -5,9 +5,33 @@ import Feed from "./components/feed";
 import Footer from "../components/panel/footer";
 import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import Checker from "../components/utils/Checker";
+import { formatDate, req } from "@/helpers";
 
 const Dashboard = () => {
+
+  const [strategies,setStrategies] = useState([])
+  const [loading,setLoading] = useState(true)
+
+  useEffect(()  => {
+    fetchStrategies()
+  },[])
+
+
+  const fetchStrategies = async () => {
+    const res = await req('strategies/subscribed')
+    if (res) {
+      setStrategies(res)
+      setLoading(false)
+    }
+  }
+
+  const formatPercValue = (am,perc) => {
+    return am * (perc / 100)
+  }
+  
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "/dist/js/datatable.js";
@@ -21,7 +45,7 @@ const Dashboard = () => {
         <title>Dashboard</title>
         <meta name="description" content="Dashboard" />
       </Head>
-
+      <Checker>
       <Headtag />
       <Navbar />
       <Sidebar />
@@ -33,7 +57,7 @@ const Dashboard = () => {
               <div className="col-sm-6">
                 <h1 className="m-0">Simulation Account</h1>
               </div>
-              <div className="col-sm-6">
+              {/* <div className="col-sm-6">
                 <div className="d-flex">
                   <p className="ml-auto d-flex flex-column text-center">
                     <span className="text-dark">462.2</span>
@@ -50,24 +74,24 @@ const Dashboard = () => {
                     <span className="text-muted">1-Day Change</span>
                   </p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
 
-        <div className="content">
+        {!loading && <div className="content">
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
                 <div className="card card-primary shadow-none">
                   <div className="card-body">
                     {/* Message to show if there no any simulation */}
-                    <div className="text-center py-5">
+                    {/* <div className="text-center py-5">
                       <p className="font-weight-light">
                         Your Simulation Account is empty.
                       </p>
                       <p>Pick Strategies to add to your Simulation Account.</p>
-                    </div>
+                    </div> */}
 
                     <div className="table-responsive p-0">
                       <table className="table table-bordered table-sm datatable">
@@ -100,66 +124,71 @@ const Dashboard = () => {
                                 Change %
                               </span>
                             </th>
-                            <th></th>
+                            {/* <th></th> */}
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>
-                              <a
-                                className="fas fa-external-link-alt mr-2"
-                                href="/investor/strategydetails"
-                              ></a>
-                              <span className="h6 mb-0">Easiest</span>
-                            </td>
-                            <td>09-06-2024</td>
-                            <td>$67,000</td>
-                            <td>$68,000</td>
-                            <td>
-                              <span className="text-danger underline">
-                                $150
-                              </span>
-                              <br />
-                              <span className=" text-danger">0.2%</span>
-                            </td>
-                            <td>
-                              <span className="text-success underline">
-                                $1000
-                              </span>
-                              <br />
-                              <span className=" text-success">1.5%</span>
-                            </td>
-                            <td>
-                              <div className="btn-group">
-                                <button
-                                  type="button"
-                                  className="btn btn-secondary dropdown-toggle"
-                                  data-toggle="dropdown"
-                                >
-                                  <i className="fas fa-cog"></i>
-                                </button>
-                                <ul className="dropdown-menu">
-                                  <li>
-                                    <a className="dropdown-item" href="#">
-                                      Stop Sim
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a className="dropdown-item" href="#">
-                                      Change Sim Allocation
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a className="dropdown-item" href="#">
-                                      Message to Leader
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </td>
-                          </tr>
+                          {
+                            strategies.map((e,i) => {
+                              return <tr>
+                              <td>
+                                <a
+                                  className="fas fa-external-link-alt mr-2"
+                                  href={`/investor/strategydetails/${e.strategy.id}`}
+                                ></a>
+                                <span className="h6 mb-0">{e.strategy.name}</span>
+                              </td>
+                              <td>{formatDate(new Date(e.strategy.date))}</td>
+                              <td>${e.strategy.accountSize}</td>
+                              <td>$68,000</td>
+                              <td>
+                                <span className="underline">
+                                  ${formatPercValue(Number(e.strategy.accountSize),Number(e.result.todays_pl))}
+                                </span>
+                                <br />
+                                <span className=" text-danger">{e.result.todays_pl}%</span>
+                              </td>
+                              <td>
+                                <span className="text-success underline">
+                                ${formatPercValue(Number(e.strategy.accountSize),Number(e.result.annual_return_percentage))}
+                                </span>
+                                <br />
+                                <span className=" text-success">{e.result.annual_return_percentage}%</span>
+                              </td>
+                              {/* <td>
+                                <div className="btn-group">
+                                  <button
+                                    type="button"
+                                    className="btn btn-secondary dropdown-toggle"
+                                    data-toggle="dropdown"
+                                  >
+                                    <i className="fas fa-cog"></i>
+                                  </button>
+                                  <ul className="dropdown-menu">
+                                    <li>
+                                      <a className="dropdown-item" href="#">
+                                        Stop Sim
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a className="dropdown-item" href="#">
+                                        Change Sim Allocation
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a className="dropdown-item" href="#">
+                                        Message to Leader
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </td> */}
+                            </tr>
+                            })
+                          }
+                          
                         </tbody>
-                        <tfoot>
+                        {/* <tfoot>
                           <tr className="bg-light">
                             <td></td>
                             <td></td>
@@ -169,7 +198,7 @@ const Dashboard = () => {
                             <td className="text-success">$1000</td>
                             <td></td>
                           </tr>
-                        </tfoot>
+                        </tfoot> */}
                       </table>
                     </div>
                   </div>
@@ -177,12 +206,15 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>}
+        
       </div>
 
       <Feed />
       <Footer />
       <Scripttag />
+      </Checker>
+      
     </>
   );
 };

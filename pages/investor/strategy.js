@@ -8,10 +8,12 @@ import Scripttag from "../components/panel/scripttag";
 import React, { useEffect , useState} from "react";
 import {req,formatDate,postReq} from "@/helpers"
 import { toast } from "react-toastify";
+import Checker from "../components/utils/Checker";
 
 const Strategy = () => {
 
   const [strats,setStrats] = useState([])
+  
   
 
   useEffect(() => {
@@ -41,13 +43,21 @@ const Strategy = () => {
     }
   }
 
+  const watch = async (e) => {
+    const res = await postReq(`strategies/${e.id}/watch/`)
+    if (res){
+      toast.success("Added to watch list")
+      fetchStrats()
+    }
+  }
+
   return (
     <>
       <Head>
         <title>Strategy</title>
         <meta name="description" content="Strategy" />
       </Head>
-
+      <Checker>
       <Headtag />
       <Navbar />
       <Sidebar />
@@ -109,7 +119,7 @@ const Strategy = () => {
                                 <td>{formatDate(new Date(e.date))}</td>
                                 <td>{e.tradeType}</td>
                                 
-                                <td>{e.broker}</td>
+                                <td>{e.broker.name}</td>
                                 <td>${e.price}/month</td>
                                 <td>{e.enabled ? "Active" : "Not Active"}</td>
                                 <td>{e.subs}</td>
@@ -123,6 +133,15 @@ const Strategy = () => {
                                       <i className="fas fa-ellipsis-v"></i>
                                     </a>
                                     <ul className="dropdown-menu">
+                                    <li >
+                                        
+                                        <a
+                                            href={`/investor/strategydetails?id=${e.id}`}
+                                            className="dropdown-item"
+                                          >
+                                            Details
+                                          </a>
+                                        </li>
                                     <li onClick={() => subscribe(e)}>
                                         
                                         <a
@@ -130,6 +149,16 @@ const Strategy = () => {
                                             className="dropdown-item"
                                           >
                                             Subscribe
+                                          </a>
+                                        </li>
+
+                                        <li onClick={() => watch(e)}>
+                                        
+                                        <a
+                                            href="#"
+                                            className="dropdown-item"
+                                          >
+                                            Watch
                                           </a>
                                         </li>
                                       
@@ -161,6 +190,8 @@ const Strategy = () => {
       <Feed />
       <Footer />
       <Scripttag />
+      </Checker>
+      
     </>
   );
 };

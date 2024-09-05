@@ -5,54 +5,90 @@ import Feed from "./components/feed";
 import Footer from "../components/panel/footer";
 import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
-import { useEffect, useState } from "react";
-import { postReq, req } from "@/helpers";
+import { useContext, useEffect, useState } from "react";
+import { formatImage, postReq, req, uploadFiles, uploadMultiFiles } from "@/helpers";
 import { toast } from "react-toastify";
+import Checker from "@/pages/components/utils/Checker"
+import { UserContext } from "@/contexts/UserContextData";
 
 const Accountmanagement = () => {
-
+  const {user,setUser} = useContext(UserContext)
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [profileData, setProfileData] = useState({
-    fullName: '',
-    email: '',
+    full_name: '',
     mobile: '',
     address: '',
     city: '',
     state: '',
     country: '',
-    postalCode: '',
-    governmentIdType: '',
-    governmentIdNumber: '',
+    postal_code: '',
+    government_id_type: '',
+    government_id_number: '',
     tin: '',
-    profilePicture: null,
-    user : null
+    profile_picture: null,
   });
+  const [documents,setDocuments] = useState({
+    front :null,
+    back : null,
+    tin : null
+  })
   const [loading,setLoading] = useState(true)
 
 
   useEffect(() => {
     fetchProfile()
+    fetchDocuments()
   },[])
 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setProfileData({ ...profileData, [name]: value });
+    let temp = {...profileData}
+    temp[name] = value
+    setProfileData(temp);
   };
 
   const handleFileChange = (e) => {
-    setProfileData({ ...profileData, profilePicture: e.target.files[0] });
+    let temp = {...profileData}
+    temp["profile_picture"] = e.target.files[0]
+    setProfileData(temp);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const {body,image : profilePicture} = profileData
+    const {profile_picture,...body} = profileData
+    
     // Handle form submission here
     console.log(body);
-    console.log(profilePicture)
+    console.log(profile_picture)
+    const targetFiles = profile_picture instanceof File ? [profile_picture] : [] 
+    const resp = await uploadFiles(targetFiles,body,"profile_picture","profile")
+    if (resp){
+      toast.success("saved")
+      fetchProfile();
+    }
   };
+
+  const sumbitDocs = async (e) => {
+    e.preventDefault();
+    let files =[]
+    let keys = []
+    for (const k of Object.keys(documents)){
+      if (documents[k] && documents[k] instanceof File){
+        files.push(documents[k])
+        keys.push(k)
+      }
+    }
+    const resp = await uploadMultiFiles(files,{},keys,"documents")
+    if (resp){
+      toast.success("updated")
+      fetchDocuments()
+    }else{
+      toast.error("failed")
+    }
+  }
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
@@ -73,9 +109,22 @@ const Accountmanagement = () => {
   const fetchProfile = async () => {
     const resp = await req("profile")
     if (resp){
-      if (resp.length > 0){setProfileData(resp)}
+      setProfileData(resp)
       
     }
+  }
+
+  const fetchDocuments = async () => {
+    const resp = await req("documents")
+    if (resp){
+      setDocuments(resp)
+    }
+  }
+
+  const handleDocChange = (e) => {
+    let temp = {...documents}
+    temp[e.target.name] = e.target.files[0]
+    setDocuments(temp);
   }
 
 
@@ -85,6 +134,7 @@ const Accountmanagement = () => {
         <title>Account Management</title>
         <meta name="description" content="Account Management" />
       </Head>
+      <Checker invalid={true}>
 
       <Headtag />
       <Navbar />
@@ -116,7 +166,7 @@ const Accountmanagement = () => {
                 <div className="row">
                   <div className="col-lg-3">
                     <img
-                      src="/dist/img/avatar5.png"
+                      src={profileData.profile_picture  && !(profileData.profile_picture instanceof File) ? formatImage(profileData.profile_picture) : "/dist/img/avatar5.png"}
                       className="img-circle elevation-1 img-fluid"
                       alt="Profile"
                     />
@@ -125,7 +175,7 @@ const Accountmanagement = () => {
                     <input
                       className="form-control"
                       type="file"
-                      name="profilePicture"
+                      name="profile_picture"
                       onChange={handleFileChange}
                     />
                   </div>
@@ -139,8 +189,8 @@ const Accountmanagement = () => {
                       type="text"
                       className="form-control"
                       placeholder="Enter Full Name"
-                      name="fullName"
-                      value={profileData.fullName}
+                      name="full_name"
+                      value={profileData.full_name}
                       onChange={handleChange}
                     />
                   </div>
@@ -153,8 +203,9 @@ const Accountmanagement = () => {
                       className="form-control"
                       placeholder="Enter Email"
                       name="email"
-                      value={profileData.email}
-                      onChange={handleChange}
+                      disabled={true}
+                      value={user.email}
+                 
                     />
                   </div>
                 </div>
@@ -516,8 +567,8 @@ const Accountmanagement = () => {
                       type="text"
                       className="form-control"
                       placeholder="Zip / Postal Code"
-                      name="postalCode"
-                      value={profileData.postalCode}
+                      name="postal_code"
+                      value={profileData.postal_code}
                       onChange={handleChange}
                     />
                   </div>
@@ -530,11 +581,12 @@ const Accountmanagement = () => {
                     <div className="input-group">
                       <select
                         className="form-control"
-                        name="governmentIdType"
-                        value={profileData.governmentIdType}
+                        name="government_id_type"
+                        value={profileData.government_id_type}
                         onChange={handleChange}
                       >
                         <option>Choose</option>
+                        <option value="ID Card">ID Card</option>
                         <option value="Passport">Passport</option>
                         <option value="Driving License">Driving License</option>
                       </select>
@@ -542,8 +594,8 @@ const Accountmanagement = () => {
                         type="text"
                         className="form-control"
                         placeholder="ID Number"
-                        name="governmentIdNumber"
-                        value={profileData.governmentIdNumber}
+                        name="government_id_number"
+                        value={profileData.government_id_number}
                         onChange={handleChange}
                       />
                     </div>
@@ -583,29 +635,39 @@ const Accountmanagement = () => {
                       Please upload clear digital copies of their
                       government-issued ID and any other required documents.
                     </p>
+                    <p className="mb-0">
+                      <strong>Status : </strong> {user.verified ? "Verified" : "Unverified"}
+                    </p>
+                    {
+                      user.reason !== "" && user.reason.length > 0 && !user.verified &&
+                      <p className="mb-0">
+                      <strong>Reason : </strong> {user.reason}
+                    </p>
+                    }
                   </div>
                   <div className="card-body">
                     <div className="row">
                       <div className="col-md-6">
                         <div className="form-group">
                           <label>Upload ID Card (Front)</label>
-                          <img
-                            src="/dist/img/dl-front.jpg"
+                          {documents.front && !(documents.front instanceof File) && <img
+                            src={formatImage(documents.front)}
                             className="elevation-1 img-fluid"
                             alt="Goverment Issued ID Card"
-                          />
-                          <input className="form-control mt-3" type="file" />
+                          /> }
+                          
+                          <input className="form-control mt-3" name="front" onChange={handleDocChange} type="file" />
                         </div>
                       </div>
                       <div className="col-md-6">
                         <div className="form-group">
                           <label>Upload ID Card (Back)</label>
-                          <img
-                            src="/dist/img/dl-back.jpg"
+                          {documents.back && !(documents.back instanceof File) && <img
+                            src={formatImage(documents.back)}
                             className="elevation-1 img-fluid"
                             alt="Goverment Issued ID Card"
-                          />
-                          <input className="form-control mt-3" type="file" />
+                          /> }
+                          <input className="form-control mt-3" name="back" onChange={handleDocChange} type="file" />
                         </div>
                       </div>
                     </div>
@@ -615,18 +677,18 @@ const Accountmanagement = () => {
                           <label>
                             Upload Tax Identification Number (TIN) Card
                           </label>
-                          <img
-                            src="/dist/img/itin.jpg"
+                          {documents.tin && !(documents.tin instanceof File) && <img
+                            src={formatImage(documents.tin)}
                             className="elevation-1 img-fluid"
                             alt="Goverment Issued ID Card"
-                          />
-                          <input className="form-control mt-3" type="file" />
+                          /> }
+                          <input className="form-control mt-3" name="tin" onChange={handleDocChange} type="file" />
                         </div>
                       </div>
                     </div>
 
                     <div className="form-group float-right mb-0">
-                      <button type="submit" className="btn btn-primary">
+                      <button type="submit" className="btn btn-primary" onClick={sumbitDocs}>
                         Save
                       </button>
                     </div>
@@ -701,6 +763,8 @@ const Accountmanagement = () => {
       <Feed />
       <Footer />
       <Scripttag />
+      </Checker>
+      
     </>
   );
 };

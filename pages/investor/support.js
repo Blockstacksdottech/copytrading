@@ -5,9 +5,37 @@ import Feed from "./components/feed";
 import Footer from "../components/panel/footer";
 import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
+import { delReq, formatDate, req } from "@/helpers";
+import Checker from "../components/utils/Checker"
+import { toast } from "react-toastify";
 
 const Support = () => {
+
+  const [tickets,setTickets] = useState([])
+  const [loading,setLoading] = useState(true)
+
+  const fetchTickets = async () => {
+    const resp = await req("tickets")
+    if (resp){
+      setTickets(resp)
+      setLoading(false)
+    }
+  }
+
+  const deleteTicket = async (id) => {
+    const resp = await delReq(`tickets/${id}`)
+    if (resp){
+      toast.success("deleted")
+      fetchTickets();
+    }
+  }
+
+  useEffect(() => {
+    fetchTickets();
+  },[])
+
+
   return (
     <>
       <Head>
@@ -15,6 +43,7 @@ const Support = () => {
         <meta name="description" content="Support" />
       </Head>
 
+      <Checker>
       <Headtag />
       <Navbar />
       <Sidebar />
@@ -40,7 +69,8 @@ const Support = () => {
             </div>
           </div>
         </div>
-        <div className="content">
+        {
+          !loading && <div className="content">
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
@@ -49,52 +79,41 @@ const Support = () => {
                     <div className="table-responsive mailbox-messages">
                       <table className="table mb-0">
                         <tbody>
-                          <tr>
+                          { tickets.map((e,i) => {
+                            return <tr>
                             <td className="mailbox-name td-chat">
-                              <a href="/investor/chat">
+                              <a href={`/investor/chat?id=${e.id}`}>
                                 <h6 className="text-dark">
-                                  Lorem ipsum dolor sit amet, consectetuer
-                                  adipiscing elit. Aenean commodo ligula eget
-                                  dolor.
+                                  {e.subject}
                                 </h6>
-                                <p className="text-dark mb-0">5 mins ago</p>
-                                <span className="badge bg-success text-white">
+                                <p className="text-dark mb-0">{formatDate(new Date(e.date_created))}</p>
+                                {!e.isClosed && <span className="badge bg-success text-white">
                                   Open
-                                </span>
-                              </a>
-                            </td>
-                            <td>
-                              <button
-                                type="button"
-                                className="btn btn-danger btn-sm"
-                              >
-                                <i className="far fa-trash-alt"></i>
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td className="mailbox-name td-chat">
-                              <a href="/investor/chat">
-                                <h6 className="text-dark">
-                                  Lorem ipsum dolor sit amet, consectetuer
-                                  adipiscing elit. Aenean commodo ligula eget
-                                  dolor.
-                                </h6>
-                                <p className="text-dark mb-0">5 mins ago</p>
-                                <span className="badge bg-info text-white">
+                                </span>}
+                                {
+                                  e.isClosed && <span className="badge bg-info text-white">
                                   Closed
                                 </span>
+                                }
+                                
+                                
                               </a>
                             </td>
                             <td>
                               <button
                                 type="button"
                                 className="btn btn-danger btn-sm"
+                                onClick={() => deleteTicket(e.id)}
                               >
                                 <i className="far fa-trash-alt"></i>
                               </button>
                             </td>
                           </tr>
+                          })
+                            
+                          }
+                          
+                          
                         </tbody>
                       </table>
                     </div>
@@ -104,11 +123,16 @@ const Support = () => {
             </div>
           </div>
         </div>
+        }
+        
       </div>
 
       <Feed />
       <Footer />
       <Scripttag />
+      </Checker>
+
+      
     </>
   );
 };

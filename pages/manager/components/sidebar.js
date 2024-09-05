@@ -1,50 +1,10 @@
 import { useRouter } from "next/navigation";
 import { isLogged, logout } from "@/helpers";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "@/contexts/UserContextData";
 
 export default function Sidebar() {
-  const nav = useRouter();
-
-  const [user, setUser] = useState({
-    logged: false,
-    username: "",
-    email: "",
-    isAdmin: false,
-  });
-
-  useEffect(() => {
-    async function test() {
-      let resp = await isLogged();
-      console.log(resp);
-      let obj = { ...user };
-      if (resp) {
-        obj.logged = true;
-        obj.username = resp.username;
-        obj.email = resp.email;
-        obj.isAdmin = resp.is_superuser;
-        obj.isInvestor = resp.isInvestor;
-        setUser(obj);
-        return obj;
-      } else {
-        return obj;
-      }
-    }
-
-    test().then((obj) => {
-      if (obj.logged) {
-        if (obj.isAdmin) {
-          nav.push("/admin/investors");
-        }
-        else if (obj.isInvestor){
-
-        }else{
-          nav.push('/investor/dashboard')
-        }
-      } else {
-        nav.push("/login");
-      }
-    });
-  }, []);
+  const {user,setUser} = useContext(UserContext)
 
   return (
     <aside className="main-sidebar main-sidebar-custom sidebar-light-primary elevation-1">
@@ -84,12 +44,12 @@ export default function Sidebar() {
             role="menu"
             data-accordion="false"
           >
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a href="/manager/dashboard" className="nav-link">
                 <i className="nav-icon fas fa-tachometer-alt"></i>
                 <p>Dashboard</p>
               </a>
-            </li>
+            </li> */}
             <li className="nav-item">
               <a href="/investor/dashboard" className="nav-link">
                 <i className="nav-icon fas fa-tachometer-alt"></i>
@@ -139,7 +99,7 @@ export default function Sidebar() {
               </a>
             </li>
             <li className="nav-item">
-              <a href="/manager/support" className="nav-link">
+              <a href="/investor/support" className="nav-link">
                 <i className="nav-icon far fa-comment-alt"></i>
                 <p>Support</p>
               </a>

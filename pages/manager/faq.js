@@ -5,6 +5,7 @@ import Feed from "./components/feed";
 import Footer from "../components/panel/footer";
 import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
+import Checker from "../components/utils/Checker";
 
 const FAQ = () => {
   return (
@@ -14,6 +15,7 @@ const FAQ = () => {
         <meta name="description" content="FAQ" />
       </Head>
 
+      <Checker only_manager={true}>
       <Headtag />
       <Navbar />
       <Sidebar />
@@ -270,6 +272,10 @@ const FAQ = () => {
       <Feed />
       <Footer />
       <Scripttag />
+
+      </Checker>
+
+      
     </>
   );
 };

@@ -5,7 +5,7 @@ import Feed from "./components/feed";
 import Footer from "../components/panel/footer";
 import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   AreaChart,
   Area,
@@ -15,6 +15,10 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { useSearchParams } from "next/navigation";
+import { formatDate, req } from "@/helpers";
+import Checker from "../components/utils/Checker";
+import { UserContext } from "@/contexts/UserContextData";
 
 const hypotheticalData = [
   {
@@ -44,18 +48,94 @@ const hypotheticalData = [
 ];
 
 const StrategyDetails = () => {
+
+  const searchParams = useSearchParams()
+  const [loading,setLoading] = useState(true)
+  const [stratData,setStratData] = useState(null)
+  const {user,setUser} = useContext(UserContext)
+  const [processedMonths,setProcessedMonths] = useState({})
+  const [graphData,setgraphData] = useState({})
+  const id = searchParams.get("id")
+
+  const fetchData = async (id) => {
+    const resp = await req(`detailedstrategies/${id}`)
+    if (resp){
+      console.log(resp)
+      setStratData(resp)
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    if (id){
+      fetchData(id)
+    }
+  },[id])
+
+  function processDict(inputDict) {
+    if (!inputDict){
+      return {}
+    }
+    const outputDict = {};
+  
+    for (const [key, value] of Object.entries(inputDict)) {
+      const [year, month] = key.split('-');
+      if (!outputDict[year]){
+        outputDict[year] = {year_pl : 0}
+      }
+      outputDict[year][Number(month)] = value;
+      outputDict[year].year_pl += value;
+    }
+  
+    return outputDict;
+  }
+
+  function processGraphData(inputDict) {
+    if (!inputDict){
+      return []
+    }
+    const outputArr = [];
+  
+    for (const [key, value] of Object.entries(inputDict)) {
+      outputArr.push({
+        name : key,
+        Profit_Loss : value
+      })
+      
+    }
+  
+    return outputArr;
+  }
+
+  function calculate_perc(pl){
+    console.log(pl)
+    console.log(((pl / Number(stratData.accountSize)) * 100).toFixed(2))
+    return ((pl / Number(stratData.accountSize)) * 100).toFixed(2)
+  }
+
+  useEffect(() => {
+    if (stratData){
+      const result = processDict(stratData.result.monthly_pl)
+      const res2 = processGraphData(stratData.result.monthly_pl)
+      setgraphData(res2)
+      setProcessedMonths(result)
+    }
+  },[stratData])
+
+
   return (
     <>
       <Head>
         <title>Easiest</title>
         <meta name="description" content="Easiest" />
       </Head>
+      <Checker only_admin={true}>
 
       <Headtag />
       <Navbar />
       <Sidebar />
-
-      <div className="content-wrapper">
+      {
+        !loading && <div className="content-wrapper">
         <div className="content-header">
           <div className="container-fluid">
             <div className="row mb-2">
@@ -68,32 +148,32 @@ const StrategyDetails = () => {
             </div>
             <div className="row mb-2">
               <div className="col-sm-5 mb-2">
-                <p className="small mb-0">(142728137)</p>
-                <h1 className="m-0">Easiest</h1>
+                <p className="small mb-0">({stratData.id})</p>
+                <h1 className="m-0">{stratData.name}</h1>
                 <p className="mb-0">
                   Created by:{" "}
                   <a href="" className="strong">
-                    AuxillatronTrade
+                    {stratData.creator.name}
                   </a>
                 </p>
-                <p>Started: 11/2022 | Futures | Last trade: 8 days ago</p>
+                <p>Started: {formatDate(new Date(stratData.date))} | {stratData.tradeType} </p>
               </div>
-              <div className="col-sm-3 mb-2">
-                <a className="btn btn-success btn-block btn-sm">
+              {/* <div className="col-sm-3 mb-2">
+                {/* <a className="btn btn-success btn-block btn-sm">
                   <span className="h6">Simulate This</span> <br /> Track at
                   simulated broker
-                </a>
+                </a> 
                 <a
                   className="btn btn-warning btn-block btn-sm"
                   href="/investor/subscribe"
                 >
                   <span className="h6">Subscribe</span> <br /> Full access for
-                  $499/Month
+                  ${stratData.price}/Month
                 </a>
-              </div>
+              </div> */}
               <div className="col-sm-4 mb-2 m-auto">
                 <p className="text-center">
-                  Trading Category: <span className="h6">Futures</span>
+                  Trading Category: <span className="h6">{stratData.tradeType}</span>
                 </p>
                 <div className="inner text-center text-green">
                   <i className="fas fa-circle"></i>
@@ -105,7 +185,7 @@ const StrategyDetails = () => {
               <div className="col-lg-2 col-4">
                 <div className="small-box bg-light">
                   <div className="inner text-center">
-                    <h4 className="text-success">46.9%</h4>
+                    <h4 className={Number(stratData.result.annual_return_percentage) > 0 ? "text-success" : "text-danger"}>{stratData.result.annual_return_percentage}%</h4>
                     <p className="mb-0">Annual Return</p>
                   </div>
                 </div>
@@ -113,7 +193,7 @@ const StrategyDetails = () => {
               <div className="col-lg-2 col-4">
                 <div className="small-box bg-light">
                   <div className="inner text-center">
-                    <h4 className="text-danger">13.3%</h4>
+                  <h4 className={Number(stratData.result.max_drawdown_percentage) > 0 ? "text-success" : "text-danger"}>{stratData.result.max_drawdown_percentage}%</h4>
                     <p className="mb-0">Max Drawdown</p>
                   </div>
                 </div>
@@ -121,7 +201,7 @@ const StrategyDetails = () => {
               <div className="col-lg-2 col-4">
                 <div className="small-box bg-light">
                   <div className="inner text-center">
-                    <h4 className="text-dark">100</h4>
+                    <h4 className="text-dark">{stratData.result.total_trades}</h4>
                     <p className="mb-0">Num Trades</p>
                   </div>
                 </div>
@@ -129,7 +209,7 @@ const StrategyDetails = () => {
               <div className="col-lg-2 col-4">
                 <div className="small-box bg-light">
                   <div className="inner text-center">
-                    <h4 className="text-dark">69.0%</h4>
+                    <h4 className="text-dark">{stratData.result.win_percentage}%</h4>
                     <p className="mb-0">Win Trades</p>
                   </div>
                 </div>
@@ -138,8 +218,8 @@ const StrategyDetails = () => {
                 <div className="small-box bg-light">
                   <div className="inner text-center">
                     <h4>
-                      <span className="text-success">2.0</span> :{" "}
-                      <small>1</small>
+                      <span className={Number(stratData.result.profit_factor) }>{stratData.result.profit_factor}</span> 
+                      
                     </h4>
                     <p className="mb-0">Profit Factor</p>
                   </div>
@@ -148,7 +228,7 @@ const StrategyDetails = () => {
               <div className="col-lg-2 col-4">
                 <div className="small-box bg-light">
                   <div className="inner text-center">
-                    <h4 className="text-success">55.6%</h4>
+                    <h4 className="text-success">{stratData.result.winning_months}</h4>
                     <p className="mb-0">Win Months</p>
                   </div>
                 </div>
@@ -179,100 +259,38 @@ const StrategyDetails = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>2022</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-success">+25.9%</span>
-                            </td>
-                            <td>
-                              <span className="text-success font-weight-bold">
-                                +25.9%
-                              </span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>2023</td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-success">+25.9%</span>
-                            </td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-success">+25.9%</span>
-                            </td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-success">+25.9%</span>
-                            </td>
-                            <td>
-                              <span className="text-success">+25.9%</span>
-                            </td>
-                            <td>
-                              <span className="text-success">+25.9%</span>
-                            </td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-success font-weight-bold">
-                                +25.9%
-                              </span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>2024</td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td>
-                              <span className="text-success">+25.9%</span>
-                            </td>
-                            <td>
-                              <span className="text-danger">2.3%</span>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                              <span className="text-success font-weight-bold">
-                                +25.9%
-                              </span>
-                            </td>
-                          </tr>
+                          { processedMonths && 
+                            Object.keys(processedMonths).map((e,i) => {
+                              return <tr>
+                              <td>{e}</td>
+                              <td className={processedMonths[e][1] > 0 ? "text-success" :processedMonths[e][1] < 0 ? "text-danger" : "" }>{calculate_perc(processedMonths[e][1] ? processedMonths[e][1] : 0)}</td>
+                              <td className={processedMonths[e][2] > 0 ? "text-success" :processedMonths[e][2] < 0 ? "text-danger" : "" }>{calculate_perc(processedMonths[e][2] ? processedMonths[e][2] : 0)}</td>
+                              <td className={processedMonths[e][3] > 0 ? "text-success" :processedMonths[e][3] < 0 ? "text-danger" : "" }>{calculate_perc(processedMonths[e][3] ? processedMonths[e][3] : 0)}</td>
+                              <td className={processedMonths[e][4] > 0 ? "text-success" :processedMonths[e][4] < 0 ? "text-danger" : "" }>{calculate_perc(processedMonths[e][4] ? processedMonths[e][4] : 0)}</td>
+                              <td className={processedMonths[e][5] > 0 ? "text-success" :processedMonths[e][5] < 0 ? "text-danger" : "" }>{calculate_perc(processedMonths[e][5] ? processedMonths[e][5] : 0)}</td>
+                              <td className={processedMonths[e][6] > 0 ? "text-success" :processedMonths[e][6] < 0 ? "text-danger" : "" }>{calculate_perc(processedMonths[e][6] ? processedMonths[e][6] : 0)}</td>
+                              <td className={processedMonths[e][7] > 0 ? "text-success" :processedMonths[e][7] < 0 ? "text-danger" : "" }>{calculate_perc(processedMonths[e][7] ? processedMonths[e][7] : 0)}</td>
+                              <td className={processedMonths[e][8] > 0 ? "text-success" :processedMonths[e][8] < 0 ? "text-danger" : "" }>{calculate_perc(processedMonths[e][8] ? processedMonths[e][8] : 0)}</td>
+                              <td className={processedMonths[e][9] > 0 ? "text-success" :processedMonths[e][9] < 0 ? "text-danger" : "" }>{calculate_perc(processedMonths[e][9] ? processedMonths[e][9] : 0)}</td>
+                              <td className={processedMonths[e][10] > 0 ? "text-success" :processedMonths[e][10] < 0 ? "text-danger" : "" }>{calculate_perc(processedMonths[e][10] ? processedMonths[e][10] : 0)}</td>
+                              <td className={processedMonths[e][11] > 0 ? "text-success" :processedMonths[e][11] < 0 ? "text-danger" : "" }>{calculate_perc(processedMonths[e][11] ? processedMonths[e][11] : 0)}</td>
+                              <td className={processedMonths[e][12] > 0 ? "text-success" :processedMonths[e][12] < 0 ? "text-danger" : "" }>{calculate_perc(processedMonths[e][12] ? processedMonths[e][12] : 0)}</td>
+                              
+                              {/* <td>
+                                <span className="text-danger">2.3%</span>
+                              </td>
+                              <td>
+                                <span className="text-success">+25.9%</span>
+                              </td> */}
+                              <td>
+                                <span className={`${processedMonths[e]["year_pl"] > 0 ? "text-success" :processedMonths[e]["year_pl"] < 0 ? "text-danger" : "" } font-weight-bold`}>{calculate_perc(processedMonths[e]["year_pl"] ? processedMonths[e]["year_pl"] : 0)}
+                                </span>
+                              </td>
+                            </tr>
+                            })
+                          }
+                          
+                          
                         </tbody>
                       </table>
                     </div>
@@ -286,7 +304,7 @@ const StrategyDetails = () => {
         <div className="content">
           <div className="container-fluid">
             <div className="row mb-2">
-              <div className="col-sm-9">
+              <div className="col-sm-12">
                 <div className="mb-2">
                   <div className="card shadow-none">
                     <div className="card-header">
@@ -299,14 +317,14 @@ const StrategyDetails = () => {
                     </div>
                     <div className="card-body">
                       <ResponsiveContainer width="100%" height={500}>
-                        <AreaChart data={hypotheticalData}>
+                        <AreaChart data={graphData}>
                           <CartesianGrid strokeDasharray="5 5" />
                           <XAxis dataKey="name" />
                           <YAxis />
                           <Tooltip />
                           <Area
                             type="monotone"
-                            dataKey="Price"
+                            dataKey="Profit_Loss"
                             stroke="#0909ff"
                             fill="#0909ff"
                           />
@@ -316,7 +334,7 @@ const StrategyDetails = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-3">
+              {/* <div className="col-sm-3">
                 <div className="card card-primary shadow-none">
                   <div className="card-body box-profile">
                     <div className="text-center">
@@ -408,7 +426,7 @@ const StrategyDetails = () => {
                     </ul>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="row mb-2">
               <div className="col-sm-12">
@@ -424,7 +442,7 @@ const StrategyDetails = () => {
                       Trading Record
                     </a>
                   </li>
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <a
                       className="nav-link shadow-none"
                       data-toggle="tab"
@@ -432,7 +450,7 @@ const StrategyDetails = () => {
                     >
                       Statistics
                     </a>
-                  </li>
+                  </li> */}
                   <li className="nav-item">
                     <a
                       className="nav-link shadow-none"
@@ -455,34 +473,39 @@ const StrategyDetails = () => {
                                 <td>Symbol</td>
                                 <td>Description</td>
                                 <td>Side</td>
-                                <td>Qty</td>
-                                <td>Avg Price</td>
+                                <td>Qty Closed</td>
+                                <td>Avg Price Open</td>
                                 <td>Closed Date/Time</td>
-                                <td>Avg Price</td>
+                                <td>Avg Price Close</td>
                                 <td>Drawdown</td>
                                 <td>P/L</td>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>4/17/24 9:52 </td>
-                                <td>@MNQM4</td>
-                                <td>MICRO E-MINI NASDAQ 100</td>
-                                <td>SHORT</td>
-                                <td>12</td>
-                                <td>17895.00</td>
-                                <td>4/17 15:55</td>
-                                <td>17681.76</td>
-                                <td>0.27%</td>
-                                <td>$5,107</td>
-                              </tr>
+                              {
+                                stratData.trades.map((e,i) => {
+                                  return <tr>
+                                  <td>{formatDate(new Date(e.open_time_et))}</td>
+                                  <td>{e.symbol}</td>
+                                  <td>{e.descrip}</td>
+                                  <td>{e.side}</td>
+                                  <td>{e.qty_closed}</td>
+                                  <td>{e.avg_price_open}</td>
+                                  <td>{formatDate(new Date(e.closed_time_et))}</td>
+                                  <td>{e.avg_price_closed}</td>
+                                  <td>{e.dd_as_percentage}%</td>
+                                  <td>{e.trade_pl}$</td>
+                                </tr>
+                                })
+                              }
+                              
                             </tbody>
                           </table>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="tab-pane fade" id="statistics">
+                  {/* <div className="tab-pane fade" id="statistics">
                     <div className="card shadow-none mb-2">
                       <div className="card-body">
                         <ul className="list-group list-group-unbordered">
@@ -543,23 +566,14 @@ const StrategyDetails = () => {
                         </ul>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="tab-pane fade" id="description">
                     <div className="card shadow-none">
                       <div className="card-body">
                         <p>
-                          System ares trades MNQ Future long and short. Risk per
-                          trade is 1% of equity. No overnight. Always with stop.
+                          {stratData.detailedDescription}
                         </p>
-                        <p>The system is backtested and is 100% automated.</p>
-                        <p>
-                          For deeper information of the backtest results you can
-                          pm me.
-                        </p>
-                        <p>
-                          TOS not possible because of the Tax Regulations for
-                          derivatives in Germany.
-                        </p>
+                        
                       </div>
                     </div>
                   </div>
@@ -569,9 +583,13 @@ const StrategyDetails = () => {
           </div>
         </div>
       </div>
+      }
+      
       <Feed />
       <Footer />
       <Scripttag />
+      </Checker>
+      
     </>
   );
 };

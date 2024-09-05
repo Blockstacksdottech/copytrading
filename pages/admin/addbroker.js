@@ -5,9 +5,46 @@ import Feed from "./components/feed";
 import Footer from "../components/panel/footer";
 import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
-import React, { useEffect } from "react";
+import Checker from "../components/utils/Checker";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { uploadFiles } from "../../helpers";
+import { useRouter } from "next/navigation";
 
 const AddBroker = () => {
+
+  const [image,setImage] = useState(null);
+  const [data,setData] = useState({
+    name : "",
+    email : ""
+  })
+
+  const nav = useRouter()
+
+  const handleChange = (e) => {
+    let temp = {...data}
+    temp[e.target.name] = e.target.value;
+    setData(temp)
+  }
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  }
+
+  const addBroker = async () => {
+    if (!image){
+      toast.error("Chose an image")
+    }else{
+      const resp = await uploadFiles([image],data,"image","brokers/")
+      if (resp){
+        toast.success("created");
+        nav.push("/admin/brokers")
+      }else{
+        toast.error("Failed")
+      }
+    }
+  }
+
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "/dist/js/datatable.js";
@@ -22,6 +59,7 @@ const AddBroker = () => {
         <meta name="description" content="Add Broker" />
       </Head>
 
+      <Checker only_admin={true}>
       <Headtag />
       <Navbar />
       <Sidebar />
@@ -46,64 +84,20 @@ const AddBroker = () => {
                     <form>
                       <div className="form-group">
                         <label>Image of Broker</label>
-                        <input className="form-control" type="file" />
+                        <input className="form-control" type="file" onChange={handleImageChange} />
                       </div>
                       <div className="form-group">
                         <label>Name of Broker</label>
-                        <input className="form-control" type="text" />
+                        <input className="form-control" type="text" name="name" value={data.name} onChange={handleChange} />
                       </div>
-                      <div className="form-group">
-                        <label>Broker Trade Type</label>
-                        <div className="row">
-                          <div className="col-sm-3">
-                            <div className="form-check">
-                              <input
-                                className="form-check-input"
-                                type="radio"
-                              />
-                              <label className="form-check-label">Stocks</label>
-                            </div>
-                          </div>
-                          <div className="col-sm-3">
-                            <div className="form-check">
-                              <input
-                                className="form-check-input"
-                                type="radio"
-                              />
-                              <label className="form-check-label">
-                                Options
-                              </label>
-                            </div>
-                          </div>
-                          <div className="col-sm-3">
-                            <div className="form-check">
-                              <input
-                                className="form-check-input"
-                                type="radio"
-                              />
-                              <label className="form-check-label">
-                                Futures
-                              </label>
-                            </div>
-                          </div>
-                          <div className="col-sm-3">
-                            <div className="form-check">
-                              <input
-                                className="form-check-input"
-                                type="radio"
-                              />
-                              <label className="form-check-label">Forex</label>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      
                       <div className="form-group">
                         <label>Email of Broker</label>
-                        <input className="form-control" type="email" />
+                        <input className="form-control" type="email" name="email" value={data.email} onChange={handleChange} />
                       </div>
                       <div className="form-group">
                         <div className="float-right">
-                          <a className="btn btn-primary">Add Broker</a>
+                          <a className="btn btn-primary" onClick={addBroker}>Add Broker</a>
                         </div>
                       </div>
                     </form>
@@ -118,6 +112,8 @@ const AddBroker = () => {
       <Feed />
       <Footer />
       <Scripttag />
+      </Checker>
+      
     </>
   );
 };
