@@ -1,8 +1,8 @@
-import { useContext} from "react";
-import {UserContext} from "../../../contexts/UserContextData"
+import { useContext } from "react";
+import { UserContext } from "../../../contexts/UserContextData";
 
 export default function Sidebar() {
-  const {user,setUser} = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext);
 
   return (
     <aside className="main-sidebar main-sidebar-custom sidebar-light-primary elevation-1">
@@ -45,7 +45,7 @@ export default function Sidebar() {
             <li className="nav-item">
               <a href="/investor/dashboard" className="nav-link">
                 <i className="nav-icon fas fa-tachometer-alt"></i>
-                <p>Dashboard</p>
+                <p>Investor Dashboard</p>
               </a>
             </li>
             <li className="nav-item">
@@ -67,21 +67,21 @@ export default function Sidebar() {
                 <p>Subscribed Strategy</p>
               </a>
             </li>
-             <li className="nav-item">
+            <li className="nav-item">
               <a href="/investor/accountmanagement" className="nav-link">
                 <i className="nav-icon fas fa-id-card"></i>
                 <p>Account Management</p>
               </a>
             </li>
-            
-            {
-              user.isInvestor &&
-            <li className="nav-item">
-              <a href="/manager/mystrategy" className="nav-link">
-                <i className="nav-icon fas fa-tachometer-alt"></i>
-                <p>Manager Dashboard</p>
-              </a>
-            </li>}
+
+            {user.isInvestor && (
+              <li className="nav-item">
+                <a href="/manager/mystrategy" className="nav-link">
+                  <i className="nav-icon fas fa-tachometer-alt"></i>
+                  <p>Manager Dashboard</p>
+                </a>
+              </li>
+            )}
             <li className="nav-item">
               <a href="/investor/faq" className="nav-link">
                 <i className="nav-icon far fa-question-circle"></i>
