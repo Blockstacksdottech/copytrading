@@ -52,7 +52,7 @@ const MyStrategy = () => {
         <meta name="description" content="My Strategy" />
       </Head>
 
-      <Checker only_manager={true}></Checker>
+      <Checker only_manager={true}>
 
       <Headtag />
       <Navbar />
@@ -90,7 +90,7 @@ const MyStrategy = () => {
                               <th>Active</th>
                               <th>
                                 SUBSCRIBERS <br />
-                                <span className="small font-italic">Total</span>
+                                <span className="small font-italic">Active</span>
                               </th>
                               <th>
                                 SUBSCRIBERS <br />
@@ -122,7 +122,7 @@ const MyStrategy = () => {
                                       {e.enabled ? "Active" : "Not Active"}
                                     </td>
                                     <td>{e.subs}</td>
-                                    <td>{e.subs}</td>
+                                    <td>{e.pending}</td>
                                     <td>
                                       <div className="btn-group">
                                         <a
@@ -144,7 +144,7 @@ const MyStrategy = () => {
                                           <li>
                                             <a
                                               className="dropdown-item"
-                                              href="/manager/strategysubscriptionrequest"
+                                              href={`/manager/strategysubscriptionrequest?id=${e.id}`}
                                             >
                                               Strategy Subscription Request
                                             </a>
@@ -207,6 +207,10 @@ const MyStrategy = () => {
       <Feed />
       <Footer />
       <Scripttag />
+
+      </Checker>
+
+      
     </>
   );
 };

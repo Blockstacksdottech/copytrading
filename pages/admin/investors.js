@@ -142,7 +142,7 @@ const Investors = () => {
                                                 onClick={() => verifyUser(e)}
                                               >
                                                 <i className="fas fa-user-check mr-1"></i>
-                                                Verify to make Manager
+                                                {e.isInvestor ? "Remove Manager" : "Make Manager"}
                                               </a>
                                             </li>
 

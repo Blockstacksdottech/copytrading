@@ -8,9 +8,12 @@ import Scripttag from "../components/panel/scripttag";
 import React, { useEffect, useState } from "react";
 import { formatDate, req, postReq } from "@/helpers";
 import Checker from "../components/utils/Checker";
+import { useSearchParams } from "next/navigation";
 
 const StrategySubscriptionRequest = () => {
-  const [strategies, setStrategies] = useState([]);
+  const searchParams = useSearchParams()
+  const id = searchParams.get("id")
+  const [requests, setRequests] = useState([]);
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "/dist/js/datatable.js";
@@ -19,16 +22,19 @@ const StrategySubscriptionRequest = () => {
   }, []);
 
   useEffect(() => {
-    fetchUserStrategies();
-  }, []);
+    if (id){
+      fetchRequests(id);
+    }
+    
+  }, [id]);
 
-  const fetchUserStrategies = async () => {
+  const fetchRequests = async (id_) => {
     try {
-      const response = await req("strategies/my-strategies"); // Adjust the URL endpoint as needed
+      const response = await req(`strategies/${id_}/subscription-requests`); // Adjust the URL endpoint as needed
 
       if (response) {
         console.log(response);
-        setStrategies(response);
+        setRequests(response);
         console.log("User's strategies fetched successfully:", response);
       } else {
         console.log("Failed to fetch user's strategies");
@@ -38,10 +44,16 @@ const StrategySubscriptionRequest = () => {
     }
   };
 
-  const updateStatus = async (e) => {
-    const resp = await postReq(`strategies/${e.id}/update-status/`);
+  const updateStatus = async (e,action) => {
+    let url = ""
+    if (action === "approve"){
+      url = `strategies/${e.strategy}/approve-subscription/${e.id}/`
+    }else{
+      url = `strategies/${e.strategy}/decline-subscription/${e.id}/`
+    }
+    const resp = await postReq(url);
     if (resp) {
-      fetchUserStrategies();
+      fetchRequests(id);
     }
   };
 
@@ -78,7 +90,7 @@ const StrategySubscriptionRequest = () => {
                 <div className="card shadow-none">
                   <div className="card-body">
                     <div className="table-responsive p-0">
-                      {strategies.length > 0 && (
+                      {requests.length > 0 && (
                         <table className="table table-bordered table-sm datatable">
                           <thead>
                             <tr>
@@ -89,21 +101,22 @@ const StrategySubscriptionRequest = () => {
                               <th></th>
                             </tr>
                           </thead>
-                          {strategies.length > 0 && (
+                          {requests.length > 0 && (
                             <tbody>
-                              {strategies.map((e, i) => {
+                              {requests.map((e, i) => {
                                 return (
                                   <tr>
-                                    <td>Name</td>
-                                    <td>Email</td>
-                                    <td>Date</td>
+                                    <td>{e.subscriber.name}</td>
+                                    <td>{e.subscriber.email}</td>
+                                    <td>{formatDate(new Date(e.date_requested))}</td>
                                     <td>
-                                      <a className="badge badge-success">
+                                      Pending
+                                      {/* <a className="badge badge-success">
                                         Approved
                                       </a>
                                       <a className="badge badge-danger">
                                         Rejected
-                                      </a>
+                                      </a> */}
                                     </td>
 
                                     <td>
@@ -116,7 +129,7 @@ const StrategySubscriptionRequest = () => {
                                           <i className="fas fa-ellipsis-v"></i>
                                         </a>
                                         <ul className="dropdown-menu">
-                                          <li>
+                                          <li onClick={() => updateStatus(e,"approve")}>
                                             <a
                                               href="#"
                                               className="dropdown-item"
@@ -124,7 +137,7 @@ const StrategySubscriptionRequest = () => {
                                               Approve
                                             </a>
                                           </li>
-                                          <li>
+                                          <li onClick={() => updateStatus(e,"decline")}>
                                             <a
                                               href="#"
                                               className="dropdown-item"

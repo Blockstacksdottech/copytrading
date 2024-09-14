@@ -325,7 +325,7 @@ const Investordetails = () => {
               <div className="col-lg-12">
                 <div className="card shadow-none">
                   <div className="card-header">
-                    <h5 className="mb-0">Verification Status</h5>
+                    <h5 className="mb-0">Documents Verification Status</h5>
                   </div>
                   <div className="card-body">
                     <div className="form-group">

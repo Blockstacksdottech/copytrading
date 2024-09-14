@@ -3,27 +3,58 @@ import Navbar from "./components/frontend/navbar";
 import Headtag from "./components/frontend/headtag";
 import Footer from "./components/frontend/footer";
 import Scripttag from "./components/frontend/scripttag";
-import { postReq } from "@/helpers";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import {req,postReq} from "../helpers"
 import { toast } from "react-toastify";
 
-export default function Forgotpassword() {
 
-  const [email, setEmail] = useState("");
-  const nav = useRouter();
-
-  const requestChange = async (e) => {
-    e.preventDefault();
-    const resp = await postReq("request-password-reset", { email });
-
-    if (resp) {
-      toast.success("Request Sent. Please check your email");
-      //nav.push("/");
-    } else {
-      toast.error("Failed");
-    }
-  };
+export default function ResetPassword() {
+    const searchParams = useSearchParams();
+    const rid = searchParams.get("reqId");
+    const [loading, setLoading] = useState(true);
+    const nav = useRouter();
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+  
+    const verifyId = async (rid) => {
+      const resp = await req(`request-password-reset?rid=${rid}`);
+      if (!resp) {
+        toast.error("Request ID not valid");
+        nav.push("/");
+      } else {
+        setLoading(false);
+      }
+    };
+  
+    useEffect(() => {
+      if (rid) {
+        verifyId(rid);
+      }
+    }, [rid]);
+  
+    const handleUpdate = async (event) => {
+      event.preventDefault();
+      if (password !== confirmPassword) {
+        toast.error("Passwords do not match");
+        return;
+      }
+  
+      try {
+        const response = await postReq("reset-password", {
+          recovery_id: rid,
+          new_password: password,
+        });
+  
+        if (response) {
+          toast.success("Password reset successfully. You can now log in.");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      //nav.push("/login");
+    };
 
   
 
@@ -52,19 +83,40 @@ export default function Forgotpassword() {
                   Forgot your password? Here you can easily retrieve password.
                 </p>
                 <form>
-                  <input
-                    type="email"
-                    className="form-control mb-3"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <button onClick={requestChange} className="btn btn-secondary btn-lg">
-                    Request New Password
-                  </button>
+                  <div className="input-group mb-3">
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="New Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="input-group mb-3">
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="Confirm New Password"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="row">
+                    <div className="col-12">
+                      <button
+                        type="submit"
+                        className="btn btn-primary btn-block"
+                        onClick={handleUpdate}
+                      >
+                        Reset Password
+                      </button>
+                    </div>
+                  </div>
                 </form>
                 <p className="mb-0 mt-3">
-                  <a href="/login" className="text-center" >
+                  <a href="/login" className="text-center">
                     Login
                   </a>
                 </p>

@@ -4,9 +4,33 @@ import Navbar from "./components/frontend/navbar";
 import Headtag from "./components/frontend/headtag";
 import Footer from "./components/frontend/footer";
 import Scripttag from "./components/frontend/scripttag";
+import { toast } from "react-toastify";
+import { postReq } from "@/helpers";
 
-export default class Contact extends Component {
-  render() {
+export default function Contact(props)  {
+  const submitMessage = async (e) => {
+    e.preventDefault()
+    toast.info("Sending...");
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("mail").value;
+    const subject = document.getElementById("subject").value;
+    const message = document.getElementById("message").value;
+    const body = {
+      name,
+      email,
+      subject,
+      message,
+    };
+
+    const resp = await postReq("contact", body);
+    if (resp) {
+      toast.success("Sent");
+    } else {
+      toast.error("Failed");
+    }
+  };
+
+
     return (
       <>
         <Head>
@@ -58,9 +82,9 @@ export default class Contact extends Component {
                       placeholder="Your Message"
                     ></textarea>
                     <button
-                      type="submit"
                       value="send"
                       className="btn btn-secondary"
+                      onClick={submitMessage}
                     >
                       SEND MESSAGE
                     </button>
@@ -132,5 +156,5 @@ export default class Contact extends Component {
         <Scripttag />
       </>
     );
-  }
+  
 }

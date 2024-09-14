@@ -98,6 +98,7 @@ const Strategy = () => {
                             <th>Broker</th>
                             <th>SUB FEE</th>
                             <th>Active</th>
+                            <th>Status</th>
                             <th>
                               SUBSCRIBERS <br />
                               <span className="small font-italic">Total</span>
@@ -122,6 +123,7 @@ const Strategy = () => {
                                 <td>{e.broker.name}</td>
                                 <td>${e.price}/month</td>
                                 <td>{e.enabled ? "Active" : "Not Active"}</td>
+                                <td>{e.isPending ? "Pending..." : "Not subscribed"}</td>
                                 <td>{e.subs}</td>
                                 <td>
                                   <div className="btn-group">
