@@ -108,7 +108,7 @@ const UpdateStrategy = () => {
         <title>Create Strategy</title>
         <meta name="description" content="Create Strategy" />
       </Head>
-      <Checker only_manager={true}>
+      <Checker only_admin={true}>
       <Headtag />
       <Navbar />
       <Sidebar />
@@ -268,6 +268,24 @@ const UpdateStrategy = () => {
           </div>
         </div>
 
+        <div className="form-group">
+          <label>Google sheets link</label>
+          <div className="form-text">
+            This Link will be used to sync trade history and update dashboard analytics.
+          </div>
+          <input
+            type="text"
+            className="form-control my-3"
+            name="sheetUrl"
+            value={strategyData.sheetUrl}
+            onChange={handleChange}
+            placeholder="https://docs.google.com/spreadsheets/d/XXXXXXXXXXXXXXXXXXXXXX"
+          />
+          <div className="form-text">
+            Create a blank google sheet and make it accessible publicly via link and submit it here.
+          </div>
+        </div>
+
         <div className="form-group mb-5">
           <button
             type="button"
@@ -287,7 +305,6 @@ const UpdateStrategy = () => {
       <Footer />
       <Scripttag />
       </Checker>
-      
     </>
   );
 };

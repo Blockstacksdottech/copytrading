@@ -71,6 +71,18 @@ export default function Sidebar() {
               </a>
             </li>
             <li className="nav-item">
+              <a href="/admin/createstrategy" className="nav-link">
+                <i className="nav-icon fas fa-plus-circle"></i>
+                <p>Create Strategy</p>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="/admin/mystrategy" className="nav-link">
+                <i className="nav-icon fas fa-chart-line"></i>
+                <p>Manage Strategies</p>
+              </a>
+            </li>
+            <li className="nav-item">
               <a href="/admin/accountmanagement" className="nav-link">
                 <i className="nav-icon fas fa-id-card"></i>
                 <p>Account Management</p>

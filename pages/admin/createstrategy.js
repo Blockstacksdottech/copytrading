@@ -5,15 +5,16 @@ import Feed from "./components/feed";
 import Footer from "../components/panel/footer";
 import Headtag from "../components/panel/headtag";
 import Scripttag from "../components/panel/scripttag";
-import React, { useEffect , useState} from "react";
+import React, { useContext, useEffect , useState} from "react";
 import { toast } from "react-toastify";
-import { postReq,req,patchReq } from "@/helpers";
-import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/router";
+import { postReq } from "@/helpers";
 import Checker from "../components/utils/Checker";
+import { req } from "../../helpers";
+import { UserContext } from "@/contexts/UserContextData";
 
 
-const UpdateStrategy = () => {
+const CreateStrategy = () => {
+  const {user,setUser} = useContext(UserContext)
   const [strategyData, setStrategyData] = useState({
     name: "",
     tradeType: "",
@@ -24,15 +25,17 @@ const UpdateStrategy = () => {
     briefDescription: "",
     detailedDescription: "",
     maxSubscribers: "",
+    sheetUrl : ""
   });
 
-  const [loading,setLoading] = useState(true)
-  //const [id,setId] = useState(-1)
+  const [brokers,setBrokers] = useState([])
 
-  const params = useSearchParams()
-  const id = params.get("id")
-  const router = useRouter()
-
+  const fetchBrokers = async () => {
+    const resp = await req("brokers")
+    if (resp){
+      setBrokers(resp)
+    }
+  }
 
   const handleChange = (e) => {
     setStrategyData({
@@ -41,23 +44,10 @@ const UpdateStrategy = () => {
     });
   };
 
-  /* useEffect(() =>  {
-    
-    console.log(params)
-    if (id){
-      setId(id)
-    }else{
-      toast.info("no id")
-      //router.push("/manager/mystrategy")
-    }
-  },[params]) */
-
   useEffect(() => {
-    if (id){
-      fetchStrategy(id)
-      
-    }
-  },[id])
+    fetchBrokers();
+  },[])
+
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -66,28 +56,17 @@ const UpdateStrategy = () => {
     document.body.appendChild(script);
   }, []);
 
-  const fetchStrategy = async (id) => {
-    const resp = await req(`strategies/${id}/`)
-    if (resp){
-      setStrategyData(resp)
-      setLoading(false)
-    }else{
-      toast.error('Failed fetching strat data')
-      //router.push("/manager/mystrategy")
-    }
-  }
-
-  const update = async () => {
+  const createStrategy = async () => {
     // Check if all required fields are filled
     const { name, tradeType, accountSize, broker, controlModel, price } = strategyData;
     if (!name || !tradeType || !accountSize || !broker || !controlModel || !price) {
       toast.error("Please fill in all the required fields.");
       return;
     }
-    console.log(strategyData)
+    const body = {creator:user.id,creator_id : user.id,...strategyData}
 
     try {
-      const response = await patchReq(`strategies/${strategyData.id}/`, strategyData);
+      const response = await postReq("create-strategy/", body);
 
       if (response) {
         console.log("Strategy created successfully:", response);
@@ -108,12 +87,12 @@ const UpdateStrategy = () => {
         <title>Create Strategy</title>
         <meta name="description" content="Create Strategy" />
       </Head>
-      <Checker only_manager={true}>
+
+      <Checker only_admin={true}>
       <Headtag />
       <Navbar />
       <Sidebar />
-    {
-      !loading && <>
+
       <div className="content-wrapper p-4">
       {/* Your form JSX */}
       <form>
@@ -180,7 +159,12 @@ const UpdateStrategy = () => {
             onChange={handleChange}
           >
             <option value="">Choose Broker</option>
-            <option value="IB">Interactive Broker</option>
+            {
+              brokers.map((e,i) => {
+                return <option value={e.id}>{e.name}</option>
+              })
+            }
+            
           </select>
         </div>
 
@@ -268,29 +252,45 @@ const UpdateStrategy = () => {
           </div>
         </div>
 
+        <div className="form-group">
+          <label>Google sheets link</label>
+          <div className="form-text">
+            This Link will be used to sync trade history and update dashboard analytics.
+          </div>
+          <input
+            type="text"
+            className="form-control my-3"
+            name="sheetUrl"
+            value={strategyData.sheetUrl}
+            onChange={handleChange}
+            placeholder="https://docs.google.com/spreadsheets/d/XXXXXXXXXXXXXXXXXXXXXX"
+          />
+          <div className="form-text">
+            Create a blank google sheet and make it accessible publicly via link and submit it here.
+          </div>
+        </div>
+
         <div className="form-group mb-5">
           <button
             type="button"
             className="btn btn-primary float-right"
-            onClick={update}
+            onClick={createStrategy}
           >
-            Update Strategy
+            Create Strategy
           </button>
         </div>
       </form>
     </div>
-      </>
-    }
-      
 
       <Feed />
       <Footer />
       <Scripttag />
       </Checker>
+
       
     </>
   );
 };
 
-export default UpdateStrategy;
+export default CreateStrategy;
 
