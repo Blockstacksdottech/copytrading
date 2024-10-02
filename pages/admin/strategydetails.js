@@ -91,19 +91,22 @@ const StrategyDetails = () => {
   }
 
   function processGraphData(inputDict) {
-    if (!inputDict){
-      return []
+    if (!inputDict) {
+      return [];
     }
+    
     const outputArr = [];
-  
+    let cumulativeValue = 0; // Initialize cumulative value
+    
     for (const [key, value] of Object.entries(inputDict)) {
-      outputArr.push({
-        name : key,
-        Profit_Loss : value
-      })
+      cumulativeValue += value; // Add the current value to the cumulative total
       
+      outputArr.push({
+        name: key,
+        Profit_Loss: cumulativeValue // Use the cumulative total for Profit_Loss
+      });
     }
-  
+    
     return outputArr;
   }
 
@@ -304,7 +307,7 @@ const StrategyDetails = () => {
         <div className="content">
           <div className="container-fluid">
             <div className="row mb-2">
-              <div className="col-sm-12">
+              <div className="col-sm-9">
                 <div className="mb-2">
                   <div className="card shadow-none">
                     <div className="card-header">
@@ -334,10 +337,10 @@ const StrategyDetails = () => {
                   </div>
                 </div>
               </div>
-              {/* <div className="col-sm-3">
+              <div className="col-sm-3">
                 <div className="card card-primary shadow-none">
                   <div className="card-body box-profile">
-                    <div className="text-center">
+                    {/* <div className="text-center">
                       <h5>SUMMARY STATISTICS</h5>
                       <select className="form-control">
                         <option>Typical Broker Commissions</option>
@@ -363,52 +366,52 @@ const StrategyDetails = () => {
                           Infinity Futures commiss. and AutoTrade fees
                         </option>
                       </select>
-                    </div>
+                    </div> */}
                     <ul className="list-group list-group-unbordered mt-3">
                       <li className="list-group-item">
                         <span>Strategy began</span>
-                        <b className="float-right">2022-11-30</b>
+                        <b className="float-right">{formatDate(new Date(stratData.date))}</b>
                       </li>
                       <li className="list-group-item">
                         <span>Suggested Min Capital</span>
-                        <b className="float-right">$25,000</b>
+                        <b className="float-right">${stratData.accountSize}</b>
                       </li>
                       <li className="list-group-item">
-                        <span>Rank at C2 %</span>
+                        <span>Rank%</span>
                         <span className="float-right">
                           <sub>TOP</sub>
-                          <b>0.4%</b>
+                          <b>{((stratData.rank / stratData.strategyCount) * 100) ? ((stratData.rank / stratData.strategyCount) * 100).toFixed(2) : "--" }%</b>
                         </span>
                       </li>
                       <li className="list-group-item">
                         <span>Rank#</span>
-                        <b className="float-right">#3</b>
+                        <b className="float-right">#{stratData.rank ? stratData.rank  : "--"}</b>
                       </li>
                       <li className="list-group-item">
                         <span>#Trades</span>
-                        <b className="float-right">100</b>
+                        <b className="float-right">{stratData.result.total_trades}</b>
                       </li>
                       <li className="list-group-item">
                         <span>#Profitable</span>
-                        <b className="float-right text-success">69</b>
+                        <b className="float-right text-success">{stratData.result.win_trades}</b>
                       </li>
                       <li className="list-group-item">
                         <span>%Profitable</span>
-                        <b className="float-right">69.0</b>
+                        <b className="float-right">{stratData.result.win_percentage}%</b>
                       </li>
-                      <li className="list-group-item">
+                      {/* <li className="list-group-item">
                         <span>Correlation S&P500</span>
                         <b className="float-right">-0.136</b>
-                      </li>
+                      </li> */}
                       <li className="list-group-item">
                         <span>Sharpe Ratio</span>
-                        <b className="float-right">1.65</b>
+                        <b className="float-right">{stratData.result.sharpe_ratio}</b>
                       </li>
                       <li className="list-group-item">
                         <span>Sortino Ratio</span>
-                        <b className="float-right">2.78</b>
+                        <b className="float-right">{stratData.result.sortino_ratio}</b>
                       </li>
-                      <li className="list-group-item">
+                      {/* <li className="list-group-item">
                         <span>Beta</span>
                         <b className="float-right">-0.23</b>
                       </li>
@@ -422,11 +425,11 @@ const StrategyDetails = () => {
                           2.08(Avg)
                           <span className="ml-2">2.44(Max)</span>
                         </b>
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                 </div>
-              </div> */}
+              </div>
             </div>
             <div className="row mb-2">
               <div className="col-sm-12">
